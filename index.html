@@ -105,7 +105,6 @@ img,svg{display:block;max-width:100%}
 }
 .hero h1 em{font-style:normal;color:var(--amber)}
 
-/* Lema / emblema de Don Ertilio */
 .tagline{
   font-family:'Fraunces',Georgia,serif;
   font-style:italic;
@@ -131,7 +130,6 @@ img,svg{display:block;max-width:100%}
   color:#F4F8FB;
 }
 
-/* Ficha técnica */
 .ficha{
   background:rgba(244,248,251,.11);
   border:1px solid rgba(244,248,251,.28);
@@ -151,7 +149,6 @@ section{padding:clamp(2.6rem,6vw,4.5rem) 0}
 .sec-head h2{font-size:clamp(1.65rem,4vw,2.5rem);font-weight:800;margin-bottom:.7rem;text-wrap:balance}
 .sec-head p{color:var(--ink-soft);font-size:1.02rem}
 
-/* Encabezado partido: título + regla de oro */
 .sec-head-split{
   max-width:100% !important;
   display:grid;
@@ -164,7 +161,6 @@ section{padding:clamp(2.6rem,6vw,4.5rem) 0}
   .sec-head-split{grid-template-columns:1fr;gap:1.2rem}
 }
 
-/* Regla de oro llamativa */
 .golden-rule{
   position:relative;
   display:flex;gap:.9rem;align-items:flex-start;
@@ -318,7 +314,6 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   z-index:1;
 }
 
-/* Marca de tiempo acumulado */
 .step-time{
   display:inline-flex;
   align-items:center;
@@ -342,14 +337,15 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 }
 
 .steps h3{
-  font-size:1.02rem;
-  font-weight:700;
+  font-size:1.08rem;
+  font-weight:800;
   margin-bottom:.35rem;
   font-family:'Inter',sans-serif;
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   gap:.5rem;
+  color:var(--ink);
 }
 .steps h3 small{
   font-family:'Inter',sans-serif;
@@ -369,7 +365,6 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   padding:.55rem .8rem;margin-top:.65rem;
 }
 
-/* Cierre de la línea de tiempo */
 .timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:3.8rem}
 .timeline-end{
   display:inline-flex;
@@ -385,7 +380,6 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   box-shadow:0 8px 20px -10px rgba(58,110,165,.8);
 }
 
-/* Responsive: línea de tiempo en móvil */
 @media(max-width:660px){
   .steps{padding-left:2.8rem;gap:.85rem}
   .steps::before{left:.95rem}
@@ -740,7 +734,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 
         <li class="fade">
           <span class="step-time">0:00</span>
-          <h3>Calienta el agua y sancocha la carne <small>18 min</small></h3>
+          <h3>Agua y carne de res <small>18 min</small></h3>
           <p>
             Pon los <strong>1.2 L de agua</strong> a calentar. Cuando rompa el hervor, agrega la
             carne picada en cubos y déjala sancochar. Mientras tanto, pela la yuca: como pelarla
@@ -750,58 +744,62 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 
         <li class="fade">
           <span class="step-time">0:18</span>
-          <h3>Agrega la yuca <small>1 min</small></h3>
+          <h3>Yuca <small>1 min</small></h3>
           <p>
-            Con la carne ya cocida (pero aún firme), incorpora la yuca pelada y cortada en trozos.
+            Lávala, pélala, retira el cordón leñoso del centro, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
         <li class="fade">
           <span class="step-time">0:19</span>
-          <h3>Pela y pica el maíz y agrégalo <small>3 min</small></h3>
-          <p>Pela el maíz, córtalo en trozos y agrégalo.</p>
+          <h3>Maíz <small>3 min</small></h3>
+          <p>
+            Pélalo, córtalo en trozos y agrégalo al caldo.
+          </p>
         </li>
 
         <li class="fade">
           <span class="step-time">0:22</span>
-          <h3>Pela y pica la zanahoria y agrégala <small>3 min</small></h3>
+          <h3>Zanahoria <small>3 min</small></h3>
           <p>
-            Pela y pica la zanahoria y agrégala de una vez: es la verdura que nunca se deshace,
+            Pélala, pícala y agrégala al caldo de una vez: es la verdura que nunca se deshace,
             así que no importa que entre temprano.
           </p>
         </li>
 
         <li class="fade">
           <span class="step-time">0:25</span>
-          <h3>Pela la papa y agrégala <small>3 min</small></h3>
-          <p>Pela la papa y agrégala.</p>
+          <h3>Papa <small>3 min</small></h3>
+          <p>
+            Pélala, córtala en trozos y agrégala al caldo.
+          </p>
         </li>
 
         <li class="fade">
           <span class="step-time">0:28</span>
-          <h3>Pela y pica el ñame y agrégalo <small>4 min</small></h3>
+          <h3>Ñame <small>4 min</small></h3>
           <p>
-            Pela el ñame y agrégalo. Es el que se deshace y espesa la sopa, así que entra después
-            de la papa pero antes de la auyama.
+            Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que se deshace
+            y espesa la sopa, así que entra después de la papa pero antes de la auyama.
           </p>
         </li>
 
         <li class="fade">
           <span class="step-time">0:32</span>
-          <h3>Pela y pica la auyama y agrégala <small>3 min</small></h3>
+          <h3>Auyama <small>3 min</small></h3>
           <p>
-            Pela la auyama y agrégala al final de las verduras. También se deshace, pero menos
-            que el ñame.
+            Pélala, córtala en trozos y agrégala al caldo al final de las verduras. También se
+            deshace, pero menos que el ñame.
           </p>
         </li>
 
         <li class="fade">
           <span class="step-time">0:35</span>
-          <h3>Pica y agrega los aliños <small>8 min</small></h3>
+          <h3>Aliños <small>8 min</small></h3>
           <p>
-            Agrega la sal, el comino, la cebolla picada, el ajo machacado en pedacitos muy
-            pequeños, el ají dulce picado, el pimentón picado, el cebollín picado y el cilantro
-            picado (mientras más, mejor). Revuelve bien para integrar.
+            Pica la cebolla, machaca el ajo en pedacitos muy pequeños, pica el ají dulce, el
+            pimentón, el cebollín y el cilantro (mientras más, mejor). Agrégalo todo al caldo
+            junto con la sal y el comino, y revuelve bien para integrar.
           </p>
           <span class="tip">
             <strong>Sal exacta para 1.2 L:</strong> empieza con <strong>1 cucharadita rasa (≈5 g)</strong>.
