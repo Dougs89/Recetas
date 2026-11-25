@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recetas de Don Ertilio · Sopa de Res y Raíces para 3 (sin sobras)</title>
-<meta name="description" content="La sopa de res y raíces de Don Ertilio: receta con cantidades exactas para 2 adultos y 1 niña de 2 años, con equilibrio nutricional y guía infantil. Cero desperdicio.">
+<meta name="description" content="La sopa de res y raíces de Don Ertilio: receta con cantidades exactas para 2 adultos y los menores de la casa (2 años y 1 año), con equilibrio nutricional y guía infantil. Cero desperdicio.">
 <meta name="theme-color" content="#3A6EA5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,8 +217,13 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   text-transform:uppercase;color:var(--green);background:var(--green-soft);
   padding:.2rem .6rem;border-radius:99px;margin-top:.55rem;
 }
+.steps .tip{
+  display:block;font-size:.85rem;color:var(--blue-dk);
+  background:var(--blue-soft);border-radius:10px;
+  padding:.55rem .8rem;margin-top:.65rem;
+}
 
-/* ============ 9. BLOQUE INFANTIL ============ */
+/* ============ 9. BLOQUE MENORES ============ */
 .kids{
   background:linear-gradient(160deg,var(--green) 0%,#2E4232 100%);
   color:#F3F6F1;border-radius:26px;padding:clamp(1.6rem,4vw,2.8rem);
@@ -242,6 +247,7 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   background:var(--amber);color:#1F2A36;display:grid;place-items:center;
   font-size:.75rem;font-weight:900;margin-top:.1rem;
 }
+.kids-list strong{color:#fff}
 
 /* ============ 10. CALLOUT ============ */
 .callout{
@@ -299,7 +305,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <a href="#ingredientes">Ingredientes</a>
       <a href="#nutricion">Nutrición</a>
       <a href="#preparacion">Preparación</a>
-      <a href="#ninos">Para la niña</a>
+      <a href="#menores">Para los menores</a>
     </nav>
     <a class="btn-cta" href="#ingredientes">Ver la lista →</a>
   </div>
@@ -313,22 +319,22 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <h1>La sopa de Don Ertilio <em>para 3</em>, sin que sobre ni falte</h1>
       <p class="hero-lead">
         Un plato principal espeso y completo —res, yuca, ñame, auyama, maíz y verduras—
-        con las cantidades exactas para dos adultos y una niña de 2 años.
-        Compra justo, cocina una vez, come bien.
+        con las cantidades exactas para dos adultos y los menores de la casa
+        (2 años y 1 año). Compra justo, cocina una vez, come bien.
       </p>
       <div class="badges">
         <span class="badge">🍲 3 porciones exactas</span>
-        <span class="badge">⏱️ ~70 minutos</span>
+        <span class="badge">⏱️ ~1 h 45 min</span>
         <span class="badge">🚫 Cero desperdicio</span>
-        <span class="badge">👶 Apta para niños</span>
+        <span class="badge">👶 Apta para menores</span>
       </div>
     </div>
 
     <aside class="ficha">
       <h2>Ficha de la receta</h2>
       <div class="ficha-grid">
-        <div class="ficha-item"><strong>3</strong><span>porciones (2 ad. + 1 niña)</span></div>
-        <div class="ficha-item"><strong>70′</strong><span>tiempo total</span></div>
+        <div class="ficha-item"><strong>3</strong><span>porciones · 2 adultos + menores</span></div>
+        <div class="ficha-item"><strong>1h 45′</strong><span>tiempo total</span></div>
         <div class="ficha-item"><strong>~550</strong><span>kcal por ración adulto</span></div>
         <div class="ficha-item"><strong>1.2 L</strong><span>de agua</span></div>
       </div>
@@ -344,8 +350,8 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <h2>Lista de compras con rendimiento exacto</h2>
       <p>
         Estas son las cantidades para <strong>tres platos servidos</strong>: dos raciones de adulto
-        y una ración infantil. Cambia el conmutador para ver cuánto corresponde a
-        <strong>una sola ración de adulto</strong>.
+        y una porción infantil que se reparte entre los dos menores. Cambia el conmutador
+        para ver cuánto corresponde a <strong>una sola ración de adulto</strong>.
       </p>
     </div>
 
@@ -355,7 +361,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         <button class="seg-btn" data-mode="unit" type="button">Por 1 adulto</button>
       </div>
       <p class="seg-note" id="notaRacion">
-        Compra total: rinde 2 platos de adulto + 1 plato infantil. No sobra comida.
+        Compra total: rinde 2 platos de adulto + 1 porción infantil compartida entre los menores. No sobra comida.
       </p>
     </div>
 
@@ -423,7 +429,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <tr>
             <td data-label="Ingrediente">Cebolla</td>
             <td data-label="Cantidad" class="qty" data-full="50 g (½ unidad)" data-unit="20 g">50 g (½ unidad)</td>
-            <td data-label="Nota" class="note">Base del sofrito.</td>
+            <td data-label="Nota" class="note">Se añade al caldo con la carne.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ajo</td>
@@ -433,12 +439,12 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <tr>
             <td data-label="Ingrediente">Comino</td>
             <td data-label="Cantidad" class="qty" data-full="1 g (½ cdta)" data-unit="0.4 g">1 g (½ cdta)</td>
-            <td data-label="Nota" class="note">Moderado: su sabor es intenso para niños.</td>
+            <td data-label="Nota" class="note">Moderado: su sabor es intenso para menores.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Sal</td>
             <td data-label="Cantidad" class="qty" data-full="Al gusto (iniciar con 1 cdta)" data-unit="Al gusto">Al gusto</td>
-            <td data-label="Nota" class="note">Salar después de separar el plato de la niña.</td>
+            <td data-label="Nota" class="note">Salar después de separar los platos de los menores.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Agua</td>
@@ -467,7 +473,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <h2>Qué aporta una ración de adulto</h2>
       <p>
         Valores estimados para <strong>una porción de adulto</strong> (≈470 g de sólidos + 480 ml de caldo),
-        calculados con carne magra de lagarto y sin aceite añadido.
+        calculados con carne magra de lagarto y sin aceite añadido en la preparación.
       </p>
     </div>
 
@@ -496,7 +502,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🥩</span><h3>Proteínas</h3><span class="bal-pct">24%</span></div>
         <div class="bar"><span style="width:24%"></span></div>
-        <p>Los 120 g de lagarto aportan proteína completa con los nueve aminoácidos esenciales y hierro hemo de alta absorción — clave para prevenir anemia en la niña.</p>
+        <p>Los 120 g de lagarto aportan proteína completa con los nueve aminoácidos esenciales y hierro hemo de alta absorción — clave para prevenir anemia en los menores.</p>
       </div>
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🍠</span><h3>Carbohidratos</h3><span class="bal-pct">62%</span></div>
@@ -506,7 +512,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🥑</span><h3>Grasas</h3><span class="bal-pct">14%</span></div>
         <div class="bar"><span style="width:14%"></span></div>
-        <p>Predominan las grasas de la carne. Es un plato bajo en grasa, ideal para la cena; si quieres más saciedad, añade 1 cdta de aceite de oliva al servir.</p>
+        <p>La grasa proviene únicamente de la carne, que suelta su jugo en el caldo durante la cocción larga. Plato bajo en grasa, ideal para la cena.</p>
       </div>
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🥕</span><h3>Vitaminas y minerales</h3><span class="bal-pct">Alto</span></div>
@@ -522,39 +528,58 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   <div class="wrap">
     <div class="sec-head fade">
       <span class="eyebrow">Paso a paso</span>
-      <h2>Cómo se cocina</h2>
-      <p>El orden importa: primero la carne, después las raíces duras y al final las verduras tiernas. Así nada se deshace.</p>
+      <h2>Cómo se cocina: una sola sopa, sin sofrito</h2>
+      <p>
+        La clave de esta receta es que <strong>la carne entra primero al agua</strong> y cocina
+        largo tiempo: así suelta la grasa y el sabor que caracterizan la sopa. Los aliños van
+        directo al caldo, sin aceite ni sofrito. Después se suman las raíces duras y al final
+        las verduras tiernas.
+      </p>
     </div>
 
     <ol class="steps">
       <li class="fade">
-        <h3>Prepara la yuca</h3>
-        <p>Pela los 300 g de yuca, retira el cordón leñoso del centro y corta en trozos de unos 4 cm. Si quieres reducir el almidón, déjala en agua 15 minutos.</p>
+        <h3>Carne y caldo base</h3>
+        <p>
+          Corta los 300 g de carne en cubos de 3 cm. Colócalos en la olla con <strong>1.2 L de agua fría</strong>.
+          Añade la cebolla picada, el ajo machacado, el pimentón en tiras, el ají dulce sin semillas,
+          el cebollín picado y el comino. Lleva a fuego alto hasta el primer hervor.
+        </p>
         <span class="time">10 min</span>
+        <span class="tip">Mientras hierve, pela la yuca, retira el cordón leñoso del centro y córtala en trozos de 4 cm.</span>
       </li>
       <li class="fade">
-        <h3>Sella la carne</h3>
-        <p>Corta la carne en cubos de 3 cm. En una olla grande, dóralos a fuego alto 3–4 minutos por lado. Añade el ajo machacado y el comino; remueve 30 segundos.</p>
-        <span class="time">8 min</span>
+        <h3>Cocina la carne hasta ablandar</h3>
+        <p>
+          Baja a fuego medio-bajo, tapa y deja cocinar hasta que la carne esté <strong>muy blanda</strong>
+          y haya soltado su grasa y sabor al caldo. Este paso es el corazón de la sopa: no lo acortes.
+          La carne debe casi deshacerse al pincharla con un tenedor.
+        </p>
+        <span class="time">50–60 min</span>
       </li>
       <li class="fade">
-        <h3>Haz el sofrito</h3>
-        <p>Incorpora cebolla, pimentón, ají dulce y cebollín. Sofríe 5 minutos hasta que la cebolla se vea transparente. No dejes que se queme: amarga el caldo.</p>
-        <span class="time">5 min</span>
+        <h3>Añade las raíces duras</h3>
+        <p>
+          Incorpora la yuca, el ñame y los trozos de maíz. Cocina destapado hasta que la yuca
+          empiece a ablandar pero aún mantenga su forma.
+        </p>
+        <span class="time">20–25 min</span>
       </li>
       <li class="fade">
-        <h3>Añade agua y raíces duras</h3>
-        <p>Vierte 1.2 L de agua, sube el fuego y espera el primer hervor. Agrega yuca, ñame y los trozos de maíz. Tapa y cocina a fuego medio 30 minutos.</p>
-        <span class="time">30 min</span>
+        <h3>Añade las verduras tiernas</h3>
+        <p>
+          Agrega la papa, la zanahoria y la auyama. Cocina hasta que todo esté tierno.
+          Pincha la yuca con un tenedor: debe entrar sin resistencia.
+        </p>
+        <span class="time">15–18 min</span>
       </li>
       <li class="fade">
-        <h3>Suma las verduras tiernas</h3>
-        <p>Añade papa, zanahoria y auyama. Cocina destapado 15–18 minutos más, hasta que al pinchar la yuca con un tenedor entre sin resistencia.</p>
-        <span class="time">18 min</span>
-      </li>
-      <li class="fade">
-        <h3>Sazona y reposa</h3>
-        <p><strong>Separa el plato de la niña antes de salar.</strong> Luego rectifica la sal del resto, apaga el fuego y añade el cilantro picado. Reposa 5 minutos tapado antes de servir.</p>
+        <h3>Sazona, separa y reposa</h3>
+        <p>
+          <strong>Separa los platos de los menores antes de añadir la sal final.</strong>
+          Rectifica la sal del resto para los adultos. Apaga el fuego y añade el cilantro picado.
+          Reposa tapado 5 minutos antes de servir.
+        </p>
         <span class="time">5 min</span>
       </li>
     </ol>
@@ -569,33 +594,39 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   </div>
 </section>
 
-<!-- ============ NIÑOS ============ -->
-<section id="ninos">
+<!-- ============ MENORES ============ -->
+<section id="menores">
   <div class="wrap">
     <div class="kids fade">
       <span class="eyebrow">Seguridad y porción infantil</span>
-      <h2>Cómo servirle a la niña de 2 años</h2>
+      <h2>Cómo servir a los menores (2 años y 1 año)</h2>
       <p>
-        Su plato es aproximadamente <strong>un tercio de una ración de adulto</strong>:
-        unos 150–180 ml de caldo con 30–50 g de sólidos. Estas pautas evitan
-        atragantamientos y exceso de sal.
+        La porción infantil es aproximadamente <strong>un tercio de una ración de adulto</strong>:
+        unos 150–180 ml de caldo con 30–50 g de sólidos. Esa porción se reparte entre los dos
+        menores: el de 2 años come la mayor parte y el de 1 año, que está comenzando con la sopa,
+        toma caldo y algún trocito bien aplastado. Estas pautas evitan atragantamientos y exceso de sal.
       </p>
 
       <ul class="kids-list">
-        <li><span class="tick">✓</span><div><strong>Sirve su plato primero.</strong> Retira su porción antes de añadir la sal final y el comino extra.</div></li>
+        <li><span class="tick">✓</span><div><strong>Sirve sus platos primero.</strong> Retira sus porciones antes de añadir la sal final y el comino extra.</div></li>
         <li><span class="tick">✓</span><div><strong>Desmenuza la carne</strong> con dos tenedores. Sin trozos grandes ni fibras largas.</div></li>
-        <li><span class="tick">✓</span><div><strong>Corta los tubérculos en cubos de 1 cm.</strong> La yuca debe estar muy blanda: aplástala con el tenedor si es necesario.</div></li>
-        <li><span class="tick">✓</span><div><strong>Desgrana el maíz.</strong> Los granos enteros son un riesgo de atragantamiento a los 2 años.</div></li>
+        <li><span class="tick">✓</span><div><strong>Corta los tubérculos en cubos de 1 cm</strong> para el de 2 años. Para el de 1 año, aplasta con tenedor hasta obtener una textura suave.</div></li>
+        <li><span class="tick">✓</span><div><strong>Desgrana el maíz.</strong> Los granos enteros son un riesgo de atragantamiento a estas edades.</div></li>
         <li><span class="tick">✓</span><div><strong>Sin huesos ni piel.</strong> Revisa cada cucharada antes de dársela.</div></li>
         <li><span class="tick">✓</span><div><strong>Temperatura tibia</strong>, nunca caliente. Prueba en el dorso de tu muñeca.</div></li>
         <li><span class="tick">✓</span><div><strong>Sin picante.</strong> El ají dulce es seguro, pero evita cualquier otro condimento picante.</div></li>
+        <li><span class="tick">✓</span><div><strong>Para el de 1 año:</strong> sin sal añadida (o mínima) y empieza con caldo y verduras bien aplastadas. A medida que se acostumbre, incorpora trocitos muy pequeños de carne desmenuzada.</div></li>
       </ul>
 
       <div class="callout" style="background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);border-left-color:var(--amber)">
         <span class="ico">🍽️</span>
         <div>
           <strong style="color:#F3F6F1">Reparto exacto de la olla</strong>
-          <p style="color:rgba(243,246,241,.8)">2 platos de adulto (≈470 g de sólidos cada uno) + 1 plato infantil (≈150 g de sólidos). Total: los 1.2 L de sopa se consumen completos. Cero sobras.</p>
+          <p style="color:rgba(243,246,241,.8)">
+            2 platos de adulto (≈470 g de sólidos cada uno) + 1 porción infantil (≈150 g) que se reparte
+            entre los dos menores: el de 2 años come la mayor parte y el de 1 año, que está comenzando,
+            toma caldo y algún trocito aplastado. Total: los 1.2 L de sopa se consumen completos. Cero sobras.
+          </p>
         </div>
       </div>
     </div>
@@ -607,7 +638,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   <div class="wrap">
     <p class="foot-dedicatoria">Inspirado con amor para Lia y Lucca - Don Ertilio</p>
     <div class="foot-inner">
-      <div><strong>Recetas de Don Ertilio</strong><br>Sopa de res y raíces calculada para 2 adultos + 1 niña de 2 años.</div>
+      <div><strong>Recetas de Don Ertilio</strong><br>Sopa de res y raíces calculada para 2 adultos + los menores de la casa.</div>
       <div style="max-width:44ch">
         Los valores nutricionales son estimaciones orientativas basadas en tablas de composición de alimentos.
         No sustituyen la orientación de un pediatra o nutricionista.
@@ -624,8 +655,8 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   const nota    = document.getElementById('notaRacion');
 
   const textos = {
-    full: 'Compra total: rinde 2 platos de adulto + 1 plato infantil. No sobra comida.',
-    unit: 'Ración individual de adulto (≈470 g de sólidos + 480 ml de caldo). La niña come ~1/3 de esta cantidad.'
+    full: 'Compra total: rinde 2 platos de adulto + 1 porción infantil compartida entre los menores. No sobra comida.',
+    unit: 'Ración individual de adulto (≈470 g de sólidos + 480 ml de caldo). La porción infantil es ~1/3 de esta cantidad y se reparte entre los dos menores.'
   };
 
   botones.forEach(function (btn) {
@@ -633,7 +664,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       botones.forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
 
-      const modo = btn.dataset.mode; // 'full' | 'unit'
+      const modo = btn.dataset.mode;
       celdas.forEach(function (celda) {
         celda.textContent = celda.dataset[modo];
       });
