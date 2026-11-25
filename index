@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sopa Criolla de Res y Raíces · Receta exacta para 3 (sin sobras)</title>
+<meta name="description" content="Receta completa de sopa criolla con res, yuca, ñame, auyama, maíz y verduras. Cantidades exactas para 2 adultos y 1 niña de 2 años, con equilibrio nutricional y guía infantil.">
+<meta name="theme-color" content="#B84A1F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ 1. TOKENS Y RESET ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cream:#FBF7F0;
+  --paper:#FFFFFF;
+  --ink:#2B2118;
+  --ink-soft:#6B5D51;
+  --terracotta:#B84A1F;
+  --terracotta-dk:#8A3414;
+  --amber:#E8A33D;
+  --green:#3E5641;
+  --green-soft:#EDF2ED;
+  --line:#EADFCF;
+  --radius:20px;
+  --shadow-sm:0 2px 10px rgba(43,33,24,.06);
+  --shadow:0 18px 46px -20px rgba(43,33,24,.38);
+  --max:1140px;
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,.brand{font-family:'Fraunces',Georgia,serif;line-height:1.1;letter-spacing:-.015em}
+
+img,svg{display:block;max-width:100%}
+
+.wrap{width:min(100% - 2rem,var(--max));margin-inline:auto}
+
+/* ============ 2. BARRA SUPERIOR ============ */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(251,247,240,.86);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1rem}
+.brand-dot{
+  width:26px;height:26px;border-radius:50%;flex:0 0 auto;
+  background:conic-gradient(from 200deg,var(--terracotta),var(--amber),var(--green),var(--terracotta));
+  box-shadow:0 0 0 3px rgba(184,74,31,.12);
+}
+.nav{display:flex;gap:1.4rem;font-size:.9rem;font-weight:500}
+.nav a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
+.nav a:hover{color:var(--terracotta)}
+@media(max-width:820px){.nav{display:none}}
+
+.btn-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--terracotta);color:#fff;text-decoration:none;
+  font-weight:600;font-size:.88rem;padding:.6rem 1.15rem;border-radius:999px;
+  transition:transform .2s,background .2s,box-shadow .2s;
+  box-shadow:0 6px 18px -8px rgba(184,74,31,.9);
+}
+.btn-cta:hover{background:var(--terracotta-dk);transform:translateY(-2px)}
+
+/* ============ 3. HERO ============ */
+.hero{
+  position:relative;overflow:hidden;color:#FBF7F0;
+  background:linear-gradient(150deg,#6E2A11 0%,#B84A1F 48%,#D9772F 100%);
+  padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3rem,7vw,5rem);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(58% 58% at 88% 12%,rgba(232,163,61,.38),transparent 70%),
+    radial-gradient(52% 52% at 6% 92%,rgba(62,86,65,.42),transparent 70%);
+}
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.15fr .85fr;
+  gap:clamp(1.8rem,4vw,3.5rem);align-items:center;
+}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+
+.eyebrow{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:1rem;
+}
+.hero h1{
+  font-size:clamp(2.1rem,6.2vw,4rem);font-weight:800;margin-bottom:1rem;
+  text-wrap:balance;
+}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero-lead{font-size:clamp(1rem,2.1vw,1.12rem);color:rgba(251,247,240,.86);max-width:46ch;margin-bottom:1.6rem}
+
+.badges{display:flex;flex-wrap:wrap;gap:.5rem}
+.badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:600;padding:.42rem .85rem;border-radius:999px;
+  background:rgba(251,247,240,.14);border:1px solid rgba(251,247,240,.3);
+  color:#FBF7F0;
+}
+
+/* Ficha técnica */
+.ficha{
+  background:rgba(251,247,240,.11);
+  border:1px solid rgba(251,247,240,.28);
+  border-radius:26px;padding:1.5rem;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.6);
+}
+.ficha h2{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem;font-family:'Inter',sans-serif;font-weight:700}
+.ficha-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.ficha-item strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;font-weight:800;line-height:1.1}
+.ficha-item span{font-size:.76rem;color:rgba(251,247,240,.72);letter-spacing:.02em}
+
+/* ============ 4. SECCIONES ============ */
+section{padding:clamp(2.6rem,6vw,4.5rem) 0}
+.sec-head{max-width:62ch;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
+.sec-head .eyebrow{color:var(--terracotta);margin-bottom:.6rem}
+.sec-head h2{font-size:clamp(1.65rem,4vw,2.5rem);font-weight:800;margin-bottom:.7rem;text-wrap:balance}
+.sec-head p{color:var(--ink-soft);font-size:1.02rem}
+
+/* ============ 5. CONMUTADOR ============ */
+.switch-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.4rem}
+.seg{
+  display:inline-flex;background:#F1E8DA;border:1px solid var(--line);
+  border-radius:999px;padding:4px;gap:2px;
+}
+.seg-btn{
+  border:0;background:transparent;cursor:pointer;
+  font-family:inherit;font-size:.85rem;font-weight:600;color:var(--ink-soft);
+  padding:.55rem 1.1rem;border-radius:999px;transition:all .22s;
+}
+.seg-btn.active{background:var(--paper);color:var(--terracotta);box-shadow:var(--shadow-sm)}
+.seg-note{font-size:.83rem;color:var(--ink-soft);max-width:44ch}
+
+/* ============ 6. TABLAS ============ */
+.tbl-wrap{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);overflow:hidden;
+}
+table.tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+table.tbl thead th{
+  text-align:left;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:700;padding:.95rem 1.2rem;
+  background:#F7F0E5;border-bottom:1px solid var(--line);
+}
+table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #F4EDE2;vertical-align:top}
+table.tbl tbody tr:last-child td{border-bottom:0}
+table.tbl tbody tr:hover{background:#FDFAF5}
+.qty{font-weight:700;color:var(--terracotta);white-space:nowrap;font-variant-numeric:tabular-nums}
+.note{color:var(--ink-soft);font-size:.86rem}
+
+@media(max-width:660px){
+  table.tbl thead{display:none}
+  table.tbl,table.tbl tbody,table.tbl tr,table.tbl td{display:block;width:100%}
+  table.tbl tr{
+    border:1px solid var(--line);border-radius:14px;
+    padding:.8rem 1rem;margin-bottom:.65rem;background:var(--paper);
+  }
+  table.tbl td{border:0;padding:.28rem 0;display:flex;justify-content:space-between;gap:1rem;text-align:right}
+  table.tbl td::before{
+    content:attr(data-label);font-weight:700;font-size:.72rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-soft);text-align:left;flex:0 0 auto;
+  }
+  .tbl-wrap{background:transparent;border:0;box-shadow:none}
+}
+
+/* ============ 7. TARJETAS DE BALANCE ============ */
+.bal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1rem}
+.bal-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  padding:1.3rem;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;
+}
+.bal-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.bal-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem}
+.bal-ico{font-size:1.35rem;line-height:1}
+.bal-top h3{font-size:1rem;font-weight:700;flex:1;font-family:'Inter',sans-serif}
+.bal-pct{font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;color:var(--terracotta)}
+.bar{height:7px;border-radius:99px;background:#F1E8DA;overflow:hidden;margin-bottom:.7rem}
+.bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--terracotta),var(--amber))}
+.bal-card p{font-size:.87rem;color:var(--ink-soft);line-height:1.55}
+
+/* ============ 8. PASOS ============ */
+.steps{list-style:none;display:grid;gap:1rem;counter-reset:paso}
+.steps li{
+  counter-increment:paso;
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  padding:1.25rem 1.4rem 1.25rem 4.2rem;position:relative;box-shadow:var(--shadow-sm);
+}
+.steps li::before{
+  content:counter(paso);
+  position:absolute;left:1.25rem;top:1.2rem;
+  width:2.1rem;height:2.1rem;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--terracotta);color:#fff;
+  font-family:'Fraunces',serif;font-weight:800;font-size:1rem;
+}
+.steps h3{font-size:1.02rem;font-weight:700;margin-bottom:.3rem;font-family:'Inter',sans-serif}
+.steps p{font-size:.92rem;color:var(--ink-soft)}
+.steps .time{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--green);background:var(--green-soft);
+  padding:.2rem .6rem;border-radius:99px;margin-top:.55rem;
+}
+
+/* ============ 9. BLOQUE INFANTIL ============ */
+.kids{
+  background:linear-gradient(160deg,var(--green) 0%,#2E4232 100%);
+  color:#F3F6F1;border-radius:26px;padding:clamp(1.6rem,4vw,2.8rem);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.kids::after{
+  content:"";position:absolute;width:280px;height:280px;right:-90px;top:-90px;
+  border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.28),transparent 70%);
+}
+.kids h2{font-size:clamp(1.5rem,3.6vw,2.1rem);margin-bottom:.6rem;position:relative;z-index:1}
+.kids .eyebrow{color:var(--amber)}
+.kids p{color:rgba(243,246,241,.82);position:relative;z-index:1}
+.kids-list{list-style:none;display:grid;gap:.7rem;margin-top:1.4rem;position:relative;z-index:1}
+.kids-list li{
+  display:flex;gap:.75rem;align-items:flex-start;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
+  border-radius:14px;padding:.85rem 1rem;font-size:.92rem;
+}
+.kids-list .tick{
+  flex:0 0 auto;width:1.35rem;height:1.35rem;border-radius:50%;
+  background:var(--amber);color:#2B2118;display:grid;place-items:center;
+  font-size:.75rem;font-weight:900;margin-top:.1rem;
+}
+
+/* ============ 10. CALLOUT ============ */
+.callout{
+  display:flex;gap:1rem;align-items:flex-start;
+  background:#FDF3E4;border:1px solid #F0D9B4;border-left:5px solid var(--amber);
+  border-radius:14px;padding:1.1rem 1.3rem;margin-top:1.6rem;
+}
+.callout .ico{font-size:1.35rem;line-height:1}
+.callout strong{display:block;margin-bottom:.2rem;font-size:.95rem}
+.callout p{font-size:.88rem;color:var(--ink-soft)}
+
+/* ============ 11. FOOTER ============ */
+footer{
+  background:#2B2118;color:rgba(251,247,240,.65);
+  padding:2.4rem 0;margin-top:2rem;font-size:.85rem;
+}
+.foot-inner{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+footer strong{color:#FBF7F0;font-family:'Fraunces',serif;font-size:1rem}
+
+/* ============ 12. ANIMACIÓN DE ENTRADA ============ */
+@media(prefers-reduced-motion:no-preference){
+  .fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .fade.in{opacity:1;transform:none}
+}
+
+/* ============ 13. IMPRESIÓN ============ */
+@media print{
+  .topbar,.hero::after,.btn-cta,.seg{display:none}
+  body{background:#fff}
+  .hero{background:#fff;color:#000}
+  .kids{background:#fff;color:#000;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ BARRA SUPERIOR ============ -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand"><span class="brand-dot"></span> Sopa Criolla de Raíces</div>
+    <nav class="nav">
+      <a href="#ingredientes">Ingredientes</a>
+      <a href="#nutricion">Nutrición</a>
+      <a href="#preparacion">Preparación</a>
+      <a href="#ninos">Para la niña</a>
+    </nav>
+    <a class="btn-cta" href="#ingredientes">Ver la lista →</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Receta calculada al gramo</span>
+      <h1>Sopa Criolla de Res y Raíces <em>para 3</em>, sin que sobre ni falte</h1>
+      <p class="hero-lead">
+        Un plato principal espeso y completo —res, yuca, ñame, auyama, maíz y verduras—
+        con las cantidades exactas para dos adultos y una niña de 2 años.
+        Compra justo, cocina una vez, come bien.
+      </p>
+      <div class="badges">
+        <span class="badge">🍲 3 porciones exactas</span>
+        <span class="badge">⏱️ ~70 minutos</span>
+        <span class="badge">🚫 Cero desperdicio</span>
+        <span class="badge">👶 Apta para niños</span>
+      </div>
+    </div>
+
+    <aside class="ficha">
+      <h2>Ficha de la receta</h2>
+      <div class="ficha-grid">
+        <div class="ficha-item"><strong>3</strong><span>porciones (2 ad. + 1 niña)</span></div>
+        <div class="ficha-item"><strong>70′</strong><span>tiempo total</span></div>
+        <div class="ficha-item"><strong>~550</strong><span>kcal por ración adulto</span></div>
+        <div class="ficha-item"><strong>1.2 L</strong><span>de agua</span></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ============ INGREDIENTES ============ -->
+<section id="ingredientes">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">Paso 0 · La compra</span>
+      <h2>Lista de compras con rendimiento exacto</h2>
+      <p>
+        Estas son las cantidades para <strong>tres platos servidos</strong>: dos raciones de adulto
+        y una ración infantil. Cambia el conmutador para ver cuánto corresponde a
+        <strong>una sola ración de adulto</strong>.
+      </p>
+    </div>
+
+    <div class="switch-row">
+      <div class="seg" role="group" aria-label="Selector de cantidades">
+        <button class="seg-btn active" data-mode="full" type="button">Compra total · 3 personas</button>
+        <button class="seg-btn" data-mode="unit" type="button">Por 1 adulto</button>
+      </div>
+      <p class="seg-note" id="notaRacion">
+        Compra total: rinde 2 platos de adulto + 1 plato infantil. No sobra comida.
+      </p>
+    </div>
+
+    <div class="tbl-wrap fade">
+      <table class="tbl">
+        <thead>
+          <tr><th>Ingrediente</th><th>Cantidad</th><th>Nota de compra</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Ingrediente">Carne de res — lagarto sin hueso</td>
+            <td data-label="Cantidad" class="qty" data-full="300 g" data-unit="120 g">300 g</td>
+            <td data-label="Nota" class="note">Si eliges costilla, pide que la deshuesen y suma 100 g por el hueso.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Yuca <strong>con concha</strong></td>
+            <td data-label="Cantidad" class="qty" data-full="300 g" data-unit="120 g">300 g</td>
+            <td data-label="Nota" class="note">La cáscara y las puntas pesan ~30%. Rinde 200 g netos.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Maíz (mazorca)</td>
+            <td data-label="Cantidad" class="qty" data-full="1 unidad (~150 g)" data-unit="60 g de granos">1 unidad (~150 g)</td>
+            <td data-label="Nota" class="note">Una mazorca mediana. Cortar en 3 trozos.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Auyama</td>
+            <td data-label="Cantidad" class="qty" data-full="150 g" data-unit="60 g">150 g</td>
+            <td data-label="Nota" class="note">Peso neto, sin semillas ni cáscara.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Ñame</td>
+            <td data-label="Cantidad" class="qty" data-full="150 g" data-unit="60 g">150 g</td>
+            <td data-label="Nota" class="note">Pelado. Da cuerpo al caldo.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Papa</td>
+            <td data-label="Cantidad" class="qty" data-full="150 g (1 mediana)" data-unit="60 g">150 g (1 mediana)</td>
+            <td data-label="Nota" class="note">Prefiere papa que no se deshaga.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Zanahoria</td>
+            <td data-label="Cantidad" class="qty" data-full="80 g (1 mediana)" data-unit="32 g">80 g (1 mediana)</td>
+            <td data-label="Nota" class="note">Fuente clave de vitamina A.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Cilantro</td>
+            <td data-label="Cantidad" class="qty" data-full="15 g (1 manojo pequeño)" data-unit="6 g">15 g (1 manojo pequeño)</td>
+            <td data-label="Nota" class="note">Se añade al final, fuera del fuego.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Cebollín</td>
+            <td data-label="Cantidad" class="qty" data-full="20 g (2 tallos)" data-unit="8 g">20 g (2 tallos)</td>
+            <td data-label="Nota" class="note">Usa tallo y parte verde.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Ají dulce</td>
+            <td data-label="Cantidad" class="qty" data-full="10 g (1 unidad)" data-unit="4 g">10 g (1 unidad)</td>
+            <td data-label="Nota" class="note">Sin semillas para suavizar el sabor.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Pimentón</td>
+            <td data-label="Cantidad" class="qty" data-full="30 g (¼ unidad)" data-unit="12 g">30 g (¼ unidad)</td>
+            <td data-label="Nota" class="note">Aporta vitamina C.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Cebolla</td>
+            <td data-label="Cantidad" class="qty" data-full="50 g (½ unidad)" data-unit="20 g">50 g (½ unidad)</td>
+            <td data-label="Nota" class="note">Base del sofrito.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Ajo</td>
+            <td data-label="Cantidad" class="qty" data-full="7 g (2 dientes)" data-unit="3 g">7 g (2 dientes)</td>
+            <td data-label="Nota" class="note">Machacado, no picado fino.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Comino</td>
+            <td data-label="Cantidad" class="qty" data-full="1 g (½ cdta)" data-unit="0.4 g">1 g (½ cdta)</td>
+            <td data-label="Nota" class="note">Moderado: su sabor es intenso para niños.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Sal</td>
+            <td data-label="Cantidad" class="qty" data-full="Al gusto (iniciar con 1 cdta)" data-unit="Al gusto">Al gusto</td>
+            <td data-label="Nota" class="note">Salar después de separar el plato de la niña.</td>
+          </tr>
+          <tr>
+            <td data-label="Ingrediente">Agua</td>
+            <td data-label="Cantidad" class="qty" data-full="1.2 litros" data-unit="480 ml">1.2 litros</td>
+            <td data-label="Nota" class="note">Hasta 1.5 L si la prefieres más calduda.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <span class="ico">🧾</span>
+      <div>
+        <strong>Regla de oro contra el desperdicio</strong>
+        <p>Compra la yuca el mismo día o el día anterior: se oxida rápido. Si te sobra algún tallo de cebollín o cilantro, pícalo y congélalo en cubetera con agua — sirve para la próxima sopa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUTRICIÓN ============ -->
+<section id="nutricion" style="background:#F6EFE4">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">Paso 0.5 · El equilibrio</span>
+      <h2>Qué aporta una ración de adulto</h2>
+      <p>
+        Valores estimados para <strong>una porción de adulto</strong> (≈470 g de sólidos + 480 ml de caldo),
+        calculados con carne magra de lagarto y sin aceite añadido.
+      </p>
+    </div>
+
+    <div class="tbl-wrap fade" style="margin-bottom:1.6rem">
+      <table class="tbl">
+        <thead>
+          <tr><th>Nutriente</th><th>Aporte aproximado</th><th>% del valor diario</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Nutriente">Energía</td><td data-label="Aporte" class="qty">≈ 520–560 kcal</td><td data-label="% diario" class="note">≈ 27 %</td></tr>
+          <tr><td data-label="Nutriente">Proteínas</td><td data-label="Aporte" class="qty">≈ 30 g</td><td data-label="% diario" class="note">≈ 55 %</td></tr>
+          <tr><td data-label="Nutriente">Carbohidratos</td><td data-label="Aporte" class="qty">≈ 78 g</td><td data-label="% diario" class="note">≈ 26 %</td></tr>
+          <tr><td data-label="Nutriente">Grasas totales</td><td data-label="Aporte" class="qty">≈ 8 g</td><td data-label="% diario" class="note">≈ 12 %</td></tr>
+          <tr><td data-label="Nutriente">Fibra dietética</td><td data-label="Aporte" class="qty">≈ 7 g</td><td data-label="% diario" class="note">≈ 26 %</td></tr>
+          <tr><td data-label="Nutriente">Vitamina A</td><td data-label="Aporte" class="qty">≈ 570 µg ER</td><td data-label="% diario" class="note">≈ 70 %</td></tr>
+          <tr><td data-label="Nutriente">Vitamina C</td><td data-label="Aporte" class="qty">≈ 40 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
+          <tr><td data-label="Nutriente">Potasio</td><td data-label="Aporte" class="qty">≈ 900 mg</td><td data-label="% diario" class="note">≈ 25 %</td></tr>
+          <tr><td data-label="Nutriente">Hierro (hemo)</td><td data-label="Aporte" class="qty">≈ 3 mg</td><td data-label="% diario" class="note">≈ 25 % · alta absorción</td></tr>
+          <tr><td data-label="Nutriente">Zinc</td><td data-label="Aporte" class="qty">≈ 5 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
+          <tr><td data-label="Nutriente">Sodio</td><td data-label="Aporte" class="qty">Variable</td><td data-label="% diario" class="note">Controlado por la sal añadida</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bal-grid">
+      <div class="bal-card fade">
+        <div class="bal-top"><span class="bal-ico">🥩</span><h3>Proteínas</h3><span class="bal-pct">24%</span></div>
+        <div class="bar"><span style="width:24%"></span></div>
+        <p>Los 120 g de lagarto aportan proteína completa con los nueve aminoácidos esenciales y hierro hemo de alta absorción — clave para prevenir anemia en la niña.</p>
+      </div>
+      <div class="bal-card fade">
+        <div class="bal-top"><span class="bal-ico">🍠</span><h3>Carbohidratos</h3><span class="bal-pct">62%</span></div>
+        <div class="bar"><span style="width:62%"></span></div>
+        <p>Yuca, ñame, papa y maíz aportan almidón de digestión lenta. Combinados con la fibra, dan energía sostenida sin picos de glucosa.</p>
+      </div>
+      <div class="bal-card fade">
+        <div class="bal-top"><span class="bal-ico">🥑</span><h3>Grasas</h3><span class="bal-pct">14%</span></div>
+        <div class="bar"><span style="width:14%"></span></div>
+        <p>Predominan las grasas de la carne. Es un plato bajo en grasa, ideal para la cena; si quieres más saciedad, añade 1 cdta de aceite de oliva al servir.</p>
+      </div>
+      <div class="bal-card fade">
+        <div class="bal-top"><span class="bal-ico">🥕</span><h3>Vitaminas y minerales</h3><span class="bal-pct">Alto</span></div>
+        <div class="bar"><span style="width:78%"></span></div>
+        <p>Auyama + zanahoria cubren buena parte de la vitamina A; pimentón y ají dulce suman vitamina C; ñame y papa aportan potasio. Un plato denso en micronutrientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREPARACIÓN ============ -->
+<section id="preparacion">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">Paso a paso</span>
+      <h2>Cómo se cocina</h2>
+      <p>El orden importa: primero la carne, después las raíces duras y al final las verduras tiernas. Así nada se deshace.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="fade">
+        <h3>Prepara la yuca</h3>
+        <p>Pela los 300 g de yuca, retira el cordón leñoso del centro y corta en trozos de unos 4 cm. Si quieres reducir el almidón, déjala en agua 15 minutos.</p>
+        <span class="time">10 min</span>
+      </li>
+      <li class="fade">
+        <h3>Sella la carne</h3>
+        <p>Corta la carne en cubos de 3 cm. En una olla grande, dóralos a fuego alto 3–4 minutos por lado. Añade el ajo machacado y el comino; remueve 30 segundos.</p>
+        <span class="time">8 min</span>
+      </li>
+      <li class="fade">
+        <h3>Haz el sofrito</h3>
+        <p>Incorpora cebolla, pimentón, ají dulce y cebollín. Sofríe 5 minutos hasta que la cebolla se vea transparente. No dejes que se queme: amarga el caldo.</p>
+        <span class="time">5 min</span>
+      </li>
+      <li class="fade">
+        <h3>Añade agua y raíces duras</h3>
+        <p>Vierte 1.2 L de agua, sube el fuego y espera el primer hervor. Agrega yuca, ñame y los trozos de maíz. Tapa y cocina a fuego medio 30 minutos.</p>
+        <span class="time">30 min</span>
+      </li>
+      <li class="fade">
+        <h3>Suma las verduras tiernas</h3>
+        <p>Añade papa, zanahoria y auyama. Cocina destapado 15–18 minutos más, hasta que al pinchar la yuca con un tenedor entre sin resistencia.</p>
+        <span class="time">18 min</span>
+      </li>
+      <li class="fade">
+        <h3>Sazona y reposa</h3>
+        <p><strong>Separa el plato de la niña antes de salar.</strong> Luego rectifica la sal del resto, apaga el fuego y añade el cilantro picado. Reposa 5 minutos tapado antes de servir.</p>
+        <span class="time">5 min</span>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <span class="ico">💡</span>
+      <div>
+        <strong>Truco de textura</strong>
+        <p>Si quieres un caldo más espeso sin añadir harinas, retira un trozo de yuca y otro de auyama al final, aplástalos con un tenedor y devuélvelos a la olla.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NIÑOS ============ -->
+<section id="ninos">
+  <div class="wrap">
+    <div class="kids fade">
+      <span class="eyebrow">Seguridad y porción infantil</span>
+      <h2>Cómo servirle a la niña de 2 años</h2>
+      <p>
+        Su plato es aproximadamente <strong>un tercio de una ración de adulto</strong>:
+        unos 150–180 ml de caldo con 30–50 g de sólidos. Estas pautas evitan
+        atragantamientos y exceso de sal.
+      </p>
+
+      <ul class="kids-list">
+        <li><span class="tick">✓</span><div><strong>Sirve su plato primero.</strong> Retira su porción antes de añadir la sal final y el comino extra.</div></li>
+        <li><span class="tick">✓</span><div><strong>Desmenuza la carne</strong> con dos tenedores. Sin trozos grandes ni fibras largas.</div></li>
+        <li><span class="tick">✓</span><div><strong>Corta los tubérculos en cubos de 1 cm.</strong> La yuca debe estar muy blanda: aplástala con el tenedor si es necesario.</div></li>
+        <li><span class="tick">✓</span><div><strong>Desgrana el maíz.</strong> Los granos enteros son un riesgo de atragantamiento a los 2 años.</div></li>
+        <li><span class="tick">✓</span><div><strong>Sin huesos ni piel.</strong> Revisa cada cucharada antes de dársela.</div></li>
+        <li><span class="tick">✓</span><div><strong>Temperatura tibia</strong>, nunca caliente. Prueba en el dorso de tu muñeca.</div></li>
+        <li><span class="tick">✓</span><div><strong>Sin picante.</strong> El ají dulce es seguro, pero evita cualquier otro condimento picante.</div></li>
+      </ul>
+
+      <div class="callout" style="background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);border-left-color:var(--amber)">
+        <span class="ico">🍽️</span>
+        <div>
+          <strong style="color:#F3F6F1">Reparto exacto de la olla</strong>
+          <p style="color:rgba(243,246,241,.8)">2 platos de adulto (≈470 g de sólidos cada uno) + 1 plato infantil (≈150 g de sólidos). Total: los 1.2 L de sopa se consumen completos. Cero sobras.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-inner">
+    <div><strong>Sopa Criolla de Raíces</strong><br>Receta calculada para 2 adultos + 1 niña de 2 años.</div>
+    <div style="max-width:44ch">
+      Los valores nutricionales son estimaciones orientativas basadas en tablas de composición de alimentos.
+      No sustituyen la orientación de un pediatra o nutricionista.
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== 1. Conmutador de cantidades ===== */
+(function () {
+  const botones = document.querySelectorAll('.seg-btn');
+  const celdas  = document.querySelectorAll('[data-full]');
+  const nota    = document.getElementById('notaRacion');
+
+  const textos = {
+    full: 'Compra total: rinde 2 platos de adulto + 1 plato infantil. No sobra comida.',
+    unit: 'Ración individual de adulto (≈470 g de sólidos + 480 ml de caldo). La niña come ~1/3 de esta cantidad.'
+  };
+
+  botones.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      botones.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      const modo = btn.dataset.mode; // 'full' | 'unit'
+      celdas.forEach(function (celda) {
+        celda.textContent = celda.dataset[modo];
+      });
+      nota.textContent = textos[modo];
+    });
+  });
+})();
+
+/* ===== 2. Animación de aparición al hacer scroll ===== */
+(function () {
+  const elementos = document.querySelectorAll('.fade');
+  if (!('IntersectionObserver' in window)) {
+    elementos.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  const obs = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  elementos.forEach(function (el) { obs.observe(el); });
+})();
+
+/* ===== 3. Cierre suave del scroll con la barra fija ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (ev) {
+    const destino = document.querySelector(a.getAttribute('href'));
+    if (!destino) return;
+    ev.preventDefault();
+    const offset = document.querySelector('.topbar').offsetHeight + 12;
+    window.scrollTo({
+      top: destino.getBoundingClientRect().top + window.pageYOffset - offset,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+</body>
+</html>
