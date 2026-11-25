@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sopa Criolla de Res de Don Ertilio · Compra justo, cocina una vez, come bien</title>
-<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta con cantidades exactas para 2 adultos y 1 menor de la casa (de 2 años o de 1 año), con línea de tiempo, equilibrio nutricional y guía infantil. Compra justo, cocina una vez, come bien, sin que falte ni que sobre.">
+<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta con cantidades exactas para 2 adultos y 1 menor de la casa. Cronograma calculado para que la carne de lagarto (2 h) y todas las verduras terminen al mismo tiempo. Compra justo, cocina una vez, come bien.">
 <meta name="theme-color" content="#3A6EA5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -264,7 +264,36 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 .bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),#6E9BC6)}
 .bal-card p{font-size:.87rem;color:var(--ink-soft);line-height:1.55}
 
-/* ============ 8. LÍNEA DE TIEMPO / PASOS ============ */
+/* ============ 8. CRONOGRAMA + LÍNEA DE TIEMPO ============ */
+.crono{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.2rem 1.3rem;margin-bottom:2rem;box-shadow:var(--shadow-sm);
+}
+.crono h3{
+  font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--blue);
+  margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;
+}
+.crono-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.6rem;
+}
+.crono-item{
+  background:#F7FAFD;border:1px solid var(--line);border-radius:12px;
+  padding:.7rem .85rem;display:flex;flex-direction:column;gap:.15rem;
+}
+.crono-item .ci-name{font-size:.82rem;font-weight:700;color:var(--ink)}
+.crono-item .ci-time{font-size:.78rem;color:var(--blue);font-weight:700;font-variant-numeric:tabular-nums}
+.crono-item .ci-dur{font-size:.72rem;color:var(--ink-soft)}
+.crono-item.highlight{background:#FFF8EA;border-color:#F0D9B4}
+.crono-item.highlight .ci-time{color:#B07818}
+
+.crono-note{
+  margin-top:1rem;padding-top:.9rem;border-top:1px dashed var(--line);
+  font-size:.86rem;color:var(--ink-soft);line-height:1.55;
+}
+.crono-note strong{color:var(--blue-dk)}
+
 .steps-wrap{max-width:820px}
 
 .steps{
@@ -313,6 +342,7 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   box-shadow:0 0 0 4px var(--cream);
   z-index:1;
 }
+.steps li.long-wait::before{background:var(--blue-dk)}
 
 .step-time{
   display:inline-flex;
@@ -363,6 +393,11 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   display:block;font-size:.85rem;color:var(--blue-dk);
   background:var(--blue-soft);border-radius:10px;
   padding:.55rem .8rem;margin-top:.65rem;
+}
+.steps .warn{
+  display:block;font-size:.85rem;color:#7A4D10;
+  background:#FFF3D9;border-left:3px solid var(--amber);
+  border-radius:0 8px 8px 0;padding:.55rem .8rem;margin-top:.65rem;
 }
 
 .timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:3.8rem}
@@ -504,7 +539,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       </p>
       <div class="badges">
         <span class="badge">🍲 3 porciones exactas</span>
-        <span class="badge">⏱️ ≈50 min</span>
+        <span class="badge">⏱️ ≈2 h 15 min</span>
         <span class="badge">🚫 Cero desperdicio</span>
         <span class="badge">👶 Apta para niños</span>
       </div>
@@ -514,9 +549,9 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <h2>Ficha de la receta</h2>
       <div class="ficha-grid">
         <div class="ficha-item"><strong>3</strong><span>porciones · 2 adultos + 1 menor</span></div>
-        <div class="ficha-item"><strong>≈50′</strong><span>tiempo total</span></div>
+        <div class="ficha-item"><strong>2h 15′</strong><span>tiempo total</span></div>
         <div class="ficha-item"><strong>~550</strong><span>kcal por ración adulto</span></div>
-        <div class="ficha-item"><strong>1.2 L</strong><span>de agua</span></div>
+        <div class="ficha-item"><strong>1.5 L</strong><span>agua + reposición</span></div>
       </div>
     </aside>
   </div>
@@ -574,7 +609,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <tr>
             <td data-label="Ingrediente">Ñame</td>
             <td data-label="Cantidad" class="qty" data-full="150 g" data-unit="60 g">150 g</td>
-            <td data-label="Nota" class="note">Pelado. Es el que espesa la sopa.</td>
+            <td data-label="Nota" class="note">Pelado. Es el que espesa la sopa y el indicador de que está lista.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Papa</td>
@@ -624,12 +659,12 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <tr>
             <td data-label="Ingrediente">Sal</td>
             <td data-label="Cantidad" class="qty" data-full="1–2 cdta rasas (5–10 g)" data-unit="Al gusto">1–2 cdta rasas (5–10 g)</td>
-            <td data-label="Nota" class="note">Empezar con 1 cdta para 1.2 L y ajustar. Salar después de separar el plato del menor.</td>
+            <td data-label="Nota" class="note">Para el volumen final (≈1.2 L). Empezar con 1 cdta y ajustar. Salar después de separar el plato del menor.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Agua</td>
-            <td data-label="Cantidad" class="qty" data-full="1.2 litros" data-unit="480 ml">1.2 litros</td>
-            <td data-label="Nota" class="note">Hasta 1.5 L si la prefieres más calduda.</td>
+            <td data-label="Cantidad" class="qty" data-full="1.5 litros + reposición" data-unit="500 ml + reposición">1.5 litros + reposición</td>
+            <td data-label="Nota" class="note">Durante las 2 horas de cocción se evapora agua. Verifica el nivel y añade agua caliente.</td>
           </tr>
         </tbody>
       </table>
@@ -711,10 +746,10 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         <span class="eyebrow">Paso a paso</span>
         <h2>El ritmo de Don Ertilio: una sola sopa, sin sofrito</h2>
         <p>
-          Esta es la secuencia exacta: el agua se calienta, la carne entra a sancocharse y
-          mientras se pela la yuca. Cada verdura entra en el orden que resiste la cocción:
-          primero las que aguantan, al final las que se deshacen. Los aliños van al final
-          para que el cilantro y el comino conserven su aroma.
+          La carne de lagarto sin hueso necesita <strong>2 horas</strong> para quedar blandita.
+          Si agregas la yuca a los 30 minutos, se deshace completamente antes de que la carne esté lista.
+          Por eso cada verdura entra en el momento exacto: <strong>2:08 menos su tiempo de cocción</strong>.
+          Así todo termina al mismo tiempo.
         </p>
       </div>
       <aside class="golden-rule" aria-label="Regla de oro con cada adición">
@@ -722,108 +757,168 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         <div>
           <strong>Regla de oro con cada adición</strong>
           <p>
-            Revuelve con la paleta y verifica el nivel del agua. Si bajó, añade más
-            (preferiblemente caliente) para que no se corte la cocción.
+            Revuelve con la paleta y verifica el nivel del agua. Durante las 2 horas
+            se evapora bastante: mantén el nivel con agua caliente para que no se
+            corte la cocción.
           </p>
         </div>
       </aside>
     </div>
 
+    <!-- CRONOGRAMA CALCULADO -->
+    <div class="crono fade">
+      <h3>🧮 Cronograma calculado: todos listos a las 2:08</h3>
+      <div class="crono-grid">
+        <div class="crono-item highlight">
+          <span class="ci-name">Carne de res</span>
+          <span class="ci-time">Entra 0:08</span>
+          <span class="ci-dur">2 h 00 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Yuca</span>
+          <span class="ci-time">Entra 1:33</span>
+          <span class="ci-dur">35 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Maíz</span>
+          <span class="ci-time">Entra 1:38</span>
+          <span class="ci-dur">30 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Zanahoria</span>
+          <span class="ci-time">Entra 1:43</span>
+          <span class="ci-dur">25 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Papa</span>
+          <span class="ci-time">Entra 1:46</span>
+          <span class="ci-dur">22 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Ñame</span>
+          <span class="ci-time">Entra 1:48</span>
+          <span class="ci-dur">20 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Auyama</span>
+          <span class="ci-time">Entra 1:51</span>
+          <span class="ci-dur">17 min · listo 2:08</span>
+        </div>
+        <div class="crono-item">
+          <span class="ci-name">Aliños</span>
+          <span class="ci-time">Entra 1:56</span>
+          <span class="ci-dur">12 min · listo 2:08</span>
+        </div>
+      </div>
+      <p class="crono-note">
+        <strong>La matemática:</strong> si la carne termina a las 2:08, cada verdura entra a las
+        <strong>2:08 menos su tiempo de cocción</strong>. La yuca (35 min) entra a la 1:33; el ñame
+        (20 min) entra a la 1:48; la auyama (17 min) entra a la 1:51. Por eso las verduras no van al
+        principio: si la yuca entrara a los 30 minutos, llevaría 1 h 38 min en el caldo y se desharía.
+      </p>
+    </div>
+
     <div class="steps-wrap">
       <ol class="steps">
 
-        <li class="fade">
+        <li class="fade long-wait">
           <span class="step-time">0:00</span>
-          <h3>Agua y carne de res <small>18 min</small></h3>
+          <h3>Agua y carne de res <small>2 h 00 min</small></h3>
           <p>
-            Pon los <strong>1.2 L de agua</strong> a calentar. Cuando rompa el hervor, agrega la
-            carne picada en cubos y déjala sancochar. Mientras tanto, pela la yuca: como pelarla
-            lleva tiempo, cuando termines la carne ya debe estar cocida pero no blanda.
+            Pon los <strong>1.5 L de agua</strong> a calentar. Cuando rompa el hervor (≈0:08),
+            agrega la carne picada en cubos. Baja a fuego medio-bajo, tapa y deja cocinar.
+            La carne de lagarto sin hueso necesita 2 horas para quedar blandita.
+            Mientras tanto, pela y pica <strong>todas las verduras</strong>: yuca (guárdala en agua
+            para que no se oxide), maíz, zanahoria, papa, ñame y auyama. Tienes 1 h 20 min de margen.
           </p>
+          <span class="warn">
+            Tu instinto de agregar la yuca temprano funciona para carnes de cocción rápida
+            (pollo, pescado, carne blanda), pero el lagarto necesita 2 horas. Si agregas la yuca
+            a los 30 minutos, se deshace completamente antes de que la carne esté blanda.
+            Por eso la yuca espera hasta la 1:33.
+          </span>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:18</span>
-          <h3>Yuca <small>1 min</small></h3>
+          <span class="step-time">1:33</span>
+          <h3>Yuca <small>35 min</small></h3>
           <p>
             Lávala, pélala, retira el cordón leñoso del centro, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:19</span>
-          <h3>Maíz <small>3 min</small></h3>
+          <span class="step-time">1:38</span>
+          <h3>Maíz <small>30 min</small></h3>
           <p>
             Pélalo, córtalo en trozos y agrégalo al caldo.
           </p>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:22</span>
-          <h3>Zanahoria <small>3 min</small></h3>
+          <span class="step-time">1:43</span>
+          <h3>Zanahoria <small>25 min</small></h3>
           <p>
-            Pélala, pícala y agrégala al caldo de una vez: es la verdura que nunca se deshace,
-            así que no importa que entre temprano.
+            Pélala, pícala y agrégala al caldo.
           </p>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:25</span>
-          <h3>Papa <small>3 min</small></h3>
+          <span class="step-time">1:46</span>
+          <h3>Papa <small>22 min</small></h3>
           <p>
             Pélala, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:28</span>
-          <h3>Ñame <small>4 min</small></h3>
+          <span class="step-time">1:48</span>
+          <h3>Ñame <small>20 min</small></h3>
           <p>
-            Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que se deshace
-            y espesa la sopa, así que entra después de la papa pero antes de la auyama.
+            Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que espesa
+            la sopa y el indicador de que está lista.
           </p>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:32</span>
-          <h3>Auyama <small>3 min</small></h3>
+          <span class="step-time">1:51</span>
+          <h3>Auyama <small>17 min</small></h3>
           <p>
-            Pélala, córtala en trozos y agrégala al caldo al final de las verduras. También se
-            deshace, pero menos que el ñame.
+            Pélala, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:35</span>
-          <h3>Aliños <small>8 min</small></h3>
+          <span class="step-time">1:56</span>
+          <h3>Aliños <small>12 min</small></h3>
           <p>
             Pica la cebolla, machaca el ajo en pedacitos muy pequeños, pica el ají dulce, el
             pimentón, el cebollín y el cilantro (mientras más, mejor). Agrégalo todo al caldo
             junto con la sal y el comino, y revuelve bien para integrar.
           </p>
           <span class="tip">
-            <strong>Sal exacta para 1.2 L:</strong> empieza con <strong>1 cucharadita rasa (≈5 g)</strong>.
-            Revuelve, deja 2–3 minutos y prueba. Si le falta, añade una segunda cucharadita
-            (máximo 2 en total, ≈10 g). Así queda sabrosa sin pasarse. Si usas sal gruesa,
-            necesitarás un poco más (≈1½ cdta por cada cdta rasa).
+            <strong>Sal para el volumen final (≈1.2 L):</strong> empieza con
+            <strong>1 cucharadita rasa (≈5 g)</strong>. Revuelve, deja 2–3 minutos y prueba.
+            Si le falta, añade una segunda cucharadita (máximo 2 en total, ≈10 g).
+            Si usas sal gruesa, necesitarás un poco más (≈1½ cdta por cada cdta rasa).
           </span>
         </li>
 
         <li class="fade">
-          <span class="step-time">0:43</span>
-          <h3>Verifica y decide el punto <small>10 min</small></h3>
+          <span class="step-time">2:08</span>
+          <h3>Verifica y decide el punto <small>5 min</small></h3>
           <p>
             Prueba la sal con una cucharilla y ajusta. Luego pincha el ñame: como fue el que
             entró en el orden, <strong>si el ñame está cocido, la sopa está lista</strong>.
-            A partir de aquí es tu decisión: apagar cuando el ñame está cocido (sopa más clara)
-            o dejarlo más tiempo hasta que se deshaga y espese (sopa más espesa).
+            Si la carne aún está firme, deja 15–20 min más: las verduras se ablandarán un poco
+            más y el ñame espesará la sopa (lo cual es aceptable, incluso deseable si te gusta espesa).
           </p>
         </li>
 
       </ol>
 
       <div class="timeline-end-wrap">
-        <span class="timeline-end">⏱ ≈50 min · Sopa lista</span>
+        <span class="timeline-end">⏱ ≈2 h 15 min · Sopa lista</span>
       </div>
     </div>
 
@@ -832,12 +927,11 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <div>
         <strong>Recomendaciones que no cambian tu ritmo, solo lo afinan</strong>
         <p>
-          <strong>Agua caliente para rellenar:</strong> si el nivel baja, usa agua caliente en lugar de fría; así no se corta la cocción ni se endurece la carne.<br>
+          <strong>La carne es el reloj:</strong> verifica a la 1 h 40. Si un tenedor entra con poca resistencia, adelanta las verduras 5–10 min. Si aún está firme, espera 15 min y verifica de nuevo.<br>
+          <strong>Agua caliente para reponer:</strong> durante 2 horas se evapora bastante. Mantén el nivel con agua caliente; así no se corta la cocción ni se endurece la carne.<br>
+          <strong>Si la carne necesita más tiempo:</strong> las verduras pueden seguir cocinando. El ñame se deshará y espesará más la sopa, lo cual es aceptable.<br>
           <strong>Cilantro en dos tiempos:</strong> guarda una parte para echarla al apagar el fuego; el aroma se conserva mejor.<br>
-          <strong>Sal en dos tiempos (opcional):</strong> una pizca al sancochar la carne ayuda a que la carne tome sabor desde dentro; el resto al final, como ya haces.<br>
-          <strong>Comino al final:</strong> como ya lo haces, está perfecto: el comino pierde aroma con la cocción larga.<br>
-          <strong>Si quieres más espesor sin esperar:</strong> retira un trozo de ñame o auyama, aplástalo con tenedor y devuélvelo al caldo.<br>
-          <strong>Si la carne te queda firme:</strong> el lagarto necesita su tiempo. Si al agregar la yuca la carne aún está dura, deja cocinar 5–10 minutos más antes de seguir con el maíz.
+          <strong>Si quieres más espesor sin esperar:</strong> retira un trozo de ñame o auyama, aplástalo con tenedor y devuélvelo al caldo.
         </p>
       </div>
     </div>
@@ -886,7 +980,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <strong style="color:#F3F6F1">Reparto exacto de la olla</strong>
           <p style="color:rgba(243,246,241,.8)">
             2 platos de adulto (≈470 g de sólidos cada uno) + 1 porción infantil (≈150 g) para el menor del hogar.
-            Total: los 1.2 L de sopa se consumen completos. Cero sobras.
+            Total: los 1.5 L iniciales, tras la evaporación, rinden ≈1.2 L de sopa. Cero sobras.
           </p>
         </div>
       </div>
