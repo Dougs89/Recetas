@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sopa Criolla de Res de Don Ertilio · Compra justo, cocina una vez, come bien</title>
-<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta con cantidades exactas para 2 adultos y 1 menor de la casa. Sigue la línea de tiempo: la carne a las 0:00, cada verdura a su hora. Compra justo, cocina una vez, come bien.">
+<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta ajustable a cualquier número de personas. Escribe cuántas personas vas a servir y las cantidades se recalculan solas. Compra justo, cocina una vez, come bien.">
 <meta name="theme-color" content="#3A6EA5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,19 +203,100 @@ section{padding:clamp(2.6rem,6vw,4.5rem) 0}
   }
 }
 
-/* ============ 5. CONMUTADOR ============ */
-.switch-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.4rem}
-.seg{
-  display:inline-flex;background:#E4ECF3;border:1px solid var(--line);
-  border-radius:999px;padding:4px;gap:2px;
+/* ============ 5. SELECTOR DE PERSONAS ============ */
+.person-control{
+  background:linear-gradient(135deg,#FFFFFF 0%,#F7FAFD 100%);
+  border:1px solid var(--line);
+  border-left:4px solid var(--blue);
+  border-radius:18px;
+  padding:1.1rem 1.3rem;
+  margin-bottom:1.4rem;
+  box-shadow:var(--shadow-sm);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.9rem 1.5rem;
 }
-.seg-btn{
-  border:0;background:transparent;cursor:pointer;
-  font-family:inherit;font-size:.85rem;font-weight:600;color:var(--ink-soft);
-  padding:.55rem 1.1rem;border-radius:999px;transition:all .22s;
+.pc-main{
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  flex-wrap:wrap;
 }
-.seg-btn.active{background:var(--paper);color:var(--blue);box-shadow:var(--shadow-sm)}
-.seg-note{font-size:.83rem;color:var(--ink-soft);max-width:44ch}
+.pc-eyebrow{
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.stepper{
+  display:inline-flex;
+  align-items:center;
+  background:var(--blue-soft);
+  border:1px solid #CADDEB;
+  border-radius:999px;
+  padding:4px;
+  gap:2px;
+}
+.step-btn{
+  width:2.2rem;height:2.2rem;
+  border:0;border-radius:50%;
+  background:var(--paper);
+  color:var(--blue);
+  font-family:inherit;
+  font-size:1.25rem;font-weight:800;
+  cursor:pointer;
+  box-shadow:var(--shadow-sm);
+  transition:background .2s,color .2s,transform .15s;
+  display:grid;place-items:center;
+  line-height:1;
+}
+.step-btn:hover{background:var(--blue);color:#fff}
+.step-btn:active{transform:scale(.92)}
+.step-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+#numPersonas{
+  width:3.2rem;
+  border:0;background:transparent;
+  text-align:center;
+  font-family:'Fraunces',Georgia,serif;
+  font-size:1.4rem;font-weight:800;
+  color:var(--blue-dk);
+  -moz-appearance:textfield;
+  appearance:textfield;
+  font-variant-numeric:tabular-nums;
+}
+#numPersonas::-webkit-outer-spin-button,
+#numPersonas::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+  margin:0;
+}
+#numPersonas:focus{
+  outline:2px solid var(--blue);
+  outline-offset:2px;
+  border-radius:6px;
+}
+.pc-label{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--ink);
+}
+.pc-note{
+  flex:1 1 100%;
+  font-size:.84rem;
+  color:var(--ink-soft);
+  margin:0;
+  line-height:1.5;
+}
+
+@media(max-width:540px){
+  .person-control{padding:1rem}
+  .pc-eyebrow{font-size:.68rem}
+  #numPersonas{font-size:1.2rem;width:2.8rem}
+  .step-btn{width:2rem;height:2rem;font-size:1.1rem}
+  .pc-main{gap:.6rem}
+}
 
 /* ============ 6. TABLAS ============ */
 .tbl-wrap{
@@ -231,7 +312,13 @@ table.tbl thead th{
 table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #ECF1F6;vertical-align:top}
 table.tbl tbody tr:last-child td{border-bottom:0}
 table.tbl tbody tr:hover{background:#F7FAFD}
-.qty{font-weight:700;color:var(--blue);white-space:nowrap;font-variant-numeric:tabular-nums}
+.qty{
+  font-weight:700;color:var(--blue);white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+  transition:color .3s,background-color .4s ease;
+  border-radius:4px;
+}
+.qty.pulse{background-color:#FFF3D9}
 .note{color:var(--ink-soft);font-size:.86rem}
 
 @media(max-width:660px){
@@ -278,9 +365,7 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   color:var(--blue-dk);
   font-weight:500;
 }
-.timeline-hint .hint-icon{
-  font-size:1.2rem;line-height:1;flex:0 0 auto;
-}
+.timeline-hint .hint-icon{font-size:1.2rem;line-height:1;flex:0 0 auto}
 .timeline-hint strong{font-weight:800}
 
 .steps-wrap{max-width:820px}
@@ -355,16 +440,10 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 
 .timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:5.2rem}
 .timeline-end{
-  display:inline-flex;
-  align-items:center;
-  gap:.45rem;
-  font-size:.88rem;
-  font-weight:800;
-  letter-spacing:.05em;
-  color:#fff;
-  background:var(--green);
-  padding:.6rem 1.2rem;
-  border-radius:99px;
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.88rem;font-weight:800;letter-spacing:.05em;
+  color:#fff;background:var(--green);
+  padding:.6rem 1.2rem;border-radius:99px;
   box-shadow:0 8px 20px -10px rgba(62,86,65,.8);
 }
 
@@ -453,7 +532,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 
 /* ============ 13. IMPRESIÓN ============ */
 @media print{
-  .topbar,.hero::after,.btn-cta,.seg{display:none}
+  .topbar,.hero::after,.btn-cta,.person-control{display:none}
   body{background:#fff}
   .hero{background:#fff;color:#000}
   .kids{background:#fff;color:#000;border:1px solid #ccc}
@@ -488,11 +567,11 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <p class="tagline">«Compra justo, cocina una vez, come bien, sin que falte ni que sobre.»</p>
       <p class="hero-lead">
         Un plato principal espeso y completo —res, yuca, ñame, auyama, maíz y verduras—
-        con las cantidades exactas para dos adultos y el menor de la casa
-        (de 2 años o de 1 año).
+        con las cantidades exactas para tu familia. Ajusta el número de personas y todo
+        se recalcula solo.
       </p>
       <div class="badges">
-        <span class="badge">🍲 3 porciones exactas</span>
+        <span class="badge">🍲 Porciones ajustables</span>
         <span class="badge">⏱️ ≈2 h 10 min</span>
         <span class="badge">🚫 Cero desperdicio</span>
         <span class="badge">👶 Apta para niños</span>
@@ -502,10 +581,10 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
     <aside class="ficha">
       <h2>Ficha de la receta</h2>
       <div class="ficha-grid">
-        <div class="ficha-item"><strong>3</strong><span>porciones · 2 adultos + 1 menor</span></div>
+        <div class="ficha-item"><strong>1</strong><span>ración base adulto</span></div>
         <div class="ficha-item"><strong>2h 10′</strong><span>tiempo total</span></div>
         <div class="ficha-item"><strong>~550</strong><span>kcal por ración adulto</span></div>
-        <div class="ficha-item"><strong>1.5 L</strong><span>agua + reposición</span></div>
+        <div class="ficha-item"><strong>500 ml</strong><span>agua por persona</span></div>
       </div>
     </aside>
   </div>
@@ -516,21 +595,26 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   <div class="wrap">
     <div class="sec-head fade">
       <span class="eyebrow">Paso 0 · La compra</span>
-      <h2>Lista de compras con rendimiento exacto</h2>
+      <h2>Lista de compras que se ajusta a tu familia</h2>
       <p>
-        Estas son las cantidades para <strong>tres platos servidos</strong>: dos raciones de adulto
-        y una ración infantil para el menor del hogar. Cambia el conmutador para ver cuánto
-        corresponde a <strong>una sola ración de adulto</strong>.
+        Escribe cuántas personas vas a servir y las cantidades se recalculan solas.
+        Cada persona adulta cuenta como <strong>1 ración</strong>.
       </p>
     </div>
 
-    <div class="switch-row">
-      <div class="seg" role="group" aria-label="Selector de cantidades">
-        <button class="seg-btn active" data-mode="full" type="button">Compra total · 3 personas</button>
-        <button class="seg-btn" data-mode="unit" type="button">Por 1 adulto</button>
+    <div class="person-control fade">
+      <div class="pc-main">
+        <span class="pc-eyebrow">Compra para</span>
+        <div class="stepper">
+          <button type="button" class="step-btn" id="btnMenos" aria-label="Menos personas">−</button>
+          <input type="number" id="numPersonas" value="3" min="1" max="20" inputmode="decimal" step="0.5" aria-label="Número de personas">
+          <button type="button" class="step-btn" id="btnMas" aria-label="Más personas">+</button>
+        </div>
+        <span class="pc-label">personas</span>
       </div>
-      <p class="seg-note" id="notaRacion">
-        Compra total: rinde 2 platos de adulto + 1 porción infantil para el menor del hogar. No sobra comida.
+      <p class="pc-note">
+        Cuenta cada adulto como 1 persona. Si hay un menor de 1–2 años, cuéntalo como
+        media persona (ej: 2 adultos + 1 niño = 2.5).
       </p>
     </div>
 
@@ -542,83 +626,83 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         <tbody>
           <tr>
             <td data-label="Ingrediente">Carne de res — lagarto sin hueso</td>
-            <td data-label="Cantidad" class="qty" data-full="300 g" data-unit="120 g">300 g</td>
-            <td data-label="Nota" class="note">Si eliges costilla, pide que la deshuesen y suma 100 g por el hueso.</td>
+            <td data-label="Cantidad" class="qty" data-per="120" data-type="g">360 g</td>
+            <td data-label="Nota" class="note">Si eliges costilla, pide que la deshuesen y suma ~30 % por el hueso.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Yuca <strong>con concha</strong></td>
-            <td data-label="Cantidad" class="qty" data-full="300 g" data-unit="120 g">300 g</td>
-            <td data-label="Nota" class="note">La cáscara y las puntas pesan ~30%. Rinde 200 g netos.</td>
+            <td data-label="Cantidad" class="qty" data-per="120" data-type="g">360 g</td>
+            <td data-label="Nota" class="note">La cáscara y las puntas pesan ~30 %. Rinde ~70 % neto.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Maíz (mazorca)</td>
-            <td data-label="Cantidad" class="qty" data-full="1 unidad (~150 g)" data-unit="60 g de granos">1 unidad (~150 g)</td>
-            <td data-label="Nota" class="note">Una mazorca mediana. Cortar en 3 trozos.</td>
+            <td data-label="Cantidad" class="qty" data-per="60" data-type="maiz">2 mazorcas (~180 g)</td>
+            <td data-label="Nota" class="note">Una mazorca mediana ≈ 150 g de granos.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Auyama</td>
-            <td data-label="Cantidad" class="qty" data-full="150 g" data-unit="60 g">150 g</td>
+            <td data-label="Cantidad" class="qty" data-per="60" data-type="g">180 g</td>
             <td data-label="Nota" class="note">Peso neto, sin semillas ni cáscara.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ñame</td>
-            <td data-label="Cantidad" class="qty" data-full="150 g" data-unit="60 g">150 g</td>
+            <td data-label="Cantidad" class="qty" data-per="60" data-type="g">180 g</td>
             <td data-label="Nota" class="note">Pelado. Es el que espesa la sopa y el indicador de que está lista.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Papa</td>
-            <td data-label="Cantidad" class="qty" data-full="150 g (1 mediana)" data-unit="60 g">150 g (1 mediana)</td>
+            <td data-label="Cantidad" class="qty" data-per="60" data-type="papa">180 g (1 mediana)</td>
             <td data-label="Nota" class="note">Prefiere papa que no se deshaga.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Zanahoria</td>
-            <td data-label="Cantidad" class="qty" data-full="80 g (1 mediana)" data-unit="32 g">80 g (1 mediana)</td>
+            <td data-label="Cantidad" class="qty" data-per="32" data-type="zanahoria">96 g (1 mediana)</td>
             <td data-label="Nota" class="note">Fuente clave de vitamina A.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Cilantro</td>
-            <td data-label="Cantidad" class="qty" data-full="15 g (1 manojo pequeño)" data-unit="6 g">15 g (1 manojo pequeño)</td>
+            <td data-label="Cantidad" class="qty" data-per="6" data-type="g">20 g</td>
             <td data-label="Nota" class="note">Se añade al final, fuera del fuego.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Cebollín</td>
-            <td data-label="Cantidad" class="qty" data-full="20 g (2 tallos)" data-unit="8 g">20 g (2 tallos)</td>
+            <td data-label="Cantidad" class="qty" data-per="8" data-type="g">25 g</td>
             <td data-label="Nota" class="note">Usa tallo y parte verde.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ají dulce</td>
-            <td data-label="Cantidad" class="qty" data-full="10 g (1 unidad)" data-unit="4 g">10 g (1 unidad)</td>
+            <td data-label="Cantidad" class="qty" data-per="4" data-type="g">10 g</td>
             <td data-label="Nota" class="note">Sin semillas para suavizar el sabor.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Pimentón</td>
-            <td data-label="Cantidad" class="qty" data-full="30 g (¼ unidad)" data-unit="12 g">30 g (¼ unidad)</td>
+            <td data-label="Cantidad" class="qty" data-per="12" data-type="g">35 g</td>
             <td data-label="Nota" class="note">Aporta vitamina C.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Cebolla</td>
-            <td data-label="Cantidad" class="qty" data-full="50 g (½ unidad)" data-unit="20 g">50 g (½ unidad)</td>
+            <td data-label="Cantidad" class="qty" data-per="20" data-type="cebolla">60 g (½ unidad)</td>
             <td data-label="Nota" class="note">Se añade al final con los aliños.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ajo</td>
-            <td data-label="Cantidad" class="qty" data-full="7 g (2 dientes)" data-unit="3 g">7 g (2 dientes)</td>
+            <td data-label="Cantidad" class="qty" data-per="3" data-type="ajo">3 dientes (~9 g)</td>
             <td data-label="Nota" class="note">Machacado, no picado fino.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Comino</td>
-            <td data-label="Cantidad" class="qty" data-full="1 g (½ cdta)" data-unit="0.4 g">1 g (½ cdta)</td>
+            <td data-label="Cantidad" class="qty" data-per="0.4" data-type="comino">½ cdta (~1,2 g)</td>
             <td data-label="Nota" class="note">Moderado: su sabor es intenso para niños.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Sal</td>
-            <td data-label="Cantidad" class="qty" data-full="1–2 cdta rasas (5–10 g)" data-unit="Al gusto">1–2 cdta rasas (5–10 g)</td>
-            <td data-label="Nota" class="note">Para el volumen final (≈1.2 L). Empezar con 1 cdta y ajustar. Salar después de separar el plato del menor.</td>
+            <td data-label="Cantidad" class="qty" data-per="0.5" data-type="sal">1½ cdta rasas (~8 g)</td>
+            <td data-label="Nota" class="note">Empezar con la mitad, probar y ajustar. Salar después de separar el plato del menor.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Agua</td>
-            <td data-label="Cantidad" class="qty" data-full="1.5 litros + reposición" data-unit="500 ml + reposición">1.5 litros + reposición</td>
-            <td data-label="Nota" class="note">Durante las 2 horas de cocción se evapora agua. Verifica el nivel y añade agua caliente.</td>
+            <td data-label="Cantidad" class="qty" data-per="500" data-type="agua">1,5 L + reposición</td>
+            <td data-label="Nota" class="note">Durante las 2 horas se evapora. Verifica el nivel y añade agua caliente.</td>
           </tr>
         </tbody>
       </table>
@@ -729,7 +813,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         <li class="fade long-wait" data-time="0:00">
           <h3>Carne de res</h3>
           <p>
-            Calienta los <strong>1.5 L de agua</strong>. Cuando rompa el hervor, agrega la carne
+            Calienta el agua (500 ml por persona). Cuando rompa el hervor, agrega la carne
             picada en cubos y empieza a contar: ese es tu <strong>0:00</strong>. Tapa y deja
             cocinar a fuego medio-bajo.
           </p>
@@ -789,9 +873,9 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
             junto con la sal y el comino, y revuelve bien.
           </p>
           <span class="tip">
-            <strong>Sal:</strong> empieza con <strong>1 cucharadita rasa (≈5 g)</strong>.
-            Revuelve, deja 2–3 minutos y prueba. Si le falta, añade una segunda cucharadita
-            (máximo 2 en total). Si usas sal gruesa, necesitarás un poco más.
+            <strong>Sal:</strong> empieza con la cantidad indicada en la lista de compras,
+            revuelve, deja 2–3 minutos y prueba. Si le falta, añade un poco más.
+            <strong>Separa el plato del menor antes de salar de nuevo.</strong>
           </span>
         </li>
 
@@ -799,8 +883,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <h3>Sopa lista</h3>
           <p>
             Prueba la sal con una cucharilla y ajusta. Pincha el ñame: si entra sin resistencia,
-            la sopa está lista. <strong>Separa el plato del menor antes de añadir sal extra.</strong>
-            Apaga, agrega el cilantro picado y deja reposar 5 minutos tapado.
+            la sopa está lista. Apaga, agrega el cilantro picado y deja reposar 5 minutos tapado.
           </p>
         </li>
 
@@ -835,8 +918,8 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <h2>Cómo servir al menor de la casa</h2>
       <p>
         La porción infantil es aproximadamente <strong>un tercio de una ración de adulto</strong>:
-        unos 150–180 ml de caldo con 30–50 g de sólidos. Cada familia cocina para su propio hogar
-        (2 adultos + 1 menor), así que esta porción es para el niño o la niña de la casa.
+        unos 150–180 ml de caldo con 30–50 g de sólidos. Esta pauta sirve para el niño o la niña
+        de la casa, sin importar cuántas personas haya en la mesa.
         Aplica primero las reglas generales y después la pauta según su edad.
       </p>
 
@@ -866,10 +949,11 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <div class="callout" style="background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);border-left-color:var(--amber)">
         <span class="ico">🍽️</span>
         <div>
-          <strong style="color:#F3F6F1">Reparto exacto de la olla</strong>
+          <strong style="color:#F3F6F1">Olla ajustable</strong>
           <p style="color:rgba(243,246,241,.8)">
-            2 platos de adulto (≈470 g de sólidos cada uno) + 1 porción infantil (≈150 g) para el menor del hogar.
-            Total: los 1.5 L iniciales, tras la evaporación, rinden ≈1.2 L de sopa. Cero sobras.
+            Usa el selector de la lista de compras para ajustar cuántas personas van a comer.
+            Para 2 adultos + 1 menor, elige <strong>2.5 personas</strong>. Para una familia de
+            5 adultos, elige <strong>5</strong>. Todo se recalcula solo.
           </p>
         </div>
       </div>
@@ -892,29 +976,130 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 </footer>
 
 <script>
-/* ===== 1. Conmutador de cantidades ===== */
+/* ===== 1. Selector de personas y recálculo de cantidades ===== */
 (function () {
-  const botones = document.querySelectorAll('.seg-btn');
-  const celdas  = document.querySelectorAll('[data-full]');
-  const nota    = document.getElementById('notaRacion');
+  const input = document.getElementById('numPersonas');
+  const btnMenos = document.getElementById('btnMenos');
+  const btnMas = document.getElementById('btnMas');
+  const cells = document.querySelectorAll('.qty');
 
-  const textos = {
-    full: 'Compra total: rinde 2 platos de adulto + 1 porción infantil para el menor del hogar. No sobra comida.',
-    unit: 'Ración individual de adulto (≈470 g de sólidos + 480 ml de caldo). La porción infantil para el menor es ~1/3 de esta cantidad.'
-  };
+  function fmtCdta(n) {
+    const map = {
+      0.25:'¼', 0.5:'½', 0.75:'¾',
+      1:'1', 1.25:'1¼', 1.5:'1½', 1.75:'1¾',
+      2:'2', 2.5:'2½', 3:'3', 3.5:'3½', 4:'4',
+      4.5:'4½', 5:'5'
+    };
+    if (map[n] !== undefined) return map[n];
+    return n.toFixed(1).replace('.', ',');
+  }
 
-  botones.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      botones.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
+  function fmtKg(g) {
+    if (g >= 1000) return (g / 1000).toFixed(2).replace('.0', '').replace('.', ',') + ' kg';
+    return g + ' g';
+  }
 
-      const modo = btn.dataset.mode;
-      celdas.forEach(function (celda) {
-        celda.textContent = celda.dataset[modo];
-      });
-      nota.textContent = textos[modo];
+  function formatQty(per, N, type) {
+    const total = per * N;
+
+    if (type === 'g') {
+      const rounded = Math.round(total / 5) * 5;
+      return fmtKg(rounded);
+    }
+
+    if (type === 'papa') {
+      const grams = Math.round(total / 5) * 5;
+      const u = total / 150;
+      if (u <= 1.3) return grams + ' g (1 mediana)';
+      if (u <= 2.4) return grams + ' g (2 medianas)';
+      if (u <= 3.4) return grams + ' g (~3 medianas)';
+      return grams + ' g (~' + Math.round(u) + ' medianas)';
+    }
+
+    if (type === 'zanahoria') {
+      const grams = Math.round(total / 5) * 5;
+      const u = total / 80;
+      if (u <= 1.3) return grams + ' g (1 mediana)';
+      if (u <= 2.4) return grams + ' g (2 medianas)';
+      if (u <= 3.4) return grams + ' g (~3 medianas)';
+      return grams + ' g (~' + Math.round(u) + ' medianas)';
+    }
+
+    if (type === 'cebolla') {
+      const grams = Math.round(total / 5) * 5;
+      const u = total / 100;
+      if (u <= 0.7) return grams + ' g (½ unidad)';
+      if (u <= 1.3) return grams + ' g (1 unidad)';
+      if (u <= 1.7) return grams + ' g (1½ unidades)';
+      if (u <= 2.4) return grams + ' g (2 unidades)';
+      return grams + ' g (~' + Math.round(u) + ' unidades)';
+    }
+
+    if (type === 'maiz') {
+      const grams = Math.round(total / 10) * 10;
+      const mazorcas = Math.ceil(total / 150);
+      return mazorcas + ' mazorca' + (mazorcas !== 1 ? 's' : '') + ' (~' + grams + ' g)';
+    }
+
+    if (type === 'ajo') {
+      const dientes = Math.max(1, Math.round(total / 3.5));
+      return dientes + ' diente' + (dientes !== 1 ? 's' : '') + ' (~' + Math.round(total) + ' g)';
+    }
+
+    if (type === 'comino') {
+      const cdtas = Math.round(total * 2) / 4;
+      const grams = total.toFixed(1).replace('.', ',');
+      return fmtCdta(cdtas) + ' cdta (~' + grams + ' g)';
+    }
+
+    if (type === 'sal') {
+      const cdtas = Math.round(total * 2) / 2;
+      const grams = Math.round(cdtas * 5);
+      return fmtCdta(cdtas) + ' cdta rasas (~' + grams + ' g)';
+    }
+
+    if (type === 'agua') {
+      const L = total / 1000;
+      const liters = L % 1 === 0 ? String(L) : L.toFixed(1).replace('.', ',');
+      return liters + ' L + reposición';
+    }
+
+    return Math.round(total) + ' g';
+  }
+
+  function update() {
+    let N = parseFloat(input.value);
+    if (isNaN(N) || N < 1) N = 1;
+    if (N > 20) N = 20;
+    input.value = N;
+
+    cells.forEach(function (cell) {
+      const per = parseFloat(cell.dataset.per);
+      const type = cell.dataset.type;
+      cell.textContent = formatQty(per, N, type);
+      cell.classList.add('pulse');
+      setTimeout(function () { cell.classList.remove('pulse'); }, 450);
     });
+  }
+
+  btnMenos.addEventListener('click', function () {
+    let N = parseFloat(input.value) || 1;
+    N = Math.max(1, Math.ceil(N) - 1);
+    input.value = N;
+    update();
   });
+
+  btnMas.addEventListener('click', function () {
+    let N = parseFloat(input.value) || 1;
+    N = Math.min(20, Math.floor(N) + 1);
+    input.value = N;
+    update();
+  });
+
+  input.addEventListener('input', update);
+  input.addEventListener('change', update);
+
+  update();
 })();
 
 /* ===== 2. Animación de aparición al hacer scroll ===== */
@@ -936,7 +1121,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   elementos.forEach(function (el) { obs.observe(el); });
 })();
 
-/* ===== 3. Cierre suave del scroll con la barra fija ===== */
+/* ===== 3. Scroll suave con la barra fija ===== */
 document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (ev) {
     const destino = document.querySelector(a.getAttribute('href'));
