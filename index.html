@@ -130,12 +130,43 @@ img,svg{display:block;max-width:100%}
   color:#F4F8FB;
 }
 
+/* Ficha técnica con imagen de fondo */
 .ficha{
+  position:relative;
   background:rgba(244,248,251,.11);
   border:1px solid rgba(244,248,251,.28);
-  border-radius:26px;padding:1.5rem;
+  border-radius:26px;
+  padding:1.5rem;
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   box-shadow:0 24px 60px -30px rgba(0,0,0,.55);
+  overflow:hidden;
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.ficha::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url('sopa.jpg'); /* ⬅️ Cambia 'sopa.jpg' por el nombre/ruta de tu imagen */
+  background-size:cover;
+  background-position:center;
+  opacity:.28; /* Ajusta la opacidad si quieres que la imagen se vea más o menos */
+  z-index:0;
+  pointer-events:none;
+}
+.ficha::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(27,48,73,.2) 0%, rgba(27,48,73,.85) 100%);
+  z-index:1;
+  pointer-events:none;
+}
+.ficha > *{
+  position:relative;
+  z-index:2;
 }
 .ficha h2{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem;font-family:'Inter',sans-serif;font-weight:700}
 .ficha-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
@@ -217,78 +248,43 @@ section{padding:clamp(2.6rem,6vw,4.5rem) 0}
   align-items:center;
   gap:.9rem 1.5rem;
 }
-.pc-main{
-  display:flex;
-  align-items:center;
-  gap:.9rem;
-  flex-wrap:wrap;
-}
-.pc-eyebrow{
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-}
+.pc-main{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.pc-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 .stepper{
-  display:inline-flex;
-  align-items:center;
+  display:inline-flex;align-items:center;
   background:var(--blue-soft);
   border:1px solid #CADDEB;
   border-radius:999px;
-  padding:4px;
-  gap:2px;
+  padding:4px;gap:2px;
 }
 .step-btn{
   width:2.2rem;height:2.2rem;
   border:0;border-radius:50%;
-  background:var(--paper);
-  color:var(--blue);
-  font-family:inherit;
-  font-size:1.25rem;font-weight:800;
+  background:var(--paper);color:var(--blue);
+  font-family:inherit;font-size:1.25rem;font-weight:800;
   cursor:pointer;
   box-shadow:var(--shadow-sm);
   transition:background .2s,color .2s,transform .15s;
-  display:grid;place-items:center;
-  line-height:1;
+  display:grid;place-items:center;line-height:1;
 }
 .step-btn:hover{background:var(--blue);color:#fff}
 .step-btn:active{transform:scale(.92)}
 .step-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 #numPersonas{
-  width:3.2rem;
-  border:0;background:transparent;
+  width:3.2rem;border:0;background:transparent;
   text-align:center;
   font-family:'Fraunces',Georgia,serif;
   font-size:1.4rem;font-weight:800;
   color:var(--blue-dk);
-  -moz-appearance:textfield;
-  appearance:textfield;
+  -moz-appearance:textfield;appearance:textfield;
   font-variant-numeric:tabular-nums;
 }
 #numPersonas::-webkit-outer-spin-button,
-#numPersonas::-webkit-inner-spin-button{
-  -webkit-appearance:none;
-  margin:0;
-}
-#numPersonas:focus{
-  outline:2px solid var(--blue);
-  outline-offset:2px;
-  border-radius:6px;
-}
-.pc-label{
-  font-size:1rem;
-  font-weight:600;
-  color:var(--ink);
-}
-.pc-note{
-  flex:1 1 100%;
-  font-size:.84rem;
-  color:var(--ink-soft);
-  margin:0;
-  line-height:1.5;
-}
+#numPersonas::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+#numPersonas:focus{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.pc-label{font-size:1rem;font-weight:600;color:var(--ink)}
+.pc-note{flex:1 1 100%;font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.5}
 
 @media(max-width:540px){
   .person-control{padding:1rem}
@@ -373,7 +369,7 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 .steps{
   list-style:none;
   position:relative;
-  padding-left:5.2rem;
+  padding-left:6.4rem;
   margin:0;
   display:grid;
   gap:.9rem;
@@ -381,7 +377,7 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 .steps::before{
   content:"";
   position:absolute;
-  left:2.4rem;
+  left:3rem;
   top:2rem;
   bottom:2rem;
   width:2px;
@@ -399,9 +395,9 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 .steps li::before{
   content:attr(data-time);
   position:absolute;
-  left:-5.2rem;
+  left:-6.4rem;
   top:.95rem;
-  width:4.8rem;
+  width:6rem;
   height:2rem;
   border-radius:99px;
   background:var(--blue);
@@ -410,11 +406,12 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   place-items:center;
   font-family:'Inter',sans-serif;
   font-weight:800;
-  font-size:.86rem;
+  font-size:.82rem;
   font-variant-numeric:tabular-nums;
   letter-spacing:.03em;
   box-shadow:0 0 0 4px var(--cream),0 4px 10px -4px rgba(58,110,165,.5);
   z-index:1;
+  white-space:nowrap;
 }
 .steps li.long-wait::before{background:var(--blue-dk)}
 .steps li.final::before{background:var(--green);box-shadow:0 0 0 4px var(--cream),0 4px 10px -4px rgba(62,86,65,.5)}
@@ -438,27 +435,28 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   border-radius:0 8px 8px 0;padding:.55rem .8rem;margin-top:.65rem;
 }
 
-.timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:5.2rem}
+.timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:6.4rem}
 .timeline-end{
   display:inline-flex;align-items:center;gap:.45rem;
   font-size:.88rem;font-weight:800;letter-spacing:.05em;
   color:#fff;background:var(--green);
   padding:.6rem 1.2rem;border-radius:99px;
   box-shadow:0 8px 20px -10px rgba(62,86,65,.8);
+  font-variant-numeric:tabular-nums;
 }
 
 @media(max-width:660px){
-  .steps{padding-left:4rem;gap:.8rem}
-  .steps::before{left:1.8rem}
+  .steps{padding-left:4.6rem;gap:.8rem}
+  .steps::before{left:2.1rem}
   .steps li{padding:.95rem 1rem}
   .steps li::before{
-    left:-4rem;
-    width:3.6rem;height:1.75rem;
-    font-size:.78rem;
+    left:-4.6rem;
+    width:4.2rem;height:1.75rem;
+    font-size:.72rem;
     top:.85rem;
     box-shadow:0 0 0 3px var(--cream);
   }
-  .timeline-end-wrap{padding-left:4rem}
+  .timeline-end-wrap{padding-left:4.6rem}
   .timeline-hint{font-size:.85rem}
 }
 
@@ -572,7 +570,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       </p>
       <div class="badges">
         <span class="badge">🍲 Porciones ajustables</span>
-        <span class="badge">⏱️ ≈2 h 10 min</span>
+        <span class="badge">⏱️ ≈02h:10min</span>
         <span class="badge">🚫 Cero desperdicio</span>
         <span class="badge">👶 Apta para niños</span>
       </div>
@@ -582,7 +580,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <h2>Ficha de la receta</h2>
       <div class="ficha-grid">
         <div class="ficha-item"><strong>1</strong><span>ración base adulto</span></div>
-        <div class="ficha-item"><strong>2h 10′</strong><span>tiempo total</span></div>
+        <div class="ficha-item"><strong>02h:10min</strong><span>tiempo total</span></div>
         <div class="ficha-item"><strong>~550</strong><span>kcal por ración adulto</span></div>
         <div class="ficha-item"><strong>500 ml</strong><span>agua por persona</span></div>
       </div>
@@ -725,8 +723,9 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <span class="eyebrow">Paso 0.5 · El equilibrio</span>
       <h2>Qué aporta una ración de adulto</h2>
       <p>
-        Valores estimados para <strong>una porción de adulto</strong> (≈470 g de sólidos + 480 ml de caldo),
-        calculados con carne magra de lagarto y sin aceite añadido en la preparación.
+        <strong>Tabla fija de referencia.</strong> Estos valores son siempre por
+        <strong>una porción de adulto</strong> (≈470 g de sólidos + 480 ml de caldo),
+        sin importar cuántas personas cocinen. Calculados con carne magra de lagarto y sin aceite añadido.
       </p>
     </div>
 
@@ -804,17 +803,17 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 
     <div class="timeline-hint fade">
       <span class="hint-icon">🕐</span>
-      <span>Pon la carne a las <strong>0:00</strong> y sigue el reloj. Cada ingrediente dice a qué hora entra.</span>
+      <span>Pon la carne a las <strong>00h:00min</strong> y sigue el reloj. Cada ingrediente dice a qué hora entra.</span>
     </div>
 
     <div class="steps-wrap">
       <ol class="steps">
 
-        <li class="fade long-wait" data-time="0:00">
+        <li class="fade long-wait" data-time="00h:00min">
           <h3>Carne de res</h3>
           <p>
             Calienta el agua (500 ml por persona). Cuando rompa el hervor, agrega la carne
-            picada en cubos y empieza a contar: ese es tu <strong>0:00</strong>. Tapa y deja
+            picada en cubos y empieza a contar: ese es tu <strong>00h:00min</strong>. Tapa y deja
             cocinar a fuego medio-bajo.
           </p>
           <span class="why">
@@ -823,49 +822,49 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           </span>
         </li>
 
-        <li class="fade" data-time="1:25">
+        <li class="fade" data-time="01h:25min">
           <h3>Yuca</h3>
           <p>
             Lávala, pélala, retira el cordón leñoso del centro, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
-        <li class="fade" data-time="1:30">
+        <li class="fade" data-time="01h:30min">
           <h3>Maíz</h3>
           <p>
             Pélalo, córtalo en trozos y agrégalo al caldo.
           </p>
         </li>
 
-        <li class="fade" data-time="1:35">
+        <li class="fade" data-time="01h:35min">
           <h3>Zanahoria</h3>
           <p>
             Pélala, pícala y agrégala al caldo.
           </p>
         </li>
 
-        <li class="fade" data-time="1:38">
+        <li class="fade" data-time="01h:38min">
           <h3>Papa</h3>
           <p>
             Pélala, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
-        <li class="fade" data-time="1:40">
+        <li class="fade" data-time="01h:40min">
           <h3>Ñame</h3>
           <p>
             Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que espesa la sopa.
           </p>
         </li>
 
-        <li class="fade" data-time="1:43">
+        <li class="fade" data-time="01h:43min">
           <h3>Auyama</h3>
           <p>
             Pélala, córtala en trozos y agrégala al caldo.
           </p>
         </li>
 
-        <li class="fade" data-time="1:48">
+        <li class="fade" data-time="01h:48min">
           <h3>Aliños</h3>
           <p>
             Pica la cebolla, machaca el ajo en pedacitos muy pequeños, pica el ají dulce, el
@@ -879,7 +878,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           </span>
         </li>
 
-        <li class="fade final" data-time="2:00">
+        <li class="fade final" data-time="02h:00min">
           <h3>Sopa lista</h3>
           <p>
             Prueba la sal con una cucharilla y ajusta. Pincha el ñame: si entra sin resistencia,
@@ -890,7 +889,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       </ol>
 
       <div class="timeline-end-wrap">
-        <span class="timeline-end">⏱ 2:00 · Sopa lista</span>
+        <span class="timeline-end">⏱ 02h:00min · Sopa lista</span>
       </div>
     </div>
 
@@ -899,7 +898,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       <div>
         <strong>Recomendaciones que no cambian tu ritmo, solo lo afinan</strong>
         <p>
-          <strong>La carne es el reloj:</strong> a la 1:20, pincha un trozo. Si aún está firme, espera 10–15 min más antes de seguir con la yuca.<br>
+          <strong>La carne es el reloj:</strong> a las 01h:20min, pincha un trozo. Si aún está firme, espera 10–15 min más antes de seguir con la yuca.<br>
           <strong>Agua caliente para reponer:</strong> durante 2 horas se evapora bastante. Mantén el nivel con agua caliente; así no se corta la cocción ni se endurece la carne.<br>
           <strong>Si la carne necesita más tiempo:</strong> las verduras aguantan. El ñame se deshará y espesará más la sopa, lo cual es aceptable.<br>
           <strong>Cilantro en dos tiempos:</strong> guarda una parte para echarla al apagar el fuego; el aroma se conserva mejor.<br>
