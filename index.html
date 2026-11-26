@@ -308,6 +308,8 @@ table.tbl thead th{
 table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #ECF1F6;vertical-align:top}
 table.tbl tbody tr:last-child td{border-bottom:0}
 table.tbl tbody tr:hover{background:#F7FAFD}
+
+/* Cantidad recalculable (solo tabla de compras) */
 .qty{
   font-weight:700;color:var(--blue);white-space:nowrap;
   font-variant-numeric:tabular-nums;
@@ -315,6 +317,15 @@ table.tbl tbody tr:hover{background:#F7FAFD}
   border-radius:4px;
 }
 .qty.pulse{background-color:#FFF3D9}
+
+/* Valor fijo (tabla nutricional) — NO se recalcula */
+.nutri-val{
+  font-weight:700;
+  color:var(--blue);
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+
 .note{color:var(--ink-soft);font-size:.86rem}
 
 @media(max-width:660px){
@@ -735,17 +746,17 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
           <tr><th>Nutriente</th><th>Aporte aproximado</th><th>% del valor diario</th></tr>
         </thead>
         <tbody>
-          <tr><td data-label="Nutriente">Energía</td><td data-label="Aporte" class="qty">≈ 520–560 kcal</td><td data-label="% diario" class="note">≈ 27 %</td></tr>
-          <tr><td data-label="Nutriente">Proteínas</td><td data-label="Aporte" class="qty">≈ 30 g</td><td data-label="% diario" class="note">≈ 55 %</td></tr>
-          <tr><td data-label="Nutriente">Carbohidratos</td><td data-label="Aporte" class="qty">≈ 78 g</td><td data-label="% diario" class="note">≈ 26 %</td></tr>
-          <tr><td data-label="Nutriente">Grasas totales</td><td data-label="Aporte" class="qty">≈ 8 g</td><td data-label="% diario" class="note">≈ 12 %</td></tr>
-          <tr><td data-label="Nutriente">Fibra dietética</td><td data-label="Aporte" class="qty">≈ 7 g</td><td data-label="% diario" class="note">≈ 26 %</td></tr>
-          <tr><td data-label="Nutriente">Vitamina A</td><td data-label="Aporte" class="qty">≈ 570 µg ER</td><td data-label="% diario" class="note">≈ 70 %</td></tr>
-          <tr><td data-label="Nutriente">Vitamina C</td><td data-label="Aporte" class="qty">≈ 40 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
-          <tr><td data-label="Nutriente">Potasio</td><td data-label="Aporte" class="qty">≈ 900 mg</td><td data-label="% diario" class="note">≈ 25 %</td></tr>
-          <tr><td data-label="Nutriente">Hierro (hemo)</td><td data-label="Aporte" class="qty">≈ 3 mg</td><td data-label="% diario" class="note">≈ 25 % · alta absorción</td></tr>
-          <tr><td data-label="Nutriente">Zinc</td><td data-label="Aporte" class="qty">≈ 5 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
-          <tr><td data-label="Nutriente">Sodio</td><td data-label="Aporte" class="qty">Variable</td><td data-label="% diario" class="note">Controlado por la sal añadida</td></tr>
+          <tr><td data-label="Nutriente">Energía</td><td data-label="Aporte" class="nutri-val">≈ 520–560 kcal</td><td data-label="% diario" class="note">≈ 27 %</td></tr>
+          <tr><td data-label="Nutriente">Proteínas</td><td data-label="Aporte" class="nutri-val">≈ 30 g</td><td data-label="% diario" class="note">≈ 55 %</td></tr>
+          <tr><td data-label="Nutriente">Carbohidratos</td><td data-label="Aporte" class="nutri-val">≈ 78 g</td><td data-label="% diario" class="note">≈ 26 %</td></tr>
+          <tr><td data-label="Nutriente">Grasas totales</td><td data-label="Aporte" class="nutri-val">≈ 8 g</td><td data-label="% diario" class="note">≈ 12 %</td></tr>
+          <tr><td data-label="Nutriente">Fibra dietética</td><td data-label="Aporte" class="nutri-val">≈ 7 g</td><td data-label="% diario" class="note">≈ 26 %</td></tr>
+          <tr><td data-label="Nutriente">Vitamina A</td><td data-label="Aporte" class="nutri-val">≈ 570 µg ER</td><td data-label="% diario" class="note">≈ 70 %</td></tr>
+          <tr><td data-label="Nutriente">Vitamina C</td><td data-label="Aporte" class="nutri-val">≈ 40 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
+          <tr><td data-label="Nutriente">Potasio</td><td data-label="Aporte" class="nutri-val">≈ 900 mg</td><td data-label="% diario" class="note">≈ 25 %</td></tr>
+          <tr><td data-label="Nutriente">Hierro (hemo)</td><td data-label="Aporte" class="nutri-val">≈ 3 mg</td><td data-label="% diario" class="note">≈ 25 % · alta absorción</td></tr>
+          <tr><td data-label="Nutriente">Zinc</td><td data-label="Aporte" class="nutri-val">≈ 5 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
+          <tr><td data-label="Nutriente">Sodio</td><td data-label="Aporte" class="nutri-val">Variable</td><td data-label="% diario" class="note">Controlado por la sal añadida</td></tr>
         </tbody>
       </table>
     </div>
@@ -980,7 +991,8 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   const input = document.getElementById('numPersonas');
   const btnMenos = document.getElementById('btnMenos');
   const btnMas = document.getElementById('btnMas');
-  const cells = document.querySelectorAll('.qty');
+  /* ⬇️ IMPORTANTE: solo seleccionamos las celdas que tienen data-per */
+  const cells = document.querySelectorAll('.qty[data-per]');
 
   function fmtCdta(n) {
     const map = {
@@ -1075,6 +1087,8 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
     cells.forEach(function (cell) {
       const per = parseFloat(cell.dataset.per);
       const type = cell.dataset.type;
+      /* Doble salvaguarda: si falta un atributo, no tocamos la celda */
+      if (isNaN(per) || !type) return;
       cell.textContent = formatQty(per, N, type);
       cell.classList.add('pulse');
       setTimeout(function () { cell.classList.remove('pulse'); }, 450);
