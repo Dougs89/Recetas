@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sopa Criolla de Res de Don Ertilio · Compra justo, cocina una vez, come bien</title>
-<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta ajustable a cualquier número de personas, equivalencias de ingredientes, guía visual y reloj de cocción paso a paso.">
+<title>Sopa Criolla de Res de Don Ertilio · Recetas del Llano</title>
+<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta ajustable a cualquier número de personas, equivalencias para Colombia y Alemania, guía de cocción y porción infantil.">
 <meta name="theme-color" content="#B84A27">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@ h1,h2,h3,.brand-name{font-family:'Fraunces',Georgia,serif;line-height:1.08;lette
 img{display:block;max-width:100%}
 .wrap{width:min(100% - 2rem,var(--max));margin-inline:auto}
 
-/* Barra de progreso de lectura al hacer scroll */
+/* Barra de progreso de lectura */
 .read-progress{
   position:fixed;top:0;left:0;height:3px;width:0%;z-index:100;
   background:linear-gradient(90deg,var(--brand),var(--amber));
@@ -72,7 +72,7 @@ img{display:block;max-width:100%}
 .nav{display:flex;gap:1.35rem;font-size:.88rem;font-weight:500}
 .nav a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
 .nav a:hover{color:var(--brand)}
-@media(max-width:900px){.nav{display:none}}
+@media(max-width:920px){.nav{display:none}}
 
 .btn-cta{
   display:inline-flex;align-items:center;gap:.45rem;
@@ -101,8 +101,8 @@ img{display:block;max-width:100%}
 .hero-scrim{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(18,13,10,.88) 0%,rgba(18,13,10,.62) 48%,rgba(18,13,10,.22) 100%),
-    linear-gradient(180deg,rgba(18,13,10,.25) 0%,rgba(18,13,10,.68) 100%);
+    linear-gradient(90deg,rgba(18,13,10,.88) 0%,rgba(18,13,10,.64) 48%,rgba(18,13,10,.24) 100%),
+    linear-gradient(180deg,rgba(18,13,10,.25) 0%,rgba(18,13,10,.70) 100%);
 }
 @media(max-width:880px){
   .hero{min-height:auto;padding:2.6rem 0 3.2rem}
@@ -137,7 +137,7 @@ img{display:block;max-width:100%}
 }
 .hero-lead{
   font-size:clamp(.96rem,1.8vw,1.06rem);
-  color:rgba(255,253,249,.92);max-width:46ch;margin-bottom:1.45rem;
+  color:rgba(255,253,249,.92);max-width:48ch;margin-bottom:1.45rem;
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.35rem}
 .btn-hero{
@@ -162,18 +162,14 @@ img{display:block;max-width:100%}
   background:rgba(255,253,249,.12);border:1px solid rgba(255,253,249,.22);color:#FFFDF9;
 }
 
-/* Ficha compacta y ligera (sin caja pesada) */
 .ficha-compacta{
   display:grid;grid-template-columns:1fr 1fr;gap:.75rem;
-  background:rgba(22,17,14,.62);
+  background:rgba(22,17,14,.65);
   border:1px solid rgba(255,253,249,.18);
   border-radius:20px;padding:1.1rem;
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-.ficha-pill{
-  padding:.65rem .75rem;border-radius:14px;
-  background:rgba(255,253,249,.06);
-}
+.ficha-pill{padding:.65rem .75rem;border-radius:14px;background:rgba(255,253,249,.06)}
 .ficha-pill strong{display:block;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:#FFFDF9;line-height:1.1}
 .ficha-pill span{font-size:.74rem;color:rgba(255,253,249,.78)}
 
@@ -259,26 +255,26 @@ table.tbl tbody tr:hover{background:#FCF9F3}
   .tbl-wrap{background:transparent;border:0;box-shadow:none}
 }
 
-/* ============ 7. GUÍA VISUAL DE INGREDIENTES Y EQUIVALENCIAS ============ */
+/* ============ 7. GUÍA DE EQUIVALENCIAS (COJEDES · COLOMBIA · ALEMANIA) ============ */
 .visual-guide-box{
   margin-top:1.8rem;
   background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
   padding:1.4rem;box-shadow:var(--shadow-sm);
 }
-.vg-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem}
-.vg-header h3{font-size:1.3rem;font-weight:800;color:var(--ink)}
-.vg-header p{font-size:.88rem;color:var(--ink-soft);max-width:52ch}
+.vg-header{margin-bottom:1.1rem}
+.vg-header h3{font-size:1.32rem;font-weight:800;color:var(--ink);margin-bottom:.3rem}
+.vg-header p{font-size:.9rem;color:var(--ink-soft);max-width:64ch}
 
 .filter-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
 .pill-btn{
   border:1px solid var(--line);background:var(--cream);color:var(--ink-soft);
-  font-family:inherit;font-size:.8rem;font-weight:600;padding:.42rem .85rem;
+  font-family:inherit;font-size:.8rem;font-weight:600;padding:.45rem .9rem;
   border-radius:999px;cursor:pointer;transition:all .2s;
 }
 .pill-btn:hover{border-color:var(--brand);color:var(--brand)}
 .pill-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
-.ing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1rem}
+.ing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
 .ing-card{
   border:1px solid var(--line);border-radius:16px;overflow:hidden;
   background:var(--cream);display:flex;flex-direction:column;
@@ -287,21 +283,21 @@ table.tbl tbody tr:hover{background:#FCF9F3}
 .ing-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
 .ing-card.hidden{display:none}
 .ing-thumb{
-  height:110px;position:relative;overflow:hidden;
-  display:flex;align-items:flex-end;padding:.75rem .9rem;
+  height:104px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;padding:.75rem .95rem;
 }
 .ing-thumb img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:.35;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;
 }
 .ing-thumb::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(29,25,22,.15) 0%,rgba(29,25,22,.78) 100%);
+  background:linear-gradient(180deg,rgba(29,25,22,.15) 0%,rgba(29,25,22,.82) 100%);
 }
-.ing-thumb span{position:relative;z-index:1;color:#FFFDF9;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:800}
-.ing-body{padding:.85rem .95rem;flex:1;display:flex;flex-direction:column;gap:.35rem}
-.ing-aliases{font-size:.78rem;font-weight:700;color:var(--brand-dk)}
-.ing-desc{font-size:.83rem;color:var(--ink-soft);line-height:1.45}
+.ing-thumb span{position:relative;z-index:1;color:#FFFDF9;font-family:'Fraunces',serif;font-size:1.08rem;font-weight:800}
+.ing-body{padding:.85rem .95rem;flex:1;display:flex;flex-direction:column;gap:.45rem}
+.ing-region{font-size:.78rem;color:var(--ink);line-height:1.4}
+.ing-region strong{color:var(--brand-dk)}
+.ing-tip{font-size:.82rem;color:var(--ink-soft);line-height:1.45;border-top:1px dashed var(--line);padding-top:.45rem;margin-top:auto}
 
 /* ============ 8. BALANCE NUTRICIONAL ============ */
 .bal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1rem}
@@ -318,7 +314,7 @@ table.tbl tbody tr:hover{background:#FCF9F3}
 .bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--amber))}
 .bal-card p{font-size:.87rem;color:var(--ink-soft);line-height:1.52}
 
-/* ============ 9. LÍNEA DE TIEMPO INTERACTIVA ============ */
+/* ============ 9. LÍNEA DE TIEMPO ============ */
 .timeline-hint{
   display:flex;align-items:center;gap:.7rem;
   background:var(--brand-soft);border:1px solid #F2C9B8;border-left:4px solid var(--brand);
@@ -378,16 +374,17 @@ table.tbl tbody tr:hover{background:#FCF9F3}
 .kids-list li{display:flex;gap:.75rem;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.8rem 1rem;font-size:.92rem}
 .kids-list .tick{flex:0 0 auto;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--amber);color:#1D1916;display:grid;place-items:center;font-size:.75rem;font-weight:900;margin-top:.1rem}
 
-/* ============ 11. PRÓXIMAS RECETAS (SERIE EN GITHUB) ============ */
+/* ============ 11. REPERTORIO DE RECETAS (LLANO Y DECEMBRINAS) ============ */
 .series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
 .series-card{
   background:var(--paper);border:1px solid var(--line);border-radius:18px;
-  padding:1.25rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:space-between;gap:.8rem;
+  padding:1.25rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:space-between;gap:.85rem;
 }
 .series-tag{
   align-self:flex-start;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:.28rem .65rem;border-radius:999px;background:var(--amber-soft);color:#7A4D10;
 }
+.series-tag.active-tag{background:var(--green-soft);color:var(--green)}
 .series-card h3{font-size:1.15rem;font-weight:800}
 .series-card p{font-size:.86rem;color:var(--ink-soft)}
 .series-link{font-size:.84rem;font-weight:700;color:var(--brand);text-decoration:none}
@@ -431,10 +428,11 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
     <div class="brand-name"><span class="brand-dot"></span> Recetas de Don Ertilio</div>
     <nav class="nav">
       <a href="#ingredientes">Ingredientes</a>
-      <a href="#guia-visual">Equivalencias</a>
+      <a href="#guia-visual">Colombia y Alemania</a>
       <a href="#nutricion">Nutrición</a>
       <a href="#preparacion">Preparación</a>
       <a href="#menor">Para el menor</a>
+      <a href="#proximas">Repertorio</a>
     </nav>
     <a class="btn-cta" href="#ingredientes">Calcular compra →</a>
   </div>
@@ -446,21 +444,21 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Receta principal · Plato completo</span>
+      <span class="eyebrow">Cojedes · Cocina del Llano al Mundo</span>
       <h1>Sopa Criolla de Res <em>de Don Ertilio</em></h1>
       <p class="tagline">«Compra justo, cocina una vez, come bien, sin que falte ni que sobre.»</p>
       <p class="hero-lead">
-        Caldo espeso y casero de lagarto de res, yuca, ñame, auyama, maíz y aliños frescos.
-        Elige cuántas personas van a comer y la lista se ajusta al instante.
+        Caldo espeso y casero nacido en el llano, pensado para rendir sin desperdiciar
+        y para llegar hasta la mesa de quienes están lejos —con porciones ajustables y cuidado para los niños.
       </p>
       <div class="hero-actions">
         <a class="btn-hero" href="#ingredientes">Ajustar porciones →</a>
-        <a class="btn-ghost" href="#preparacion">Ver reloj de cocción</a>
+        <a class="btn-ghost" href="#guia-visual">Ver nombres en Colombia y Alemania</a>
       </div>
       <div class="badges">
         <span class="badge">🍲 Porciones ajustables</span>
         <span class="badge">⏱️ 02h:00min cocción</span>
-        <span class="badge">🗺️ Nombres explicados</span>
+        <span class="badge">🌍 Guía CO / DE</span>
         <span class="badge">👶 Apta para niños</span>
       </div>
     </div>
@@ -480,8 +478,8 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       <span class="eyebrow">Paso 1 · Lista de compras</span>
       <h2>Cantidades exactas según cuántas personas comen</h2>
       <p>
-        Cada persona adulta equivale a <strong>1</strong>. Si hay un niño pequeño (1–2 años),
-        súmala como <strong>0.5</strong> para no comprar de más.
+        Cada adulto cuenta como <strong>1</strong>. Si hay un niño pequeño (1–2 años), súmalo como
+        <strong>0.5</strong> para comprar solo lo necesario y cuidar el presupuesto.
       </p>
     </div>
 
@@ -588,68 +586,62 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       </table>
     </div>
 
-    <!-- Guía visual y equivalencias para no confundirse al comprar -->
+    <!-- Guía por destino: Colombia y Alemania -->
     <div class="visual-guide-box fade" id="guia-visual">
       <div class="vg-header">
-        <div>
-          <h3>¿Qué es cada ingrediente si lo llaman distinto en tu mercado?</h3>
-          <p>Filtra por tipo para identificar cortes, raíces y aliños sin dudas antes de comprar.</p>
-        </div>
+        <h3>Guía para comprar en Colombia o en Alemania sin gastar de más</h3>
+        <p>En el llano conocemos estos nombres de memoria, pero en otros países cambian o no siempre se consiguen. Usa este filtro para saber cómo pedirlos y cuándo conviene sustituirlos.</p>
       </div>
 
-      <div class="filter-pills" role="tablist" aria-label="Filtrar ingredientes">
-        <button type="button" class="pill-btn active" data-filter="all">Todos</button>
-        <button type="button" class="pill-btn" data-filter="raices">Raíces y tubérculos</button>
-        <button type="button" class="pill-btn" data-filter="carne-maiz">Carne y maíz</button>
-        <button type="button" class="pill-btn" data-filter="alinos">Verduras y aliños</button>
+      <div class="filter-pills" role="tablist" aria-label="Filtrar guía por país o tipo">
+        <button type="button" class="pill-btn active" data-filter="all">Todos los ingredientes</button>
+        <button type="button" class="pill-btn" data-filter="colombia">🇨🇴 En Colombia</button>
+        <button type="button" class="pill-btn" data-filter="alemania">🇩🇪 En Alemania</button>
       </div>
 
       <div class="ing-grid">
-        <article class="ing-card" data-cat="raices">
-          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Ñame</span></div>
-          <div class="ing-body">
-            <div class="ing-aliases">También: batata blanca / yam</div>
-            <p class="ing-desc">Raíz harinosa de pulpa clara. Es el ingrediente que espesa el caldo de forma natural y te indica cuándo está lista la sopa.</p>
-          </div>
-        </article>
-
-        <article class="ing-card" data-cat="raices">
-          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Yuca</span></div>
-          <div class="ing-body">
-            <div class="ing-aliases">También: mandioca / guacamota</div>
-            <p class="ing-desc">Raíz alargada de piel marrón y pulpa blanca. Retira siempre el hilo fibroso del centro al picarla.</p>
-          </div>
-        </article>
-
-        <article class="ing-card" data-cat="alinos">
-          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Auyama</span></div>
-          <div class="ing-body">
-            <div class="ing-aliases">También: calabaza / zapallo</div>
-            <p class="ing-desc">Da color dorado al caldo, dulzor suave y vitamina A. Pélala y quita las semillas antes de pesar los 180 g base.</p>
-          </div>
-        </article>
-
-        <article class="ing-card" data-cat="carne-maiz">
+        <article class="ing-card" data-cat="colombia alemania">
           <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Lagarto sin hueso</span></div>
           <div class="ing-body">
-            <div class="ing-aliases">También: morcillo / jarrete / chamorro</div>
-            <p class="ing-desc">Corte de la pierna de res con colágeno y sabor profundo; necesita cocción lenta para quedar tierno.</p>
+            <div class="ing-region"><strong>Colombia:</strong> murillo, lagarto o morcillo.</div>
+            <div class="ing-region"><strong>Alemania:</strong> <em>Rinderbeinscheibe</em> (sin hueso) o corte para <em>Schmorfleisch / Wade</em>.</div>
+            <p class="ing-tip">Busca cortes de cocción lenta con algo de colágeno para que el caldo quede sabroso y la carne blanda.</p>
           </div>
         </article>
 
-        <article class="ing-card" data-cat="carne-maiz">
-          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Maíz en mazorca</span></div>
+        <article class="ing-card" data-cat="colombia alemania">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Ñame</span></div>
           <div class="ing-body">
-            <div class="ing-aliases">También: choclo / elote</div>
-            <p class="ing-desc">Córtalo en ruedas para servir en la sopa y desgrana los granos si vas a dar al menor de la casa.</p>
+            <div class="ing-region"><strong>Colombia:</strong> ñame (fácil en plazas y mercados).</div>
+            <div class="ing-region"><strong>Alemania:</strong> <em>Yamswurzel</em> en tiendas latinas, africanas o asiáticas.</div>
+            <p class="ing-tip">Si en Alemania es caro o difícil de hallar, no pierdas tiempo: refuerza un poco la papa o aplasta un trozo de calabaza/papa para dar espesor.</p>
           </div>
         </article>
 
-        <article class="ing-card" data-cat="alinos">
-          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Ají dulce y cebollín</span></div>
+        <article class="ing-card" data-cat="colombia alemania">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Auyama</span></div>
           <div class="ing-body">
-            <div class="ing-aliases">Cebollín = cebolla de verdeo / cebolleta</div>
-            <p class="ing-desc">El ají dulce aporta aroma de pimentón perfumado sin picar; el cebollín y cilantro dan frescor al final.</p>
+            <div class="ing-region"><strong>Colombia:</strong> auyama o calabaza (a veces zapallo).</div>
+            <div class="ing-region"><strong>Alemania:</strong> <em>Hokkaido-Kürbis</em> (muy práctica) o <em>Butternut-Kürbis</em>.</div>
+            <p class="ing-tip">Aporta color dorado y vitamina A. Pela y retira semillas antes de pesar los 180 g base.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="colombia alemania">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Yuca y maíz</span></div>
+          <div class="ing-body">
+            <div class="ing-region"><strong>Colombia:</strong> yuca y mazorca / choclo.</div>
+            <div class="ing-region"><strong>Alemania:</strong> <em>Yuca / Maniok</em> (fresca o congelada en tiendas latinas/asiáticas) y <em>Maiskolben</em>.</div>
+            <p class="ing-tip">La yuca congelada pelada en Alemania puede ahorrar trabajo y evitar desperdicio de cáscara.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="alemania">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Ají dulce, cilantro y cebollín</span></div>
+          <div class="ing-body">
+            <div class="ing-region"><strong>Colombia:</strong> ají dulce, cilantro y cebollín.</div>
+            <div class="ing-region"><strong>Alemania:</strong> cilantro = <em>Koriandergrün / Korianderblatt</em> (no semillas); cebollín = <em>Lauchzwiebeln / Frühlingszwiebeln</em>.</div>
+            <p class="ing-tip">El ají dulce en Alemania se consigue en tiendas latinas; si no hay, usa <em>Spitzpaprika</em> (pimiento dulce) y nunca chile picante (<em>scharf</em>).</p>
           </div>
         </article>
       </div>
@@ -701,7 +693,7 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🥩</span><h3>Proteínas</h3><span class="bal-pct">24%</span></div>
         <div class="bar"><span style="width:24%"></span></div>
-        <p>120 g de lagarto aportan proteína completa y hierro hemo de alta absorción, útil para prevenir anemia.</p>
+        <p>120 g de lagarto aportan proteína completa y hierro hemo de alta absorción, útil para recuperar fuerzas y prevenir anemia.</p>
       </div>
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🍠</span><h3>Carbohidratos</h3><span class="bal-pct">62%</span></div>
@@ -829,12 +821,12 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
         <li><span class="tick">✓</span><div><strong>Revisa sin huesos ni espinas</strong> y comprueba que esté tibia.</div></li>
       </ul>
 
-      <h3>A los 2 años</h3>
+      <h3>Si tiene 2 años</h3>
       <ul class="kids-list">
         <li><span class="tick">✓</span><div>Trozos de ≈ 1 cm bien cocidos y yuca muy blanda (aplastada si hace falta).</div></li>
       </ul>
 
-      <h3>Al año</h3>
+      <h3>Si tiene 1 año</h3>
       <ul class="kids-list">
         <li><span class="tick">✓</span><div>Sin sal añadida (o mínima), textura aplastada tipo puré espeso y carne muy desmenuzada.</div></li>
       </ul>
@@ -845,34 +837,36 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 <section id="proximas" style="padding-top:1rem">
   <div class="wrap">
     <div class="sec-head fade" style="margin-bottom:1.4rem">
-      <span class="eyebrow">Colección en GitHub</span>
-      <h2>Próximas recetas de Don Ertilio</h2>
-      <p>Base pensada para enlazar tus siguientes páginas HTML a medida que las publiques.</p>
+      <span class="eyebrow">Repertorio en GitHub</span>
+      <h2>Recetas de Don Ertilio: del llano a la mesa decembrina</h2>
+      <p>Esta página es la base de tu colección en GitHub Pages para sumar nuevas recetas paso a paso.</p>
     </div>
     <div class="series-grid">
       <article class="series-card fade">
         <div>
-          <span class="series-tag">En preparación</span>
-          <h3>Arroz meloso con pollo</h3>
-          <p>Misma lógica de compra justa, cálculo por comensal y tiempos controlados.</p>
+          <span class="series-tag active-tag">Publicada · Capítulo 1</span>
+          <h3>Sopa Criolla de Res</h3>
+          <p>El plato que abre el repertorio: cálculo exacto por persona, equivalencias y cuidado infantil.</p>
         </div>
-        <a class="series-link" href="#ingredientes">Usar esta plantilla de base →</a>
+        <a class="series-link" href="#inicio">Ir arriba de esta receta →</a>
       </article>
+
       <article class="series-card fade">
         <div>
-          <span class="series-tag">En preparación</span>
-          <h3>Lentejas guisadas de la casa</h3>
-          <p>Remojo, verduras de temporada y raciones ajustadas para toda la semana.</p>
+          <span class="series-tag">Próxima receta decembrina</span>
+          <h3>Pan de Jamón de la Casa</h3>
+          <p>Masa suave, jamón, tocineta, aceitunas y pasas con medidas exactas para que no falte relleno.</p>
         </div>
-        <a class="series-link" href="#preparacion">Ver sistema de reloj →</a>
+        <a class="series-link" href="#ingredientes">Misma lógica de compra justa →</a>
       </article>
+
       <article class="series-card fade">
         <div>
-          <span class="series-tag">Guía</span>
-          <h3>Acompañantes sin exceso</h3>
-          <p>Porciones justas de casabe, arepitas o aguacate para acompañar el caldo.</p>
+          <span class="series-tag">Próxima receta decembrina</span>
+          <h3>Hallacas Tradicionales</h3>
+          <p>Guiso rendidor, masa bien afinada y amarre ordenado para cocinar en familia sin desperdiciar.</p>
         </div>
-        <a class="series-link" href="#guia-visual">Ver equivalencias →</a>
+        <a class="series-link" href="#preparacion">Mismo orden de cocción →</a>
       </article>
     </div>
   </div>
@@ -882,7 +876,7 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
   <div class="wrap">
     <p class="foot-dedicatoria">Inspirado con amor para Lia y Lucca - Don Ertilio</p>
     <div class="foot-inner">
-      <div><strong>Sopa Criolla de Res de Don Ertilio</strong><br>Compra justo, cocina una vez, come bien, sin que falte ni que sobre.</div>
+      <div><strong>Recetas de Don Ertilio</strong><br>Compra justo, cocina una vez, come bien, sin que falte ni que sobre.</div>
       <div style="max-width:44ch">
         Estimaciones nutricionales orientativas; no sustituyen consejo médico o nutricional profesional.
       </div>
@@ -990,7 +984,7 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
   update();
 })();
 
-/* 2. Filtro de tarjetas de equivalencias */
+/* 2. Filtro de equivalencias por región */
 (function () {
   const buttons = document.querySelectorAll('.pill-btn');
   const cards = document.querySelectorAll('.ing-card');
@@ -1002,7 +996,8 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       btn.classList.add('active');
 
       cards.forEach(function (card) {
-        if (filter === 'all' || card.dataset.cat === filter) {
+        const cats = (card.dataset.cat || '').split(' ');
+        if (filter === 'all' || cats.includes(filter)) {
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
