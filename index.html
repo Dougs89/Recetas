@@ -76,17 +76,25 @@ img,svg{display:block;max-width:100%}
 }
 .btn-cta:hover{background:var(--blue-dk);transform:translateY(-2px)}
 
-/* ============ 3. HERO ============ */
+/* ============ 3. HERO CON IMAGEN DE FONDO ============ */
 .hero{
   position:relative;overflow:hidden;color:#F4F8FB;
-  background:linear-gradient(150deg,#1B3049 0%,#3A6EA5 50%,#5E8FBF 100%);
+  background-color:#1B3049;
   padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3rem,7vw,5rem);
 }
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:url('images/sopa.jpg');
+  background-size:cover;
+  background-position:center;
+  opacity:.45;
+}
 .hero::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(58% 58% at 88% 12%,rgba(232,163,61,.32),transparent 70%),
-    radial-gradient(52% 52% at 6% 92%,rgba(39,82,125,.55),transparent 70%);
+    linear-gradient(150deg,rgba(27,48,73,.82) 0%,rgba(58,110,165,.70) 55%,rgba(39,82,125,.82) 100%),
+    radial-gradient(58% 58% at 88% 12%,rgba(232,163,61,.28),transparent 70%),
+    radial-gradient(52% 52% at 6% 92%,rgba(39,82,125,.5),transparent 70%);
 }
 .hero-grid{
   position:relative;z-index:1;
@@ -120,20 +128,20 @@ img,svg{display:block;max-width:100%}
   max-width:44ch;
 }
 
-.hero-lead{font-size:clamp(.98rem,2vw,1.08rem);color:rgba(244,248,251,.88);max-width:48ch;margin-bottom:1.6rem}
+.hero-lead{font-size:clamp(.98rem,2vw,1.08rem);color:rgba(244,248,251,.92);max-width:48ch;margin-bottom:1.6rem}
 
 .badges{display:flex;flex-wrap:wrap;gap:.5rem}
 .badge{
   display:inline-flex;align-items:center;gap:.4rem;
   font-size:.78rem;font-weight:600;padding:.42rem .85rem;border-radius:999px;
-  background:rgba(244,248,251,.14);border:1px solid rgba(244,248,251,.3);
+  background:rgba(244,248,251,.16);border:1px solid rgba(244,248,251,.32);
   color:#F4F8FB;
 }
 
-/* Ficha técnica con imagen de fondo */
+/* Ficha técnica limpia */
 .ficha{
   position:relative;
-  background:rgba(244,248,251,.11);
+  background:rgba(27,48,73,.48);
   border:1px solid rgba(244,248,251,.28);
   border-radius:26px;
   padding:1.5rem;
@@ -145,33 +153,10 @@ img,svg{display:block;max-width:100%}
   flex-direction:column;
   justify-content:flex-end;
 }
-.ficha::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:url('images/sopa.jpg'); /* ⬅️ Cambia 'sopa.jpg' por el nombre/ruta de tu imagen */
-  background-size:cover;
-  background-position:center;
-  opacity:.28; /* Ajusta la opacidad si quieres que la imagen se vea más o menos */
-  z-index:0;
-  pointer-events:none;
-}
-.ficha::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(27,48,73,.2) 0%, rgba(27,48,73,.85) 100%);
-  z-index:1;
-  pointer-events:none;
-}
-.ficha > *{
-  position:relative;
-  z-index:2;
-}
 .ficha h2{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem;font-family:'Inter',sans-serif;font-weight:700}
 .ficha-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
 .ficha-item strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;font-weight:800;line-height:1.1}
-.ficha-item span{font-size:.76rem;color:rgba(244,248,251,.74);letter-spacing:.02em}
+.ficha-item span{font-size:.76rem;color:rgba(244,248,251,.8);letter-spacing:.02em}
 
 /* ============ 4. SECCIONES ============ */
 section{padding:clamp(2.6rem,6vw,4.5rem) 0}
@@ -309,7 +294,6 @@ table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #ECF1F6;vertical-align
 table.tbl tbody tr:last-child td{border-bottom:0}
 table.tbl tbody tr:hover{background:#F7FAFD}
 
-/* Cantidad recalculable (solo tabla de compras) */
 .qty{
   font-weight:700;color:var(--blue);white-space:nowrap;
   font-variant-numeric:tabular-nums;
@@ -318,7 +302,6 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 }
 .qty.pulse{background-color:#FFF3D9}
 
-/* Valor fijo (tabla nutricional) — NO se recalcula */
 .nutri-val{
   font-weight:700;
   color:var(--blue);
@@ -991,7 +974,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   const input = document.getElementById('numPersonas');
   const btnMenos = document.getElementById('btnMenos');
   const btnMas = document.getElementById('btnMas');
-  /* ⬇️ IMPORTANTE: solo seleccionamos las celdas que tienen data-per */
   const cells = document.querySelectorAll('.qty[data-per]');
 
   function fmtCdta(n) {
@@ -1087,7 +1069,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
     cells.forEach(function (cell) {
       const per = parseFloat(cell.dataset.per);
       const type = cell.dataset.type;
-      /* Doble salvaguarda: si falta un atributo, no tocamos la celda */
       if (isNaN(per) || !type) return;
       cell.textContent = formatQty(per, N, type);
       cell.classList.add('pulse');
