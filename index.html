@@ -4,32 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sopa Criolla de Res de Don Ertilio · Compra justo, cocina una vez, come bien</title>
-<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta ajustable a cualquier número de personas. Escribe cuántas personas vas a servir y las cantidades se recalculan solas. Compra justo, cocina una vez, come bien.">
+<meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta ajustable a cualquier número de personas, equivalencias de ingredientes, guía visual y reloj de cocción paso a paso.">
 <meta name="theme-color" content="#B84A27">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============ 1. TOKENS EDITORIALES CÁLIDOS ============ */
+/* ============ 1. TOKENS Y RESET ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --cream:#FBF7F0;
-  --cream-alt:#F3ECE0;
+  --cream:#FAF6EF;
+  --cream-alt:#F2EAD9;
   --paper:#FFFFFF;
-  --ink:#1E1B18;
-  --ink-soft:#5E564E;
+  --ink:#1D1916;
+  --ink-soft:#5C534A;
   --brand:#B84A27;
-  --brand-dk:#8F3518;
-  --brand-soft:#FCECE5;
+  --brand-dk:#8E3316;
+  --brand-soft:#FCECE6;
   --amber:#D98A2B;
-  --amber-soft:#FFF4E0;
-  --green:#3B523E;
-  --line:#E6DDD0;
+  --amber-soft:#FFF3DC;
+  --green:#38523C;
+  --green-soft:#EBF2EC;
+  --line:#E5DAC8;
   --radius:20px;
-  --shadow-sm:0 2px 12px rgba(30,27,24,.06);
-  --shadow:0 20px 48px -22px rgba(30,27,24,.28);
-  --max:1140px;
+  --shadow-sm:0 4px 16px rgba(29,25,22,.06);
+  --shadow:0 22px 50px -24px rgba(29,25,22,.32);
+  --max:1160px;
 }
 
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -44,198 +45,189 @@ body{
 }
 
 h1,h2,h3,.brand-name{font-family:'Fraunces',Georgia,serif;line-height:1.08;letter-spacing:-.02em}
-
-img,svg{display:block;max-width:100%}
-
+img{display:block;max-width:100%}
 .wrap{width:min(100% - 2rem,var(--max));margin-inline:auto}
+
+/* Barra de progreso de lectura al hacer scroll */
+.read-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:100;
+  background:linear-gradient(90deg,var(--brand),var(--amber));
+  transition:width .1s linear;
+}
 
 /* ============ 2. BARRA SUPERIOR ============ */
 .topbar{
   position:sticky;top:0;z-index:60;
-  background:rgba(251,247,240,.9);
+  background:rgba(250,246,239,.92);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
-.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.72rem 0}
 .brand-name{display:flex;align-items:center;gap:.65rem;font-weight:800;font-size:1.02rem;color:var(--ink)}
 .brand-dot{
   width:24px;height:24px;border-radius:50%;flex:0 0 auto;
   background:radial-gradient(circle at 30% 30%,var(--amber),var(--brand));
   box-shadow:0 0 0 3px rgba(184,74,39,.16);
 }
-.nav{display:flex;gap:1.5rem;font-size:.9rem;font-weight:500}
+.nav{display:flex;gap:1.35rem;font-size:.88rem;font-weight:500}
 .nav a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
 .nav a:hover{color:var(--brand)}
-@media(max-width:820px){.nav{display:none}}
+@media(max-width:900px){.nav{display:none}}
 
 .btn-cta{
-  display:inline-flex;align-items:center;gap:.5rem;
+  display:inline-flex;align-items:center;gap:.45rem;
   background:var(--brand);color:#fff;text-decoration:none;
-  font-weight:600;font-size:.88rem;padding:.62rem 1.2rem;border-radius:999px;
+  font-weight:600;font-size:.86rem;padding:.58rem 1.15rem;border-radius:999px;
   transition:transform .2s,background .2s,box-shadow .2s;
   box-shadow:0 8px 20px -10px rgba(184,74,39,.85);
 }
 .btn-cta:hover{background:var(--brand-dk);transform:translateY(-2px)}
 
-/* ============ 3. HERO EDITORIAL CON FOTOGRAFÍA ============ */
+/* ============ 3. HERO CON FOTOGRAFÍA PROTAGONISTA ============ */
 .hero{
   position:relative;overflow:hidden;color:#FFFDF9;
-  background-color:#181310;
-  padding:clamp(3.2rem,7vw,5.4rem) 0 clamp(3.4rem,7.5vw,5.6rem);
+  min-height:min(86vh,720px);
+  display:flex;align-items:center;
+  padding:clamp(3rem,6vw,4.8rem) 0;
+  background:#16110E;
 }
-.hero::before{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background-image:url('images/sopa.jpg');
-  background-size:cover;
-  background-position:center;
-  opacity:.72;
-  transform:scale(1.02);
+.hero-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  z-index:0;
+  transform:scale(calc(1 + var(--scroll-p, 0) * 0.08));
+  transition:transform .15s ease-out;
 }
-.hero::after{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(95deg,rgba(20,15,12,.90) 0%,rgba(20,15,12,.68) 52%,rgba(20,15,12,.38) 100%),
-    radial-gradient(circle at 82% 55%,rgba(217,138,43,.16),transparent 55%);
-}
-.hero-grid{
-  position:relative;z-index:1;
-  display:grid;grid-template-columns:1.2fr .8fr;
-  gap:clamp(2rem,4vw,3.6rem);align-items:center;
+    linear-gradient(90deg,rgba(18,13,10,.88) 0%,rgba(18,13,10,.62) 48%,rgba(18,13,10,.22) 100%),
+    linear-gradient(180deg,rgba(18,13,10,.25) 0%,rgba(18,13,10,.68) 100%);
 }
 @media(max-width:880px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero::after{
-    background:linear-gradient(180deg,rgba(20,15,12,.78) 0%,rgba(20,15,12,.88) 100%);
+  .hero{min-height:auto;padding:2.6rem 0 3.2rem}
+  .hero-scrim{
+    background:linear-gradient(180deg,rgba(18,13,10,.72) 0%,rgba(18,13,10,.88) 100%);
   }
 }
 
+.hero-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.25fr .75fr;
+  gap:clamp(1.6rem,4vw,3.2rem);align-items:end;
+  width:100%;
+}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr;align-items:start}}
+
 .eyebrow{
   display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;color:#F3B562;margin-bottom:.9rem;
+  text-transform:uppercase;color:#F5B867;margin-bottom:.8rem;
 }
 .hero h1{
-  font-size:clamp(2.2rem,5.8vw,3.85rem);font-weight:800;margin-bottom:.9rem;
+  font-size:clamp(2.2rem,5.5vw,3.75rem);font-weight:800;margin-bottom:.8rem;
   text-wrap:balance;
 }
-.hero h1 em{font-style:italic;color:#F3B562}
+.hero h1 em{font-style:italic;color:#F5B867}
 
 .tagline{
-  font-family:'Fraunces',Georgia,serif;
-  font-style:italic;font-weight:600;
-  font-size:clamp(1.05rem,2.2vw,1.32rem);
-  color:#F9DFA9;
-  line-height:1.4;
-  margin-bottom:1.15rem;
-  padding-left:1rem;
-  border-left:3px solid var(--amber);
+  font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;
+  font-size:clamp(1rem,2vw,1.25rem);color:#FDE4B4;
+  margin-bottom:1rem;padding-left:.95rem;border-left:3px solid var(--amber);
   max-width:44ch;
 }
-
 .hero-lead{
-  font-size:clamp(.98rem,1.9vw,1.08rem);
-  color:rgba(255,253,249,.9);
-  max-width:48ch;margin-bottom:1.6rem;
+  font-size:clamp(.96rem,1.8vw,1.06rem);
+  color:rgba(255,253,249,.92);max-width:46ch;margin-bottom:1.45rem;
 }
-
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.35rem}
 .btn-hero{
   display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--amber);color:#1E1B18;text-decoration:none;
-  font-weight:700;font-size:.94rem;padding:.78rem 1.45rem;border-radius:999px;
+  background:var(--amber);color:#1D1916;text-decoration:none;
+  font-weight:700;font-size:.92rem;padding:.72rem 1.35rem;border-radius:999px;
   transition:transform .2s,background .2s;
-  box-shadow:0 10px 24px -10px rgba(217,138,43,.8);
 }
-.btn-hero:hover{background:#E89B3C;transform:translateY(-2px)}
+.btn-hero:hover{background:#E79A3B;transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.45rem;
+  color:#FFFDF9;text-decoration:none;font-weight:600;font-size:.9rem;
+  padding:.7rem 1.15rem;border-radius:999px;
+  border:1px solid rgba(255,253,249,.32);background:rgba(255,253,249,.08);
+  transition:background .2s;
+}
+.btn-ghost:hover{background:rgba(255,253,249,.18)}
 
-.badges{display:flex;flex-wrap:wrap;gap:.5rem}
+.badges{display:flex;flex-wrap:wrap;gap:.45rem}
 .badge{
-  display:inline-flex;align-items:center;gap:.4rem;
-  font-size:.78rem;font-weight:600;padding:.42rem .85rem;border-radius:999px;
-  background:rgba(255,253,249,.12);border:1px solid rgba(255,253,249,.24);
-  color:#FFFDF9;backdrop-filter:blur(6px);
+  font-size:.76rem;font-weight:600;padding:.36rem .78rem;border-radius:999px;
+  background:rgba(255,253,249,.12);border:1px solid rgba(255,253,249,.22);color:#FFFDF9;
 }
 
-.ficha{
-  background:rgba(26,20,16,.72);
-  border:1px solid rgba(255,253,249,.2);
-  border-radius:24px;
-  padding:1.5rem;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 24px 50px -24px rgba(0,0,0,.65);
+/* Ficha compacta y ligera (sin caja pesada) */
+.ficha-compacta{
+  display:grid;grid-template-columns:1fr 1fr;gap:.75rem;
+  background:rgba(22,17,14,.62);
+  border:1px solid rgba(255,253,249,.18);
+  border-radius:20px;padding:1.1rem;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
-.ficha h2{
-  font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
-  color:#F3B562;margin-bottom:1.1rem;font-family:'Inter',sans-serif;font-weight:700;
+.ficha-pill{
+  padding:.65rem .75rem;border-radius:14px;
+  background:rgba(255,253,249,.06);
 }
-.ficha-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
-.ficha-item strong{display:block;font-family:'Fraunces',serif;font-size:1.55rem;font-weight:800;line-height:1.1;color:#FFFDF9}
-.ficha-item span{font-size:.78rem;color:rgba(255,253,249,.76)}
+.ficha-pill strong{display:block;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:#FFFDF9;line-height:1.1}
+.ficha-pill span{font-size:.74rem;color:rgba(255,253,249,.78)}
 
 /* ============ 4. SECCIONES ============ */
-section{padding:clamp(2.8rem,6vw,4.8rem) 0}
-.sec-head{max-width:62ch;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
-.sec-head .eyebrow{color:var(--brand);margin-bottom:.55rem}
-.sec-head h2{font-size:clamp(1.7rem,4vw,2.55rem);font-weight:800;margin-bottom:.7rem;text-wrap:balance}
-.sec-head p{color:var(--ink-soft);font-size:1.02rem}
+section{padding:clamp(2.8rem,6vw,4.6rem) 0}
+.sec-head{max-width:64ch;margin-bottom:clamp(1.5rem,3vw,2.2rem)}
+.sec-head .eyebrow{color:var(--brand);margin-bottom:.5rem}
+.sec-head h2{font-size:clamp(1.65rem,3.8vw,2.45rem);font-weight:800;margin-bottom:.65rem;text-wrap:balance}
+.sec-head p{color:var(--ink-soft);font-size:1rem}
 
 .sec-head-split{
-  max-width:100% !important;
-  display:grid;grid-template-columns:1fr minmax(290px,370px);
-  gap:2rem;align-items:start;margin-bottom:clamp(1.8rem,3vw,2.6rem);
+  max-width:100% !important;display:grid;grid-template-columns:1fr minmax(290px,360px);
+  gap:1.8rem;align-items:start;
 }
-@media(max-width:880px){.sec-head-split{grid-template-columns:1fr;gap:1.2rem}}
+@media(max-width:880px){.sec-head-split{grid-template-columns:1fr;gap:1.1rem}}
 
 .golden-rule{
-  display:flex;gap:.9rem;align-items:flex-start;
-  background:var(--amber-soft);
-  border:1px solid #F0D4A2;
-  border-left:5px solid var(--amber);
-  border-radius:16px;padding:1.1rem 1.2rem;
-  box-shadow:var(--shadow-sm);
+  display:flex;gap:.85rem;align-items:flex-start;
+  background:var(--amber-soft);border:1px solid #EED09B;border-left:5px solid var(--amber);
+  border-radius:16px;padding:1rem 1.15rem;box-shadow:var(--shadow-sm);
 }
 .golden-rule .gr-icon{
-  flex:0 0 auto;font-size:1.35rem;line-height:1;
-  display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:50%;
-  background:#FFE7BE;color:#7A4D10;
+  flex:0 0 auto;width:2.2rem;height:2.2rem;border-radius:50%;
+  background:#FFE5B6;color:#6E430B;display:grid;place-items:center;font-weight:800;
 }
-.golden-rule strong{display:block;font-family:'Fraunces',serif;font-size:1rem;font-weight:800;color:#6E430B;margin-bottom:.25rem}
-.golden-rule p{font-size:.88rem;color:#63451A;line-height:1.5;margin:0}
+.golden-rule strong{display:block;font-family:'Fraunces',serif;font-size:.98rem;color:#6E430B;margin-bottom:.2rem}
+.golden-rule p{font-size:.86rem;color:#5F4218;line-height:1.48;margin:0}
 
 /* ============ 5. SELECTOR DE PERSONAS ============ */
 .person-control{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-left:4px solid var(--brand);
-  border-radius:18px;
-  padding:1.15rem 1.35rem;
-  margin-bottom:1.4rem;
-  box-shadow:var(--shadow-sm);
-  display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.5rem;
+  background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--brand);
+  border-radius:18px;padding:1.1rem 1.3rem;margin-bottom:1.3rem;box-shadow:var(--shadow-sm);
+  display:flex;flex-wrap:wrap;align-items:center;gap:.85rem 1.4rem;
 }
-.pc-main{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.pc-main{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap}
 .pc-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 .stepper{
-  display:inline-flex;align-items:center;
-  background:var(--brand-soft);border:1px solid #F2C9B8;
-  border-radius:999px;padding:4px;gap:2px;
+  display:inline-flex;align-items:center;background:var(--brand-soft);
+  border:1px solid #F2C9B8;border-radius:999px;padding:4px;gap:2px;
 }
 .step-btn{
-  width:2.2rem;height:2.2rem;border:0;border-radius:50%;
-  background:var(--paper);color:var(--brand);
-  font-family:inherit;font-size:1.25rem;font-weight:800;cursor:pointer;
-  box-shadow:var(--shadow-sm);transition:background .2s,color .2s,transform .15s;
-  display:grid;place-items:center;line-height:1;
+  width:2.15rem;height:2.15rem;border:0;border-radius:50%;background:var(--paper);
+  color:var(--brand);font-size:1.2rem;font-weight:800;cursor:pointer;
+  display:grid;place-items:center;transition:background .2s,color .2s,transform .15s;
 }
 .step-btn:hover{background:var(--brand);color:#fff}
 .step-btn:active{transform:scale(.92)}
-
 #numPersonas{
   width:3.2rem;border:0;background:transparent;text-align:center;
-  font-family:'Fraunces',serif;font-size:1.4rem;font-weight:800;color:var(--brand-dk);
+  font-family:'Fraunces',serif;font-size:1.38rem;font-weight:800;color:var(--brand-dk);
   -moz-appearance:textfield;appearance:textfield;font-variant-numeric:tabular-nums;
 }
 #numPersonas::-webkit-outer-spin-button,#numPersonas::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.pc-label{font-size:1rem;font-weight:600;color:var(--ink)}
+.pc-label{font-size:1rem;font-weight:600}
 .pc-note{flex:1 1 100%;font-size:.84rem;color:var(--ink-soft);margin:0}
 
 /* ============ 6. TABLAS ============ */
@@ -246,16 +238,16 @@ section{padding:clamp(2.8rem,6vw,4.8rem) 0}
 table.tbl{width:100%;border-collapse:collapse;font-size:.93rem}
 table.tbl thead th{
   text-align:left;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-soft);font-weight:700;padding:.95rem 1.2rem;
-  background:#F6EFE4;border-bottom:1px solid var(--line);
+  color:var(--ink-soft);font-weight:700;padding:.9rem 1.15rem;
+  background:#F5EDE0;border-bottom:1px solid var(--line);
 }
-table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #F1EAE0;vertical-align:top}
+table.tbl td{padding:.78rem 1.15rem;border-bottom:1px solid #F0E8DA;vertical-align:top}
 table.tbl tbody tr:last-child td{border-bottom:0}
-table.tbl tbody tr:hover{background:#FCF9F4}
+table.tbl tbody tr:hover{background:#FCF9F3}
 
 .qty,.nutri-val{font-weight:700;color:var(--brand);white-space:nowrap;font-variant-numeric:tabular-nums}
 .qty{border-radius:4px;transition:background-color .4s ease}
-.qty.pulse{background-color:#FFE7BE}
+.qty.pulse{background-color:#FFE5B6}
 .note{color:var(--ink-soft);font-size:.86rem}
 
 @media(max-width:660px){
@@ -267,22 +259,66 @@ table.tbl tbody tr:hover{background:#FCF9F4}
   .tbl-wrap{background:transparent;border:0;box-shadow:none}
 }
 
-/* ============ 7. TARJETAS DE BALANCE ============ */
+/* ============ 7. GUÍA VISUAL DE INGREDIENTES Y EQUIVALENCIAS ============ */
+.visual-guide-box{
+  margin-top:1.8rem;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.4rem;box-shadow:var(--shadow-sm);
+}
+.vg-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.vg-header h3{font-size:1.3rem;font-weight:800;color:var(--ink)}
+.vg-header p{font-size:.88rem;color:var(--ink-soft);max-width:52ch}
+
+.filter-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
+.pill-btn{
+  border:1px solid var(--line);background:var(--cream);color:var(--ink-soft);
+  font-family:inherit;font-size:.8rem;font-weight:600;padding:.42rem .85rem;
+  border-radius:999px;cursor:pointer;transition:all .2s;
+}
+.pill-btn:hover{border-color:var(--brand);color:var(--brand)}
+.pill-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
+
+.ing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1rem}
+.ing-card{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background:var(--cream);display:flex;flex-direction:column;
+  transition:transform .25s,box-shadow .25s;
+}
+.ing-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.ing-card.hidden{display:none}
+.ing-thumb{
+  height:110px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;padding:.75rem .9rem;
+}
+.ing-thumb img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.35;
+}
+.ing-thumb::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(29,25,22,.15) 0%,rgba(29,25,22,.78) 100%);
+}
+.ing-thumb span{position:relative;z-index:1;color:#FFFDF9;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:800}
+.ing-body{padding:.85rem .95rem;flex:1;display:flex;flex-direction:column;gap:.35rem}
+.ing-aliases{font-size:.78rem;font-weight:700;color:var(--brand-dk)}
+.ing-desc{font-size:.83rem;color:var(--ink-soft);line-height:1.45}
+
+/* ============ 8. BALANCE NUTRICIONAL ============ */
 .bal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1rem}
 .bal-card{
   background:var(--paper);border:1px solid var(--line);border-radius:18px;
-  padding:1.3rem;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;
+  padding:1.25rem;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;
 }
 .bal-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.bal-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem}
-.bal-ico{font-size:1.35rem;line-height:1}
+.bal-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.bal-ico{font-size:1.3rem;line-height:1}
 .bal-top h3{font-size:1rem;font-weight:700;flex:1;font-family:'Inter',sans-serif}
-.bal-pct{font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;color:var(--brand)}
-.bar{height:7px;border-radius:99px;background:#EFE7DC;overflow:hidden;margin-bottom:.7rem}
+.bal-pct{font-family:'Fraunces',serif;font-weight:800;font-size:1.12rem;color:var(--brand)}
+.bar{height:7px;border-radius:99px;background:#EFE6D8;overflow:hidden;margin-bottom:.65rem}
 .bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--amber))}
-.bal-card p{font-size:.87rem;color:var(--ink-soft);line-height:1.55}
+.bal-card p{font-size:.87rem;color:var(--ink-soft);line-height:1.52}
 
-/* ============ 8. LÍNEA DE TIEMPO ============ */
+/* ============ 9. LÍNEA DE TIEMPO INTERACTIVA ============ */
 .timeline-hint{
   display:flex;align-items:center;gap:.7rem;
   background:var(--brand-soft);border:1px solid #F2C9B8;border-left:4px solid var(--brand);
@@ -293,24 +329,26 @@ table.tbl tbody tr:hover{background:#FCF9F4}
 .steps{list-style:none;position:relative;padding-left:6.4rem;margin:0;display:grid;gap:.9rem}
 .steps::before{
   content:"";position:absolute;left:3rem;top:2rem;bottom:2rem;width:2px;
-  background:linear-gradient(to bottom,var(--brand-dk),var(--amber));border-radius:99px;
+  background:linear-gradient(to bottom,var(--brand-dk),var(--amber),var(--green));border-radius:99px;
 }
 .steps li{
   position:relative;background:var(--paper);border:1px solid var(--line);
   border-radius:18px;padding:1rem 1.2rem;box-shadow:var(--shadow-sm);
+  transition:border-color .25s,box-shadow .25s;
 }
+.steps li.active-step{border-color:var(--brand);box-shadow:0 12px 28px -16px rgba(184,74,39,.45)}
 .steps li::before{
   content:attr(data-time);position:absolute;left:-6.4rem;top:.95rem;width:6rem;height:2rem;
   border-radius:99px;background:var(--brand);color:#fff;display:grid;place-items:center;
-  font-family:'Inter',sans-serif;font-weight:800;font-size:.82rem;font-variant-numeric:tabular-nums;
+  font-family:'Inter',sans-serif;font-weight:800;font-size:.8rem;font-variant-numeric:tabular-nums;
   box-shadow:0 0 0 4px var(--cream);z-index:1;white-space:nowrap;
 }
 .steps li.long-wait::before{background:var(--brand-dk)}
 .steps li.final::before{background:var(--green)}
-.steps h3{font-size:1.08rem;font-weight:800;margin-bottom:.3rem;font-family:'Inter',sans-serif;color:var(--ink)}
-.steps p{font-size:.93rem;color:var(--ink-soft)}
-.steps .tip{display:block;font-size:.85rem;color:var(--brand-dk);background:var(--brand-soft);border-radius:10px;padding:.55rem .8rem;margin-top:.65rem}
-.steps .why{display:block;font-size:.85rem;color:#6E430B;background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:.55rem .8rem;margin-top:.65rem}
+.steps h3{font-size:1.06rem;font-weight:800;margin-bottom:.28rem;font-family:'Inter',sans-serif;color:var(--ink)}
+.steps p{font-size:.92rem;color:var(--ink-soft)}
+.steps .tip{display:block;font-size:.84rem;color:var(--brand-dk);background:var(--brand-soft);border-radius:10px;padding:.55rem .8rem;margin-top:.6rem}
+.steps .why{display:block;font-size:.84rem;color:#6E430B;background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:.55rem .8rem;margin-top:.6rem}
 
 .timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:6.4rem}
 .timeline-end{
@@ -326,120 +364,138 @@ table.tbl tbody tr:hover{background:#FCF9F4}
   .timeline-end-wrap{padding-left:4.6rem}
 }
 
-/* ============ 9. BLOQUE MENOR ============ */
+/* ============ 10. BLOQUE MENOR ============ */
 .kids{
-  background:linear-gradient(160deg,var(--green) 0%,#28392A 100%);
+  background:linear-gradient(160deg,var(--green) 0%,#263829 100%);
   color:#F3F6F1;border-radius:26px;padding:clamp(1.6rem,4vw,2.8rem);
   box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
 .kids h2{font-size:clamp(1.5rem,3.6vw,2.1rem);margin-bottom:.6rem}
-.kids .eyebrow{color:#F3B562}
-.kids p{color:rgba(243,246,241,.85)}
-.kids h3{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F3B562;margin:1.6rem 0 .65rem}
-.kids-list{list-style:none;display:grid;gap:.7rem}
-.kids-list li{display:flex;gap:.75rem;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.85rem 1rem;font-size:.92rem}
-.kids-list .tick{flex:0 0 auto;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--amber);color:#1E1B18;display:grid;place-items:center;font-size:.75rem;font-weight:900;margin-top:.1rem}
+.kids .eyebrow{color:#F5B867}
+.kids p{color:rgba(243,246,241,.86)}
+.kids h3{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F5B867;margin:1.5rem 0 .6rem}
+.kids-list{list-style:none;display:grid;gap:.65rem}
+.kids-list li{display:flex;gap:.75rem;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.8rem 1rem;font-size:.92rem}
+.kids-list .tick{flex:0 0 auto;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--amber);color:#1D1916;display:grid;place-items:center;font-size:.75rem;font-weight:900;margin-top:.1rem}
 
-/* ============ 10. CALLOUT ============ */
+/* ============ 11. PRÓXIMAS RECETAS (SERIE EN GITHUB) ============ */
+.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.series-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  padding:1.25rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:space-between;gap:.8rem;
+}
+.series-tag{
+  align-self:flex-start;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.28rem .65rem;border-radius:999px;background:var(--amber-soft);color:#7A4D10;
+}
+.series-card h3{font-size:1.15rem;font-weight:800}
+.series-card p{font-size:.86rem;color:var(--ink-soft)}
+.series-link{font-size:.84rem;font-weight:700;color:var(--brand);text-decoration:none}
+
+/* ============ 12. CALLOUT Y FOOTER ============ */
 .callout{
   display:flex;gap:1rem;align-items:flex-start;
-  background:var(--amber-soft);border:1px solid #F0D4A2;border-left:5px solid var(--amber);
-  border-radius:14px;padding:1.1rem 1.3rem;margin-top:1.6rem;
+  background:var(--amber-soft);border:1px solid #EED09B;border-left:5px solid var(--amber);
+  border-radius:14px;padding:1.05rem 1.25rem;margin-top:1.5rem;
 }
-.callout .ico{font-size:1.35rem;line-height:1}
+.callout .ico{font-size:1.3rem;line-height:1}
 .callout strong{display:block;margin-bottom:.2rem;font-size:.95rem}
 .callout p{font-size:.88rem;color:var(--ink-soft)}
 
-/* ============ 11. FOOTER ============ */
-footer{background:#1E1B18;color:rgba(251,247,240,.68);padding:2.6rem 0 2rem;margin-top:2rem;font-size:.85rem}
+footer{background:#1D1916;color:rgba(250,246,239,.7);padding:2.5rem 0 2rem;margin-top:2rem;font-size:.85rem}
 .foot-dedicatoria{
   text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:600;
-  font-size:clamp(1rem,2.4vw,1.25rem);color:#F3B562;
-  padding-bottom:1.6rem;margin-bottom:1.6rem;border-bottom:1px solid rgba(251,247,240,.12);
+  font-size:clamp(1rem,2.4vw,1.25rem);color:#F5B867;
+  padding-bottom:1.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(250,246,239,.12);
 }
 .foot-inner{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
 footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 
-/* ============ 12. ANIMACIÓN ============ */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-bg,.fade,.read-progress{transition:none !important;transform:none !important}
+  .fade{opacity:1 !important}
+}
 @media(prefers-reduced-motion:no-preference){
-  .fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .fade{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
   .fade.in{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
+
 <header class="topbar">
   <div class="wrap topbar-inner">
     <div class="brand-name"><span class="brand-dot"></span> Recetas de Don Ertilio</div>
     <nav class="nav">
       <a href="#ingredientes">Ingredientes</a>
+      <a href="#guia-visual">Equivalencias</a>
       <a href="#nutricion">Nutrición</a>
       <a href="#preparacion">Preparación</a>
       <a href="#menor">Para el menor</a>
     </nav>
-    <a class="btn-cta" href="#ingredientes">Calcular raciones →</a>
+    <a class="btn-cta" href="#ingredientes">Calcular compra →</a>
   </div>
 </header>
 
-<div class="hero">
+<section class="hero" id="inicio">
+  <img src="images/sopa.jpg" alt="Bowl humeante de Sopa Criolla de Res con mazorca, yuca, auyama y verduras" class="hero-bg" id="heroBg">
+  <div class="hero-scrim" aria-hidden="true"></div>
+
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Cocina de origen · Medidas exactas</span>
+      <span class="eyebrow">Receta principal · Plato completo</span>
       <h1>Sopa Criolla de Res <em>de Don Ertilio</em></h1>
       <p class="tagline">«Compra justo, cocina una vez, come bien, sin que falte ni que sobre.»</p>
       <p class="hero-lead">
-        Lagarto de res, yuca, ñame, auyama, maíz y aliños frescos en un caldo espeso y reconfortante.
-        Indica cuántas personas comen y cada ingrediente se ajusta solo.
+        Caldo espeso y casero de lagarto de res, yuca, ñame, auyama, maíz y aliños frescos.
+        Elige cuántas personas van a comer y la lista se ajusta al instante.
       </p>
       <div class="hero-actions">
-        <a class="btn-hero" href="#ingredientes">Ajustar para mi familia →</a>
+        <a class="btn-hero" href="#ingredientes">Ajustar porciones →</a>
+        <a class="btn-ghost" href="#preparacion">Ver reloj de cocción</a>
       </div>
       <div class="badges">
         <span class="badge">🍲 Porciones ajustables</span>
-        <span class="badge">⏱️ ≈02h:10min</span>
-        <span class="badge">🚫 Cero desperdicio</span>
+        <span class="badge">⏱️ 02h:00min cocción</span>
+        <span class="badge">🗺️ Nombres explicados</span>
         <span class="badge">👶 Apta para niños</span>
       </div>
     </div>
 
-    <aside class="ficha">
-      <h2>Ficha de la receta</h2>
-      <div class="ficha-grid">
-        <div class="ficha-item"><strong>1</strong><span>ración base adulto</span></div>
-        <div class="ficha-item"><strong>02h:10min</strong><span>tiempo total</span></div>
-        <div class="ficha-item"><strong>~550</strong><span>kcal por ración adulto</span></div>
-        <div class="ficha-item"><strong>500 ml</strong><span>agua por persona</span></div>
-      </div>
-    </aside>
+    <div class="ficha-compacta" aria-label="Resumen de la receta">
+      <div class="ficha-pill"><strong>1 ración</strong><span>base adulto (~470 g sólidos)</span></div>
+      <div class="ficha-pill"><strong>02h:00min</strong><span>reloj desde el hervor</span></div>
+      <div class="ficha-pill"><strong>~550 kcal</strong><span>energía por ración adulto</span></div>
+      <div class="ficha-pill"><strong>500 ml</strong><span>agua por persona</span></div>
+    </div>
   </div>
-</div>
+</section>
 
 <section id="ingredientes">
   <div class="wrap">
     <div class="sec-head fade">
-      <span class="eyebrow">Paso 0 · La compra</span>
-      <h2>Lista de compras que se ajusta a tu familia</h2>
+      <span class="eyebrow">Paso 1 · Lista de compras</span>
+      <h2>Cantidades exactas según cuántas personas comen</h2>
       <p>
-        Escribe cuántas personas vas a servir y las cantidades se recalculan solas.
-        Cada persona adulta cuenta como <strong>1 ración</strong>.
+        Cada persona adulta equivale a <strong>1</strong>. Si hay un niño pequeño (1–2 años),
+        súmala como <strong>0.5</strong> para no comprar de más.
       </p>
     </div>
 
     <div class="person-control fade">
       <div class="pc-main">
-        <span class="pc-eyebrow">Compra para</span>
+        <span class="pc-eyebrow">Personas</span>
         <div class="stepper">
           <button type="button" class="step-btn" id="btnMenos" aria-label="Menos personas">−</button>
           <input type="number" id="numPersonas" value="3" min="1" max="20" inputmode="decimal" step="0.5" aria-label="Número de personas">
           <button type="button" class="step-btn" id="btnMas" aria-label="Más personas">+</button>
         </div>
-        <span class="pc-label">personas</span>
+        <span class="pc-label">raciones</span>
       </div>
-      <p class="pc-note">
-        Cuenta cada adulto como 1 persona. Si hay un menor de 1–2 años, cuéntalo como
-        media persona (ej: 2 adultos + 1 niño = 2.5).
-      </p>
+      <p class="pc-note">Ejemplo: 2 adultos + 1 menor = 2.5. Para 4 adultos = 4.</p>
     </div>
 
     <div class="tbl-wrap fade">
@@ -451,92 +507,159 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
           <tr>
             <td data-label="Ingrediente">Carne de res — lagarto sin hueso</td>
             <td data-label="Cantidad" class="qty" data-per="120" data-type="g">360 g</td>
-            <td data-label="Nota" class="note">Si eliges costilla, pide que la deshuesen y suma ~30 % por el hueso.</td>
+            <td data-label="Nota" class="note">Corte magro y jugoso. Si usas costilla, deshuesa y suma ~30 %.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Yuca <strong>con concha</strong></td>
             <td data-label="Cantidad" class="qty" data-per="120" data-type="g">360 g</td>
-            <td data-label="Nota" class="note">La cáscara y las puntas pesan ~30 %. Rinde ~70 % neto.</td>
+            <td data-label="Nota" class="note">La piel y puntas pesan ~30 %; rinde ~70 % limpio.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Maíz (mazorca)</td>
             <td data-label="Cantidad" class="qty" data-per="60" data-type="maiz">2 mazorcas (~180 g)</td>
-            <td data-label="Nota" class="note">Una mazorca mediana ≈ 150 g de granos.</td>
+            <td data-label="Nota" class="note">Una mazorca mediana aporta ≈ 150 g de granos.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Auyama</td>
             <td data-label="Cantidad" class="qty" data-per="60" data-type="g">180 g</td>
-            <td data-label="Nota" class="note">Peso neto, sin semillas ni cáscara.</td>
+            <td data-label="Nota" class="note">Peso neto ya pelada y sin semillas.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ñame</td>
             <td data-label="Cantidad" class="qty" data-per="60" data-type="g">180 g</td>
-            <td data-label="Nota" class="note">Pelado. Es el que espesa la sopa y el indicador de que está lista.</td>
+            <td data-label="Nota" class="note">Pelado. Espesa el caldo y avisa cuando está listo.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Papa</td>
             <td data-label="Cantidad" class="qty" data-per="60" data-type="papa">180 g (1 mediana)</td>
-            <td data-label="Nota" class="note">Prefiere papa que no se deshaga.</td>
+            <td data-label="Nota" class="note">Mejor firme para que mantenga su forma.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Zanahoria</td>
             <td data-label="Cantidad" class="qty" data-per="32" data-type="zanahoria">96 g (1 mediana)</td>
-            <td data-label="Nota" class="note">Fuente clave de vitamina A.</td>
+            <td data-label="Nota" class="note">Aporta color y vitamina A.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Cilantro</td>
             <td data-label="Cantidad" class="qty" data-per="6" data-type="g">20 g</td>
-            <td data-label="Nota" class="note">Se añade al final, fuera del fuego.</td>
+            <td data-label="Nota" class="note">Se agrega al final, fuera del fuego.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Cebollín</td>
             <td data-label="Cantidad" class="qty" data-per="8" data-type="g">25 g</td>
-            <td data-label="Nota" class="note">Usa tallo y parte verde.</td>
+            <td data-label="Nota" class="note">Usa tallo blanco y parte verde.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ají dulce</td>
             <td data-label="Cantidad" class="qty" data-per="4" data-type="g">10 g</td>
-            <td data-label="Nota" class="note">Sin semillas para suavizar el sabor.</td>
+            <td data-label="Nota" class="note">Sin semillas; da aroma frutal sin picor.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Pimentón</td>
             <td data-label="Cantidad" class="qty" data-per="12" data-type="g">35 g</td>
-            <td data-label="Nota" class="note">Aporta vitamina C.</td>
+            <td data-label="Nota" class="note">Aporta dulzor suave y vitamina C.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Cebolla</td>
             <td data-label="Cantidad" class="qty" data-per="20" data-type="cebolla">60 g (½ unidad)</td>
-            <td data-label="Nota" class="note">Se añade al final con los aliños.</td>
+            <td data-label="Nota" class="note">Se suma con los demás aliños frescos.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Ajo</td>
             <td data-label="Cantidad" class="qty" data-per="3" data-type="ajo">3 dientes (~9 g)</td>
-            <td data-label="Nota" class="note">Machacado, no picado fino.</td>
+            <td data-label="Nota" class="note">Machacado en trocitos pequeños.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Comino</td>
             <td data-label="Cantidad" class="qty" data-per="0.4" data-type="comino">½ cdta (~1,2 g)</td>
-            <td data-label="Nota" class="note">Moderado: su sabor es intenso para niños.</td>
+            <td data-label="Nota" class="note">Con moderación si comen niños.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Sal</td>
             <td data-label="Cantidad" class="qty" data-per="0.5" data-type="sal">1½ cdta rasas (~8 g)</td>
-            <td data-label="Nota" class="note">Empezar con la mitad, probar y ajustar. Salar después de separar el plato del menor.</td>
+            <td data-label="Nota" class="note">Salar por etapas y separar el plato del menor antes de ajustar.</td>
           </tr>
           <tr>
             <td data-label="Ingrediente">Agua</td>
             <td data-label="Cantidad" class="qty" data-per="500" data-type="agua">1,5 L + reposición</td>
-            <td data-label="Nota" class="note">Durante las 2 horas se evapora. Verifica el nivel y añade agua caliente.</td>
+            <td data-label="Nota" class="note">Repón con agua caliente si baja el nivel durante la cocción.</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Guía visual y equivalencias para no confundirse al comprar -->
+    <div class="visual-guide-box fade" id="guia-visual">
+      <div class="vg-header">
+        <div>
+          <h3>¿Qué es cada ingrediente si lo llaman distinto en tu mercado?</h3>
+          <p>Filtra por tipo para identificar cortes, raíces y aliños sin dudas antes de comprar.</p>
+        </div>
+      </div>
+
+      <div class="filter-pills" role="tablist" aria-label="Filtrar ingredientes">
+        <button type="button" class="pill-btn active" data-filter="all">Todos</button>
+        <button type="button" class="pill-btn" data-filter="raices">Raíces y tubérculos</button>
+        <button type="button" class="pill-btn" data-filter="carne-maiz">Carne y maíz</button>
+        <button type="button" class="pill-btn" data-filter="alinos">Verduras y aliños</button>
+      </div>
+
+      <div class="ing-grid">
+        <article class="ing-card" data-cat="raices">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Ñame</span></div>
+          <div class="ing-body">
+            <div class="ing-aliases">También: batata blanca / yam</div>
+            <p class="ing-desc">Raíz harinosa de pulpa clara. Es el ingrediente que espesa el caldo de forma natural y te indica cuándo está lista la sopa.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="raices">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Yuca</span></div>
+          <div class="ing-body">
+            <div class="ing-aliases">También: mandioca / guacamota</div>
+            <p class="ing-desc">Raíz alargada de piel marrón y pulpa blanca. Retira siempre el hilo fibroso del centro al picarla.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="alinos">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Auyama</span></div>
+          <div class="ing-body">
+            <div class="ing-aliases">También: calabaza / zapallo</div>
+            <p class="ing-desc">Da color dorado al caldo, dulzor suave y vitamina A. Pélala y quita las semillas antes de pesar los 180 g base.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="carne-maiz">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Lagarto sin hueso</span></div>
+          <div class="ing-body">
+            <div class="ing-aliases">También: morcillo / jarrete / chamorro</div>
+            <p class="ing-desc">Corte de la pierna de res con colágeno y sabor profundo; necesita cocción lenta para quedar tierno.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="carne-maiz">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Maíz en mazorca</span></div>
+          <div class="ing-body">
+            <div class="ing-aliases">También: choclo / elote</div>
+            <p class="ing-desc">Córtalo en ruedas para servir en la sopa y desgrana los granos si vas a dar al menor de la casa.</p>
+          </div>
+        </article>
+
+        <article class="ing-card" data-cat="alinos">
+          <div class="ing-thumb"><img src="images/sopa.jpg" alt=""><span>Ají dulce y cebollín</span></div>
+          <div class="ing-body">
+            <div class="ing-aliases">Cebollín = cebolla de verdeo / cebolleta</div>
+            <p class="ing-desc">El ají dulce aporta aroma de pimentón perfumado sin picar; el cebollín y cilantro dan frescor al final.</p>
+          </div>
+        </article>
+      </div>
     </div>
 
     <div class="callout">
       <span class="ico">🧾</span>
       <div>
         <strong>Regla de oro contra el desperdicio</strong>
-        <p>Compra la yuca el mismo día o el día anterior: se oxida rápido. Si te sobra algún tallo de cebollín o cilantro, pícalo y congélalo en cubetera con agua — sirve para la próxima sopa.</p>
+        <p>Compra la yuca fresca el mismo día o víspera. Si te sobra cebollín o cilantro, pícalo y congélalo en cubetera con un poco de agua para la próxima olla.</p>
       </div>
     </div>
   </div>
@@ -545,16 +668,15 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 <section id="nutricion" style="background:var(--cream-alt)">
   <div class="wrap">
     <div class="sec-head fade">
-      <span class="eyebrow">Paso 0.5 · El equilibrio</span>
+      <span class="eyebrow">Paso 2 · Valor nutricional</span>
       <h2>Qué aporta una ración de adulto</h2>
       <p>
-        <strong>Tabla fija de referencia.</strong> Estos valores son siempre por
-        <strong>una porción de adulto</strong> (≈470 g de sólidos + 480 ml de caldo),
-        sin importar cuántas personas cocinen. Calculados con carne magra de lagarto y sin aceite añadido.
+        <strong>Referencia fija por persona adulta</strong> (≈470 g de sólidos + 480 ml de caldo),
+        calculada con lagarto magro y sin aceite extra.
       </p>
     </div>
 
-    <div class="tbl-wrap fade" style="margin-bottom:1.6rem">
+    <div class="tbl-wrap fade" style="margin-bottom:1.5rem">
       <table class="tbl">
         <thead>
           <tr><th>Nutriente</th><th>Aporte aproximado</th><th>% del valor diario</th></tr>
@@ -570,7 +692,7 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
           <tr><td data-label="Nutriente">Potasio</td><td data-label="Aporte" class="nutri-val">≈ 900 mg</td><td data-label="% diario" class="note">≈ 25 %</td></tr>
           <tr><td data-label="Nutriente">Hierro (hemo)</td><td data-label="Aporte" class="nutri-val">≈ 3 mg</td><td data-label="% diario" class="note">≈ 25 % · alta absorción</td></tr>
           <tr><td data-label="Nutriente">Zinc</td><td data-label="Aporte" class="nutri-val">≈ 5 mg</td><td data-label="% diario" class="note">≈ 45 %</td></tr>
-          <tr><td data-label="Nutriente">Sodio</td><td data-label="Aporte" class="nutri-val">Variable</td><td data-label="% diario" class="note">Controlado por la sal añadida</td></tr>
+          <tr><td data-label="Nutriente">Sodio</td><td data-label="Aporte" class="nutri-val">Variable</td><td data-label="% diario" class="note">Según la sal añadida</td></tr>
         </tbody>
       </table>
     </div>
@@ -579,22 +701,22 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🥩</span><h3>Proteínas</h3><span class="bal-pct">24%</span></div>
         <div class="bar"><span style="width:24%"></span></div>
-        <p>Los 120 g de lagarto aportan proteína completa con los nueve aminoácidos esenciales y hierro hemo de alta absorción — clave para prevenir anemia en el menor.</p>
+        <p>120 g de lagarto aportan proteína completa y hierro hemo de alta absorción, útil para prevenir anemia.</p>
       </div>
       <div class="bal-card fade">
         <div class="bal-top"><span class="bal-ico">🍠</span><h3>Carbohidratos</h3><span class="bal-pct">62%</span></div>
         <div class="bar"><span style="width:62%"></span></div>
-        <p>Yuca, ñame, papa y maíz aportan almidón de digestión lenta. Combinados con la fibra, dan energía sostenida sin picos de glucosa.</p>
+        <p>Yuca, ñame, papa y maíz entregan energía sostenida junto con la fibra de las verduras.</p>
       </div>
       <div class="bal-card fade">
-        <div class="bal-top"><span class="bal-ico">🥑</span><h3>Grasas</h3><span class="bal-pct">14%</span></div>
+        <div class="bal-top"><span class="bal-ico">🍲</span><h3>Grasas</h3><span class="bal-pct">14%</span></div>
         <div class="bar"><span style="width:14%"></span></div>
-        <p>La grasa proviene únicamente de la carne, que suelta su jugo en el caldo durante la cocción larga. Plato bajo en grasa, ideal para la cena.</p>
+        <p>Sin aceite añadido: proviene del jugo natural de la carne durante la cocción lenta.</p>
       </div>
       <div class="bal-card fade">
-        <div class="bal-top"><span class="bal-ico">🥕</span><h3>Vitaminas y minerales</h3><span class="bal-pct">Alto</span></div>
+        <div class="bal-top"><span class="bal-ico">🥕</span><h3>Micronutrientes</h3><span class="bal-pct">Alto</span></div>
         <div class="bar"><span style="width:78%"></span></div>
-        <p>Auyama + zanahoria cubren buena parte de la vitamina A; pimentón y ají dulce suman vitamina C; ñame y papa aportan potasio. Un plato denso en micronutrientes.</p>
+        <p>Auyama, zanahoria, pimentón y ají dulce concentran vitamina A, vitamina C y potasio.</p>
       </div>
     </div>
   </div>
@@ -604,22 +726,20 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
   <div class="wrap">
     <div class="sec-head sec-head-split fade">
       <div>
-        <span class="eyebrow">Paso a paso</span>
-        <h2>El ritmo de Don Ertilio: una sola sopa, sin sofrito</h2>
+        <span class="eyebrow">Paso 3 · Reloj de cocción</span>
+        <h2>El ritmo de Don Ertilio: una sola olla, sin sofrito</h2>
         <p>
-          La carne de lagarto necesita <strong>2 horas</strong> para ablandar. Si echas las
-          verduras antes de tiempo, se deshacen antes de que la carne esté lista. Por eso cada
-          ingrediente entra a su hora.
+          La carne necesita unas <strong>2 horas</strong> para ablandar. Incorporar cada ingrediente
+          en su minuto evita que las verduras se deshagan antes de tiempo.
         </p>
       </div>
       <aside class="golden-rule" aria-label="Regla de oro con cada adición">
         <span class="gr-icon" aria-hidden="true">★</span>
         <div>
-          <strong>Regla de oro con cada adición</strong>
+          <strong>Regla de oro en cada paso</strong>
           <p>
-            Revuelve con la paleta y verifica el nivel del agua. Durante las 2 horas
-            se evapora bastante: mantén el nivel con agua caliente para que no se
-            corte la cocción.
+            Revuelve suave y revisa el nivel de líquido. Si se evapora mucho, repón con
+            <strong>agua caliente</strong> para no cortar la cocción.
           </p>
         </div>
       </aside>
@@ -627,23 +747,23 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 
     <div class="timeline-hint fade">
       <span>🕐</span>
-      <span>Pon la carne a las <strong>00h:00min</strong> y sigue el reloj. Cada ingrediente dice a qué hora entra.</span>
+      <span>Cuando hierva el agua y entre la carne marca <strong>00h:00min</strong>. Sigue el marcador mientras avanzas.</span>
     </div>
 
     <div class="steps-wrap">
-      <ol class="steps">
+      <ol class="steps" id="stepsList">
         <li class="fade long-wait" data-time="00h:00min">
           <h3>Carne de res</h3>
-          <p>Calienta el agua (500 ml por persona). Cuando rompa el hervor, agrega la carne picada en cubos y empieza a contar: ese es tu <strong>00h:00min</strong>. Tapa y deja cocinar a fuego medio-bajo.</p>
-          <span class="why">Mientras la carne cocina, pela y pica todas las verduras: yuca, maíz, zanahoria, papa, ñame y auyama. Las irás agregando cuando el reloj lo indique.</span>
+          <p>Hierve el agua (500 ml por persona), agrega la carne en cubos y cuenta desde <strong>00h:00min</strong> a fuego medio-bajo.</p>
+          <span class="why">Aprovecha este tiempo para lavar, pelar y picar yuca, maíz, zanahoria, papa, ñame y auyama.</span>
         </li>
         <li class="fade" data-time="01h:25min">
           <h3>Yuca</h3>
-          <p>Lávala, pélala, retira el cordón leñoso del centro, córtala en trozos y agrégala al caldo.</p>
+          <p>Lávala, pélala, retira la fibra central, córtala en trozos y agrégala al caldo.</p>
         </li>
         <li class="fade" data-time="01h:30min">
           <h3>Maíz</h3>
-          <p>Pélalo, córtalo en trozos y agrégalo al caldo.</p>
+          <p>Pícalo en trozos y súmalo a la olla.</p>
         </li>
         <li class="fade" data-time="01h:35min">
           <h3>Zanahoria</h3>
@@ -651,24 +771,24 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
         </li>
         <li class="fade" data-time="01h:38min">
           <h3>Papa</h3>
-          <p>Pélala, córtala en trozos y agrégala al caldo.</p>
+          <p>Pélala, córtala en trozos y agrégala a la cocción.</p>
         </li>
         <li class="fade" data-time="01h:40min">
           <h3>Ñame</h3>
-          <p>Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que espesa la sopa.</p>
+          <p>Pícalo en cubos pequeños y agrégalo: ayudará a dar cuerpo y espesor al caldo.</p>
         </li>
         <li class="fade" data-time="01h:43min">
           <h3>Auyama</h3>
-          <p>Pélala, córtala en trozos y agrégala al caldo.</p>
+          <p>Pélala, córtala en trozos y añádela al caldo.</p>
         </li>
         <li class="fade" data-time="01h:48min">
           <h3>Aliños</h3>
-          <p>Pica la cebolla, machaca el ajo en pedacitos muy pequeños, pica el ají dulce, el pimentón, el cebollín y el cilantro (mientras más, mejor). Agrégalo todo al caldo junto con la sal y el comino, y revuelve bien.</p>
-          <span class="tip"><strong>Sal:</strong> empieza con la cantidad indicada en la lista de compras, revuelve, deja 2–3 minutos y prueba. Si le falta, añade un poco más. <strong>Separa el plato del menor antes de salar de nuevo.</strong></span>
+          <p>Añade cebolla picada, ajo machacado, ají dulce, pimentón, cebollín, cilantro, sal y comino; mezcla bien.</p>
+          <span class="tip"><strong>Sal:</strong> empieza con la mitad o lo indicado, prueba tras 2–3 minutos y <strong>separa el plato del menor antes de ajustar la sal final</strong>.</span>
         </li>
         <li class="fade final" data-time="02h:00min">
           <h3>Sopa lista</h3>
-          <p>Prueba la sal con una cucharilla y ajusta. Pincha el ñame: si entra sin resistencia, la sopa está lista. Apaga, agrega el cilantro picado y deja reposar 5 minutos tapado.</p>
+          <p>Pincha el ñame: si cede sin resistencia, está lista. Apaga, añade cilantro fresco y reposa 5 minutos tapado.</p>
         </li>
       </ol>
 
@@ -680,13 +800,11 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
     <div class="callout" style="margin-top:2rem">
       <span class="ico">⭐</span>
       <div>
-        <strong>Recomendaciones que no cambian tu ritmo, solo lo afinan</strong>
+        <strong>Consejos prácticos de olla</strong>
         <p>
-          <strong>La carne es el reloj:</strong> a las 01h:20min, pincha un trozo. Si aún está firme, espera 10–15 min más antes de seguir con la yuca.<br>
-          <strong>Agua caliente para reponer:</strong> durante 2 horas se evapora bastante. Mantén el nivel con agua caliente; así no se corta la cocción ni se endurece la carne.<br>
-          <strong>Si la carne necesita más tiempo:</strong> las verduras aguantan. El ñame se deshará y espesará más la sopa, lo cual es aceptable.<br>
-          <strong>Cilantro en dos tiempos:</strong> guarda una parte para echarla al apagar el fuego; el aroma se conserva mejor.<br>
-          <strong>Si quieres más espesor sin esperar:</strong> retira un trozo de ñame o auyama, aplástalo con tenedor y devuélvelo al caldo.
+          <strong>Revisa la carne a las 01h:20min:</strong> si aún está dura, dale 10–15 minutos más antes de meter la yuca.<br>
+          <strong>Espesor rápido:</strong> aplasta un trozo de ñame o auyama con tenedor y devuélvelo al caldo.<br>
+          <strong>Aroma final:</strong> reserva una pizca de cilantro para echarla al apagar el fuego.
         </p>
       </div>
     </div>
@@ -696,49 +814,66 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 <section id="menor">
   <div class="wrap">
     <div class="kids fade">
-      <span class="eyebrow">Seguridad y porción infantil</span>
+      <span class="eyebrow">Porción infantil</span>
       <h2>Cómo servir al menor de la casa</h2>
       <p>
-        La porción infantil es aproximadamente <strong>un tercio de una ración de adulto</strong>:
-        unos 150–180 ml de caldo con 30–50 g de sólidos. Esta pauta sirve para el niño o la niña
-        de la casa, sin importar cuántas personas haya en la mesa.
-        Aplica primero las reglas generales y después la pauta según su edad.
+        Sirve alrededor de <strong>un tercio de una ración de adulto</strong> (150–180 ml de caldo
+        con 30–50 g de sólidos), adaptando la textura a su edad.
       </p>
 
       <h3>Reglas generales</h3>
       <ul class="kids-list">
-        <li><span class="tick">✓</span><div><strong>Sirve su plato primero.</strong> Retira su porción antes de añadir la sal final y el comino extra.</div></li>
-        <li><span class="tick">✓</span><div><strong>Desmenuza la carne</strong> con dos tenedores. Sin trozos grandes ni fibras largas.</div></li>
-        <li><span class="tick">✓</span><div><strong>Desgrana el maíz.</strong> Los granos enteros son un riesgo de atragantamiento.</div></li>
-        <li><span class="tick">✓</span><div><strong>Sin huesos ni piel.</strong> Revisa cada cucharada antes de dársela.</div></li>
-        <li><span class="tick">✓</span><div><strong>Temperatura tibia</strong>, nunca caliente. Prueba en el dorso de tu muñeca.</div></li>
-        <li><span class="tick">✓</span><div><strong>Sin picante.</strong> El ají dulce es seguro, pero evita cualquier otro condimento picante.</div></li>
+        <li><span class="tick">✓</span><div><strong>Sirve primero su plato</strong> antes de añadir sal extra o condimentos intensos.</div></li>
+        <li><span class="tick">✓</span><div><strong>Desmenuza la carne</strong> en hebras cortas y suaves.</div></li>
+        <li><span class="tick">✓</span><div><strong>Desgrana el maíz</strong> para evitar atragantamientos.</div></li>
+        <li><span class="tick">✓</span><div><strong>Revisa sin huesos ni espinas</strong> y comprueba que esté tibia.</div></li>
       </ul>
 
-      <h3>Si el menor tiene 2 años</h3>
+      <h3>A los 2 años</h3>
       <ul class="kids-list">
-        <li><span class="tick">✓</span><div><strong>Corta los tubérculos en cubos de 1 cm.</strong> La yuca debe estar muy blanda: aplástala con el tenedor si es necesario.</div></li>
-        <li><span class="tick">✓</span><div><strong>Trocitos pequeños</strong> de carne desmenuzada y verduras tiernas: ya puede masticarlos.</div></li>
+        <li><span class="tick">✓</span><div>Trozos de ≈ 1 cm bien cocidos y yuca muy blanda (aplastada si hace falta).</div></li>
       </ul>
 
-      <h3>Si el menor tiene 1 año</h3>
+      <h3>Al año</h3>
       <ul class="kids-list">
-        <li><span class="tick">✓</span><div><strong>Sin sal añadida (o mínima).</strong> Empieza con caldo y verduras bien aplastadas.</div></li>
-        <li><span class="tick">✓</span><div><strong>Textura tipo puré espeso.</strong> Aplasta todo con tenedor antes de servir.</div></li>
-        <li><span class="tick">✓</span><div><strong>Introduce la carne poco a poco</strong>, desmenuzada muy fina, a medida que se acostumbre.</div></li>
+        <li><span class="tick">✓</span><div>Sin sal añadida (o mínima), textura aplastada tipo puré espeso y carne muy desmenuzada.</div></li>
       </ul>
+    </div>
+  </div>
+</section>
 
-      <div class="callout" style="background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);border-left-color:var(--amber)">
-        <span class="ico">🍽️</span>
+<section id="proximas" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="sec-head fade" style="margin-bottom:1.4rem">
+      <span class="eyebrow">Colección en GitHub</span>
+      <h2>Próximas recetas de Don Ertilio</h2>
+      <p>Base pensada para enlazar tus siguientes páginas HTML a medida que las publiques.</p>
+    </div>
+    <div class="series-grid">
+      <article class="series-card fade">
         <div>
-          <strong style="color:#F3F6F1">Olla ajustable</strong>
-          <p style="color:rgba(243,246,241,.82)">
-            Usa el selector de la lista de compras para ajustar cuántas personas van a comer.
-            Para 2 adultos + 1 menor, elige <strong>2.5 personas</strong>. Para una familia de
-            5 adultos, elige <strong>5</strong>. Todo se recalcula solo.
-          </p>
+          <span class="series-tag">En preparación</span>
+          <h3>Arroz meloso con pollo</h3>
+          <p>Misma lógica de compra justa, cálculo por comensal y tiempos controlados.</p>
         </div>
-      </div>
+        <a class="series-link" href="#ingredientes">Usar esta plantilla de base →</a>
+      </article>
+      <article class="series-card fade">
+        <div>
+          <span class="series-tag">En preparación</span>
+          <h3>Lentejas guisadas de la casa</h3>
+          <p>Remojo, verduras de temporada y raciones ajustadas para toda la semana.</p>
+        </div>
+        <a class="series-link" href="#preparacion">Ver sistema de reloj →</a>
+      </article>
+      <article class="series-card fade">
+        <div>
+          <span class="series-tag">Guía</span>
+          <h3>Acompañantes sin exceso</h3>
+          <p>Porciones justas de casabe, arepitas o aguacate para acompañar el caldo.</p>
+        </div>
+        <a class="series-link" href="#guia-visual">Ver equivalencias →</a>
+      </article>
     </div>
   </div>
 </section>
@@ -749,14 +884,14 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
     <div class="foot-inner">
       <div><strong>Sopa Criolla de Res de Don Ertilio</strong><br>Compra justo, cocina una vez, come bien, sin que falte ni que sobre.</div>
       <div style="max-width:44ch">
-        Los valores nutricionales son estimaciones orientativas basadas en tablas de composición de alimentos.
-        No sustituyen la orientación de un pediatra o nutricionista.
+        Estimaciones nutricionales orientativas; no sustituyen consejo médico o nutricional profesional.
       </div>
     </div>
   </div>
 </footer>
 
 <script>
+/* 1. Recálculo de cantidades */
 (function () {
   const input = document.getElementById('numPersonas');
   const btnMenos = document.getElementById('btnMenos');
@@ -767,15 +902,13 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
     const map = {
       0.25:'¼', 0.5:'½', 0.75:'¾',
       1:'1', 1.25:'1¼', 1.5:'1½', 1.75:'1¾',
-      2:'2', 2.5:'2½', 3:'3', 3.5:'3½', 4:'4',
-      4.5:'4½', 5:'5'
+      2:'2', 2.5:'2½', 3:'3', 3.5:'3½', 4:'4', 4.5:'4½', 5:'5'
     };
-    if (map[n] !== undefined) return map[n];
-    return n.toFixed(1).replace('.', ',');
+    return map[n] !== undefined ? map[n] : n.toFixed(1).replace('.', ',');
   }
 
   function fmtKg(g) {
-    if (g >= 1000) return (g / 1000).toFixed(2).replace('.0', '').replace('.', ',') + ' kg';
+    if (g >= 1000) return (g / 1000).toFixed(2).replace(/\.?0+$/, '').replace('.', ',') + ' kg';
     return g + ' g';
   }
 
@@ -787,16 +920,14 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       const u = total / 150;
       if (u <= 1.3) return grams + ' g (1 mediana)';
       if (u <= 2.4) return grams + ' g (2 medianas)';
-      if (u <= 3.4) return grams + ' g (~3 medianas)';
-      return grams + ' g (~' + Math.round(u) + ' medianas)';
+      return grams + ' g (~' + Math.max(3, Math.round(u)) + ' medianas)';
     }
     if (type === 'zanahoria') {
       const grams = Math.round(total / 5) * 5;
       const u = total / 80;
       if (u <= 1.3) return grams + ' g (1 mediana)';
       if (u <= 2.4) return grams + ' g (2 medianas)';
-      if (u <= 3.4) return grams + ' g (~3 medianas)';
-      return grams + ' g (~' + Math.round(u) + ' medianas)';
+      return grams + ' g (~' + Math.max(3, Math.round(u)) + ' medianas)';
     }
     if (type === 'cebolla') {
       const grams = Math.round(total / 5) * 5;
@@ -804,8 +935,7 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
       if (u <= 0.7) return grams + ' g (½ unidad)';
       if (u <= 1.3) return grams + ' g (1 unidad)';
       if (u <= 1.7) return grams + ' g (1½ unidades)';
-      if (u <= 2.4) return grams + ' g (2 unidades)';
-      return grams + ' g (~' + Math.round(u) + ' unidades)';
+      return grams + ' g (~' + Math.max(2, Math.round(u)) + ' unidades)';
     }
     if (type === 'maiz') {
       const grams = Math.round(total / 10) * 10;
@@ -851,18 +981,68 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
     input.value = Math.max(1, Math.ceil(parseFloat(input.value) || 1) - 1);
     update();
   });
-
   btnMas.addEventListener('click', function () {
     input.value = Math.min(20, Math.floor(parseFloat(input.value) || 1) + 1);
     update();
   });
-
   input.addEventListener('input', update);
   input.addEventListener('change', update);
   update();
 })();
 
+/* 2. Filtro de tarjetas de equivalencias */
 (function () {
+  const buttons = document.querySelectorAll('.pill-btn');
+  const cards = document.querySelectorAll('.ing-card');
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const filter = btn.dataset.filter;
+      buttons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      cards.forEach(function (card) {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+
+/* 3. Scroll: barra de lectura, zoom sutil de foto y paso activo */
+(function () {
+  const bar = document.getElementById('readProgress');
+  const hero = document.getElementById('inicio');
+  const stepItems = document.querySelectorAll('#stepsList li');
+
+  function onScroll() {
+    const doc = document.documentElement;
+    const maxScroll = doc.scrollHeight - window.innerHeight;
+    const pct = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+    if (bar) bar.style.width = pct + '%';
+
+    if (hero) {
+      const heroP = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight)));
+      hero.style.setProperty('--scroll-p', heroP.toFixed(3));
+    }
+
+    const mid = window.innerHeight * 0.45;
+    stepItems.forEach(function (li) {
+      const r = li.getBoundingClientRect();
+      if (r.top < mid && r.bottom > 80) {
+        li.classList.add('active-step');
+      } else {
+        li.classList.remove('active-step');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   const elementos = document.querySelectorAll('.fade');
   if (!('IntersectionObserver' in window)) {
     elementos.forEach(function (el) { el.classList.add('in'); });
@@ -875,16 +1055,18 @@ footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
   elementos.forEach(function (el) { obs.observe(el); });
 })();
 
+/* 4. Navegación suave considerando la barra superior */
 document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (ev) {
     const destino = document.querySelector(a.getAttribute('href'));
     if (!destino) return;
     ev.preventDefault();
-    const offset = document.querySelector('.topbar').offsetHeight + 12;
+    const topbar = document.querySelector('.topbar');
+    const offset = (topbar ? topbar.offsetHeight : 0) + 12;
     window.scrollTo({
       top: destino.getBoundingClientRect().top + window.pageYOffset - offset,
       behavior: 'smooth'
