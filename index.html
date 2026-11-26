@@ -5,29 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sopa Criolla de Res de Don Ertilio · Compra justo, cocina una vez, come bien</title>
 <meta name="description" content="Sopa Criolla de Res de Don Ertilio: receta ajustable a cualquier número de personas. Escribe cuántas personas vas a servir y las cantidades se recalculan solas. Compra justo, cocina una vez, come bien.">
-<meta name="theme-color" content="#3A6EA5">
+<meta name="theme-color" content="#B84A27">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============ 1. TOKENS Y RESET ============ */
+/* ============ 1. TOKENS EDITORIALES CÁLIDOS ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --cream:#F4F8FB;
+  --cream:#FBF7F0;
+  --cream-alt:#F3ECE0;
   --paper:#FFFFFF;
-  --ink:#1F2A36;
-  --ink-soft:#5A6B7B;
-  --blue:#3A6EA5;
-  --blue-dk:#27527D;
-  --blue-soft:#E7EFF7;
-  --amber:#E8A33D;
-  --green:#3E5641;
-  --green-soft:#EDF2ED;
-  --line:#DCE6EE;
+  --ink:#1E1B18;
+  --ink-soft:#5E564E;
+  --brand:#B84A27;
+  --brand-dk:#8F3518;
+  --brand-soft:#FCECE5;
+  --amber:#D98A2B;
+  --amber-soft:#FFF4E0;
+  --green:#3B523E;
+  --line:#E6DDD0;
   --radius:20px;
-  --shadow-sm:0 2px 10px rgba(31,42,54,.06);
-  --shadow:0 18px 46px -20px rgba(31,42,54,.38);
+  --shadow-sm:0 2px 12px rgba(30,27,24,.06);
+  --shadow:0 20px 48px -22px rgba(30,27,24,.28);
   --max:1140px;
 }
 
@@ -42,7 +43,7 @@ body{
   overflow-x:hidden;
 }
 
-h1,h2,h3,.brand{font-family:'Fraunces',Georgia,serif;line-height:1.1;letter-spacing:-.015em}
+h1,h2,h3,.brand-name{font-family:'Fraunces',Georgia,serif;line-height:1.08;letter-spacing:-.02em}
 
 img,svg{display:block;max-width:100%}
 
@@ -51,233 +52,191 @@ img,svg{display:block;max-width:100%}
 /* ============ 2. BARRA SUPERIOR ============ */
 .topbar{
   position:sticky;top:0;z-index:60;
-  background:rgba(244,248,251,.86);
+  background:rgba(251,247,240,.9);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
-.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
-.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1rem}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+.brand-name{display:flex;align-items:center;gap:.65rem;font-weight:800;font-size:1.02rem;color:var(--ink)}
 .brand-dot{
-  width:26px;height:26px;border-radius:50%;flex:0 0 auto;
-  background:conic-gradient(from 200deg,var(--blue),var(--amber),var(--blue-dk),var(--blue));
-  box-shadow:0 0 0 3px rgba(58,110,165,.14);
+  width:24px;height:24px;border-radius:50%;flex:0 0 auto;
+  background:radial-gradient(circle at 30% 30%,var(--amber),var(--brand));
+  box-shadow:0 0 0 3px rgba(184,74,39,.16);
 }
-.nav{display:flex;gap:1.4rem;font-size:.9rem;font-weight:500}
+.nav{display:flex;gap:1.5rem;font-size:.9rem;font-weight:500}
 .nav a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
-.nav a:hover{color:var(--blue)}
+.nav a:hover{color:var(--brand)}
 @media(max-width:820px){.nav{display:none}}
 
 .btn-cta{
   display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--blue);color:#fff;text-decoration:none;
-  font-weight:600;font-size:.88rem;padding:.6rem 1.15rem;border-radius:999px;
+  background:var(--brand);color:#fff;text-decoration:none;
+  font-weight:600;font-size:.88rem;padding:.62rem 1.2rem;border-radius:999px;
   transition:transform .2s,background .2s,box-shadow .2s;
-  box-shadow:0 6px 18px -8px rgba(58,110,165,.9);
+  box-shadow:0 8px 20px -10px rgba(184,74,39,.85);
 }
-.btn-cta:hover{background:var(--blue-dk);transform:translateY(-2px)}
+.btn-cta:hover{background:var(--brand-dk);transform:translateY(-2px)}
 
-/* ============ 3. HERO CON IMAGEN DE FONDO ============ */
+/* ============ 3. HERO EDITORIAL CON FOTOGRAFÍA ============ */
 .hero{
-  position:relative;overflow:hidden;color:#F4F8FB;
-  background-color:#1B3049;
-  padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3rem,7vw,5rem);
+  position:relative;overflow:hidden;color:#FFFDF9;
+  background-color:#181310;
+  padding:clamp(3.2rem,7vw,5.4rem) 0 clamp(3.4rem,7.5vw,5.6rem);
 }
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
   background-image:url('images/sopa.jpg');
   background-size:cover;
   background-position:center;
-  opacity:.45;
+  opacity:.72;
+  transform:scale(1.02);
 }
 .hero::after{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
   background:
-    linear-gradient(150deg,rgba(27,48,73,.82) 0%,rgba(58,110,165,.70) 55%,rgba(39,82,125,.82) 100%),
-    radial-gradient(58% 58% at 88% 12%,rgba(232,163,61,.28),transparent 70%),
-    radial-gradient(52% 52% at 6% 92%,rgba(39,82,125,.5),transparent 70%);
+    linear-gradient(95deg,rgba(20,15,12,.90) 0%,rgba(20,15,12,.68) 52%,rgba(20,15,12,.38) 100%),
+    radial-gradient(circle at 82% 55%,rgba(217,138,43,.16),transparent 55%);
 }
 .hero-grid{
   position:relative;z-index:1;
-  display:grid;grid-template-columns:1.15fr .85fr;
-  gap:clamp(1.8rem,4vw,3.5rem);align-items:center;
+  display:grid;grid-template-columns:1.2fr .8fr;
+  gap:clamp(2rem,4vw,3.6rem);align-items:center;
 }
-@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero::after{
+    background:linear-gradient(180deg,rgba(20,15,12,.78) 0%,rgba(20,15,12,.88) 100%);
+  }
+}
 
 .eyebrow{
   display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--amber);margin-bottom:1rem;
+  text-transform:uppercase;color:#F3B562;margin-bottom:.9rem;
 }
 .hero h1{
-  font-size:clamp(2rem,5.8vw,3.6rem);font-weight:800;margin-bottom:.85rem;
+  font-size:clamp(2.2rem,5.8vw,3.85rem);font-weight:800;margin-bottom:.9rem;
   text-wrap:balance;
 }
-.hero h1 em{font-style:normal;color:var(--amber)}
+.hero h1 em{font-style:italic;color:#F3B562}
 
 .tagline{
   font-family:'Fraunces',Georgia,serif;
-  font-style:italic;
-  font-weight:600;
-  font-size:clamp(1.02rem,2.3vw,1.3rem);
-  color:var(--amber);
+  font-style:italic;font-weight:600;
+  font-size:clamp(1.05rem,2.2vw,1.32rem);
+  color:#F9DFA9;
   line-height:1.4;
-  letter-spacing:.01em;
-  text-wrap:balance;
   margin-bottom:1.15rem;
   padding-left:1rem;
-  border-left:3px solid rgba(232,163,61,.55);
+  border-left:3px solid var(--amber);
   max-width:44ch;
 }
 
-.hero-lead{font-size:clamp(.98rem,2vw,1.08rem);color:rgba(244,248,251,.92);max-width:48ch;margin-bottom:1.6rem}
+.hero-lead{
+  font-size:clamp(.98rem,1.9vw,1.08rem);
+  color:rgba(255,253,249,.9);
+  max-width:48ch;margin-bottom:1.6rem;
+}
+
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.btn-hero{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--amber);color:#1E1B18;text-decoration:none;
+  font-weight:700;font-size:.94rem;padding:.78rem 1.45rem;border-radius:999px;
+  transition:transform .2s,background .2s;
+  box-shadow:0 10px 24px -10px rgba(217,138,43,.8);
+}
+.btn-hero:hover{background:#E89B3C;transform:translateY(-2px)}
 
 .badges{display:flex;flex-wrap:wrap;gap:.5rem}
 .badge{
   display:inline-flex;align-items:center;gap:.4rem;
   font-size:.78rem;font-weight:600;padding:.42rem .85rem;border-radius:999px;
-  background:rgba(244,248,251,.16);border:1px solid rgba(244,248,251,.32);
-  color:#F4F8FB;
+  background:rgba(255,253,249,.12);border:1px solid rgba(255,253,249,.24);
+  color:#FFFDF9;backdrop-filter:blur(6px);
 }
 
-/* Ficha técnica limpia */
 .ficha{
-  position:relative;
-  background:rgba(27,48,73,.48);
-  border:1px solid rgba(244,248,251,.28);
-  border-radius:26px;
+  background:rgba(26,20,16,.72);
+  border:1px solid rgba(255,253,249,.2);
+  border-radius:24px;
   padding:1.5rem;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  box-shadow:0 24px 60px -30px rgba(0,0,0,.55);
-  overflow:hidden;
-  min-height:260px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 24px 50px -24px rgba(0,0,0,.65);
 }
-.ficha h2{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem;font-family:'Inter',sans-serif;font-weight:700}
-.ficha-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
-.ficha-item strong{display:block;font-family:'Fraunces',serif;font-size:1.5rem;font-weight:800;line-height:1.1}
-.ficha-item span{font-size:.76rem;color:rgba(244,248,251,.8);letter-spacing:.02em}
+.ficha h2{
+  font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#F3B562;margin-bottom:1.1rem;font-family:'Inter',sans-serif;font-weight:700;
+}
+.ficha-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
+.ficha-item strong{display:block;font-family:'Fraunces',serif;font-size:1.55rem;font-weight:800;line-height:1.1;color:#FFFDF9}
+.ficha-item span{font-size:.78rem;color:rgba(255,253,249,.76)}
 
 /* ============ 4. SECCIONES ============ */
-section{padding:clamp(2.6rem,6vw,4.5rem) 0}
+section{padding:clamp(2.8rem,6vw,4.8rem) 0}
 .sec-head{max-width:62ch;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
-.sec-head .eyebrow{color:var(--blue);margin-bottom:.6rem}
-.sec-head h2{font-size:clamp(1.65rem,4vw,2.5rem);font-weight:800;margin-bottom:.7rem;text-wrap:balance}
+.sec-head .eyebrow{color:var(--brand);margin-bottom:.55rem}
+.sec-head h2{font-size:clamp(1.7rem,4vw,2.55rem);font-weight:800;margin-bottom:.7rem;text-wrap:balance}
 .sec-head p{color:var(--ink-soft);font-size:1.02rem}
 
 .sec-head-split{
   max-width:100% !important;
-  display:grid;
-  grid-template-columns:1fr minmax(290px,370px);
-  gap:2rem;
-  align-items:start;
-  margin-bottom:clamp(1.8rem,3vw,2.6rem);
+  display:grid;grid-template-columns:1fr minmax(290px,370px);
+  gap:2rem;align-items:start;margin-bottom:clamp(1.8rem,3vw,2.6rem);
 }
-@media(max-width:880px){
-  .sec-head-split{grid-template-columns:1fr;gap:1.2rem}
-}
+@media(max-width:880px){.sec-head-split{grid-template-columns:1fr;gap:1.2rem}}
 
 .golden-rule{
-  position:relative;
   display:flex;gap:.9rem;align-items:flex-start;
-  background:linear-gradient(135deg,#FFF8EA 0%,#FCEBC7 100%);
-  border:1px solid #F0D9B4;
+  background:var(--amber-soft);
+  border:1px solid #F0D4A2;
   border-left:5px solid var(--amber);
-  border-radius:16px;
-  padding:1.1rem 1.2rem;
-  box-shadow:0 10px 30px -14px rgba(232,163,61,.55);
+  border-radius:16px;padding:1.1rem 1.2rem;
+  box-shadow:var(--shadow-sm);
 }
 .golden-rule .gr-icon{
-  flex:0 0 auto;
-  font-size:1.5rem;line-height:1;
-  display:grid;place-items:center;
-  width:2.4rem;height:2.4rem;border-radius:50%;
-  background:#FFF3D9;
-  border:1px solid #F0D9B4;
+  flex:0 0 auto;font-size:1.35rem;line-height:1;
+  display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:50%;
+  background:#FFE7BE;color:#7A4D10;
 }
-.golden-rule strong{
-  display:block;
-  font-family:'Fraunces',Georgia,serif;
-  font-size:1rem;font-weight:800;
-  color:#7A4D10;
-  margin-bottom:.25rem;
-  letter-spacing:-.01em;
-}
-.golden-rule p{
-  font-size:.88rem;
-  color:#6B4D1F;
-  line-height:1.5;
-  margin:0;
-}
-@media(prefers-reduced-motion:no-preference){
-  .golden-rule .gr-icon{
-    animation:pulseGlow 2.6s ease-in-out infinite;
-  }
-  @keyframes pulseGlow{
-    0%,100%{box-shadow:0 0 0 0 rgba(232,163,61,.5)}
-    50%{box-shadow:0 0 0 8px rgba(232,163,61,0)}
-  }
-}
+.golden-rule strong{display:block;font-family:'Fraunces',serif;font-size:1rem;font-weight:800;color:#6E430B;margin-bottom:.25rem}
+.golden-rule p{font-size:.88rem;color:#63451A;line-height:1.5;margin:0}
 
 /* ============ 5. SELECTOR DE PERSONAS ============ */
 .person-control{
-  background:linear-gradient(135deg,#FFFFFF 0%,#F7FAFD 100%);
+  background:var(--paper);
   border:1px solid var(--line);
-  border-left:4px solid var(--blue);
+  border-left:4px solid var(--brand);
   border-radius:18px;
-  padding:1.1rem 1.3rem;
+  padding:1.15rem 1.35rem;
   margin-bottom:1.4rem;
   box-shadow:var(--shadow-sm);
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:.9rem 1.5rem;
+  display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.5rem;
 }
 .pc-main{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
 .pc-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
 .stepper{
   display:inline-flex;align-items:center;
-  background:var(--blue-soft);
-  border:1px solid #CADDEB;
-  border-radius:999px;
-  padding:4px;gap:2px;
+  background:var(--brand-soft);border:1px solid #F2C9B8;
+  border-radius:999px;padding:4px;gap:2px;
 }
 .step-btn{
-  width:2.2rem;height:2.2rem;
-  border:0;border-radius:50%;
-  background:var(--paper);color:var(--blue);
-  font-family:inherit;font-size:1.25rem;font-weight:800;
-  cursor:pointer;
-  box-shadow:var(--shadow-sm);
-  transition:background .2s,color .2s,transform .15s;
+  width:2.2rem;height:2.2rem;border:0;border-radius:50%;
+  background:var(--paper);color:var(--brand);
+  font-family:inherit;font-size:1.25rem;font-weight:800;cursor:pointer;
+  box-shadow:var(--shadow-sm);transition:background .2s,color .2s,transform .15s;
   display:grid;place-items:center;line-height:1;
 }
-.step-btn:hover{background:var(--blue);color:#fff}
+.step-btn:hover{background:var(--brand);color:#fff}
 .step-btn:active{transform:scale(.92)}
-.step-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 #numPersonas{
-  width:3.2rem;border:0;background:transparent;
-  text-align:center;
-  font-family:'Fraunces',Georgia,serif;
-  font-size:1.4rem;font-weight:800;
-  color:var(--blue-dk);
-  -moz-appearance:textfield;appearance:textfield;
-  font-variant-numeric:tabular-nums;
+  width:3.2rem;border:0;background:transparent;text-align:center;
+  font-family:'Fraunces',serif;font-size:1.4rem;font-weight:800;color:var(--brand-dk);
+  -moz-appearance:textfield;appearance:textfield;font-variant-numeric:tabular-nums;
 }
-#numPersonas::-webkit-outer-spin-button,
-#numPersonas::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-#numPersonas:focus{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+#numPersonas::-webkit-outer-spin-button,#numPersonas::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .pc-label{font-size:1rem;font-weight:600;color:var(--ink)}
-.pc-note{flex:1 1 100%;font-size:.84rem;color:var(--ink-soft);margin:0;line-height:1.5}
-
-@media(max-width:540px){
-  .person-control{padding:1rem}
-  .pc-eyebrow{font-size:.68rem}
-  #numPersonas{font-size:1.2rem;width:2.8rem}
-  .step-btn{width:2rem;height:2rem;font-size:1.1rem}
-  .pc-main{gap:.6rem}
-}
+.pc-note{flex:1 1 100%;font-size:.84rem;color:var(--ink-soft);margin:0}
 
 /* ============ 6. TABLAS ============ */
 .tbl-wrap{
@@ -288,41 +247,23 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.93rem}
 table.tbl thead th{
   text-align:left;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-soft);font-weight:700;padding:.95rem 1.2rem;
-  background:#EDF3F8;border-bottom:1px solid var(--line);
+  background:#F6EFE4;border-bottom:1px solid var(--line);
 }
-table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #ECF1F6;vertical-align:top}
+table.tbl td{padding:.8rem 1.2rem;border-bottom:1px solid #F1EAE0;vertical-align:top}
 table.tbl tbody tr:last-child td{border-bottom:0}
-table.tbl tbody tr:hover{background:#F7FAFD}
+table.tbl tbody tr:hover{background:#FCF9F4}
 
-.qty{
-  font-weight:700;color:var(--blue);white-space:nowrap;
-  font-variant-numeric:tabular-nums;
-  transition:color .3s,background-color .4s ease;
-  border-radius:4px;
-}
-.qty.pulse{background-color:#FFF3D9}
-
-.nutri-val{
-  font-weight:700;
-  color:var(--blue);
-  white-space:nowrap;
-  font-variant-numeric:tabular-nums;
-}
-
+.qty,.nutri-val{font-weight:700;color:var(--brand);white-space:nowrap;font-variant-numeric:tabular-nums}
+.qty{border-radius:4px;transition:background-color .4s ease}
+.qty.pulse{background-color:#FFE7BE}
 .note{color:var(--ink-soft);font-size:.86rem}
 
 @media(max-width:660px){
   table.tbl thead{display:none}
   table.tbl,table.tbl tbody,table.tbl tr,table.tbl td{display:block;width:100%}
-  table.tbl tr{
-    border:1px solid var(--line);border-radius:14px;
-    padding:.8rem 1rem;margin-bottom:.65rem;background:var(--paper);
-  }
+  table.tbl tr{border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;margin-bottom:.65rem;background:var(--paper)}
   table.tbl td{border:0;padding:.28rem 0;display:flex;justify-content:space-between;gap:1rem;text-align:right}
-  table.tbl td::before{
-    content:attr(data-label);font-weight:700;font-size:.72rem;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--ink-soft);text-align:left;flex:0 0 auto;
-  }
+  table.tbl td::before{content:attr(data-label);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);text-align:left}
   .tbl-wrap{background:transparent;border:0;box-shadow:none}
 }
 
@@ -336,161 +277,73 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 .bal-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem}
 .bal-ico{font-size:1.35rem;line-height:1}
 .bal-top h3{font-size:1rem;font-weight:700;flex:1;font-family:'Inter',sans-serif}
-.bal-pct{font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;color:var(--blue)}
-.bar{height:7px;border-radius:99px;background:#E4ECF3;overflow:hidden;margin-bottom:.7rem}
-.bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),#6E9BC6)}
+.bal-pct{font-family:'Fraunces',serif;font-weight:800;font-size:1.15rem;color:var(--brand)}
+.bar{height:7px;border-radius:99px;background:#EFE7DC;overflow:hidden;margin-bottom:.7rem}
+.bar span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--amber))}
 .bal-card p{font-size:.87rem;color:var(--ink-soft);line-height:1.55}
 
 /* ============ 8. LÍNEA DE TIEMPO ============ */
 .timeline-hint{
   display:flex;align-items:center;gap:.7rem;
-  background:var(--blue-soft);
-  border:1px solid #CADDEB;
-  border-left:4px solid var(--blue);
-  border-radius:12px;
-  padding:.75rem 1rem;
-  margin-bottom:1.4rem;
-  max-width:820px;
-  font-size:.9rem;
-  color:var(--blue-dk);
-  font-weight:500;
+  background:var(--brand-soft);border:1px solid #F2C9B8;border-left:4px solid var(--brand);
+  border-radius:12px;padding:.75rem 1rem;margin-bottom:1.4rem;max-width:820px;
+  font-size:.9rem;color:var(--brand-dk);font-weight:500;
 }
-.timeline-hint .hint-icon{font-size:1.2rem;line-height:1;flex:0 0 auto}
-.timeline-hint strong{font-weight:800}
-
 .steps-wrap{max-width:820px}
-
-.steps{
-  list-style:none;
-  position:relative;
-  padding-left:6.4rem;
-  margin:0;
-  display:grid;
-  gap:.9rem;
-}
+.steps{list-style:none;position:relative;padding-left:6.4rem;margin:0;display:grid;gap:.9rem}
 .steps::before{
-  content:"";
-  position:absolute;
-  left:3rem;
-  top:2rem;
-  bottom:2rem;
-  width:2px;
-  background:linear-gradient(to bottom,var(--blue-dk) 0%,var(--blue) 30%,#8DB4D6 100%);
-  border-radius:99px;
+  content:"";position:absolute;left:3rem;top:2rem;bottom:2rem;width:2px;
+  background:linear-gradient(to bottom,var(--brand-dk),var(--amber));border-radius:99px;
 }
 .steps li{
-  position:relative;
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:1rem 1.2rem;
-  box-shadow:var(--shadow-sm);
+  position:relative;background:var(--paper);border:1px solid var(--line);
+  border-radius:18px;padding:1rem 1.2rem;box-shadow:var(--shadow-sm);
 }
 .steps li::before{
-  content:attr(data-time);
-  position:absolute;
-  left:-6.4rem;
-  top:.95rem;
-  width:6rem;
-  height:2rem;
-  border-radius:99px;
-  background:var(--blue);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  font-family:'Inter',sans-serif;
-  font-weight:800;
-  font-size:.82rem;
-  font-variant-numeric:tabular-nums;
-  letter-spacing:.03em;
-  box-shadow:0 0 0 4px var(--cream),0 4px 10px -4px rgba(58,110,165,.5);
-  z-index:1;
-  white-space:nowrap;
+  content:attr(data-time);position:absolute;left:-6.4rem;top:.95rem;width:6rem;height:2rem;
+  border-radius:99px;background:var(--brand);color:#fff;display:grid;place-items:center;
+  font-family:'Inter',sans-serif;font-weight:800;font-size:.82rem;font-variant-numeric:tabular-nums;
+  box-shadow:0 0 0 4px var(--cream);z-index:1;white-space:nowrap;
 }
-.steps li.long-wait::before{background:var(--blue-dk)}
-.steps li.final::before{background:var(--green);box-shadow:0 0 0 4px var(--cream),0 4px 10px -4px rgba(62,86,65,.5)}
-
-.steps h3{
-  font-size:1.08rem;
-  font-weight:800;
-  margin-bottom:.3rem;
-  font-family:'Inter',sans-serif;
-  color:var(--ink);
-}
+.steps li.long-wait::before{background:var(--brand-dk)}
+.steps li.final::before{background:var(--green)}
+.steps h3{font-size:1.08rem;font-weight:800;margin-bottom:.3rem;font-family:'Inter',sans-serif;color:var(--ink)}
 .steps p{font-size:.93rem;color:var(--ink-soft)}
-.steps .tip{
-  display:block;font-size:.85rem;color:var(--blue-dk);
-  background:var(--blue-soft);border-radius:10px;
-  padding:.55rem .8rem;margin-top:.65rem;
-}
-.steps .why{
-  display:block;font-size:.85rem;color:#7A4D10;
-  background:#FFF3D9;border-left:3px solid var(--amber);
-  border-radius:0 8px 8px 0;padding:.55rem .8rem;margin-top:.65rem;
-}
+.steps .tip{display:block;font-size:.85rem;color:var(--brand-dk);background:var(--brand-soft);border-radius:10px;padding:.55rem .8rem;margin-top:.65rem}
+.steps .why{display:block;font-size:.85rem;color:#6E430B;background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:.55rem .8rem;margin-top:.65rem}
 
 .timeline-end-wrap{text-align:center;margin-top:1.4rem;padding-left:6.4rem}
 .timeline-end{
-  display:inline-flex;align-items:center;gap:.45rem;
-  font-size:.88rem;font-weight:800;letter-spacing:.05em;
-  color:#fff;background:var(--green);
-  padding:.6rem 1.2rem;border-radius:99px;
-  box-shadow:0 8px 20px -10px rgba(62,86,65,.8);
-  font-variant-numeric:tabular-nums;
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:800;
+  color:#fff;background:var(--green);padding:.6rem 1.2rem;border-radius:99px;
 }
 
 @media(max-width:660px){
   .steps{padding-left:4.6rem;gap:.8rem}
   .steps::before{left:2.1rem}
   .steps li{padding:.95rem 1rem}
-  .steps li::before{
-    left:-4.6rem;
-    width:4.2rem;height:1.75rem;
-    font-size:.72rem;
-    top:.85rem;
-    box-shadow:0 0 0 3px var(--cream);
-  }
+  .steps li::before{left:-4.6rem;width:4.2rem;height:1.75rem;font-size:.72rem;top:.85rem;box-shadow:0 0 0 3px var(--cream)}
   .timeline-end-wrap{padding-left:4.6rem}
-  .timeline-hint{font-size:.85rem}
 }
 
 /* ============ 9. BLOQUE MENOR ============ */
 .kids{
-  background:linear-gradient(160deg,var(--green) 0%,#2E4232 100%);
+  background:linear-gradient(160deg,var(--green) 0%,#28392A 100%);
   color:#F3F6F1;border-radius:26px;padding:clamp(1.6rem,4vw,2.8rem);
   box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
-.kids::after{
-  content:"";position:absolute;width:280px;height:280px;right:-90px;top:-90px;
-  border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.28),transparent 70%);
-}
-.kids h2{font-size:clamp(1.5rem,3.6vw,2.1rem);margin-bottom:.6rem;position:relative;z-index:1}
-.kids .eyebrow{color:var(--amber)}
-.kids p{color:rgba(243,246,241,.82);position:relative;z-index:1}
-.kids h3{
-  font-family:'Inter',sans-serif;
-  font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--amber);
-  margin:1.6rem 0 .65rem;
-  position:relative;z-index:1;
-}
-.kids-list{list-style:none;display:grid;gap:.7rem;position:relative;z-index:1}
-.kids-list li{
-  display:flex;gap:.75rem;align-items:flex-start;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
-  border-radius:14px;padding:.85rem 1rem;font-size:.92rem;
-}
-.kids-list .tick{
-  flex:0 0 auto;width:1.35rem;height:1.35rem;border-radius:50%;
-  background:var(--amber);color:#1F2A36;display:grid;place-items:center;
-  font-size:.75rem;font-weight:900;margin-top:.1rem;
-}
-.kids-list strong{color:#fff}
+.kids h2{font-size:clamp(1.5rem,3.6vw,2.1rem);margin-bottom:.6rem}
+.kids .eyebrow{color:#F3B562}
+.kids p{color:rgba(243,246,241,.85)}
+.kids h3{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F3B562;margin:1.6rem 0 .65rem}
+.kids-list{list-style:none;display:grid;gap:.7rem}
+.kids-list li{display:flex;gap:.75rem;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.85rem 1rem;font-size:.92rem}
+.kids-list .tick{flex:0 0 auto;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--amber);color:#1E1B18;display:grid;place-items:center;font-size:.75rem;font-weight:900;margin-top:.1rem}
 
 /* ============ 10. CALLOUT ============ */
 .callout{
   display:flex;gap:1rem;align-items:flex-start;
-  background:#FDF5E8;border:1px solid #F0D9B4;border-left:5px solid var(--amber);
+  background:var(--amber-soft);border:1px solid #F0D4A2;border-left:5px solid var(--amber);
   border-radius:14px;padding:1.1rem 1.3rem;margin-top:1.6rem;
 }
 .callout .ico{font-size:1.35rem;line-height:1}
@@ -498,70 +351,50 @@ table.tbl tbody tr:hover{background:#F7FAFD}
 .callout p{font-size:.88rem;color:var(--ink-soft)}
 
 /* ============ 11. FOOTER ============ */
-footer{
-  background:#1B2A3A;color:rgba(244,248,251,.66);
-  padding:2.6rem 0 2rem;margin-top:2rem;font-size:.85rem;
-}
+footer{background:#1E1B18;color:rgba(251,247,240,.68);padding:2.6rem 0 2rem;margin-top:2rem;font-size:.85rem}
 .foot-dedicatoria{
-  text-align:center;
-  font-family:'Fraunces',Georgia,serif;
-  font-style:italic;font-weight:600;
-  font-size:clamp(1rem,2.4vw,1.25rem);
-  color:var(--amber);
-  padding-bottom:1.6rem;margin-bottom:1.6rem;
-  border-bottom:1px solid rgba(244,248,251,.12);
-  letter-spacing:.01em;
-  text-wrap:balance;
+  text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:600;
+  font-size:clamp(1rem,2.4vw,1.25rem);color:#F3B562;
+  padding-bottom:1.6rem;margin-bottom:1.6rem;border-bottom:1px solid rgba(251,247,240,.12);
 }
 .foot-inner{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
-footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
+footer strong{color:#FFFDF9;font-family:'Fraunces',serif;font-size:1rem}
 
-/* ============ 12. ANIMACIÓN DE ENTRADA ============ */
+/* ============ 12. ANIMACIÓN ============ */
 @media(prefers-reduced-motion:no-preference){
   .fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
   .fade.in{opacity:1;transform:none}
-}
-
-/* ============ 13. IMPRESIÓN ============ */
-@media print{
-  .topbar,.hero::after,.btn-cta,.person-control{display:none}
-  body{background:#fff}
-  .hero{background:#fff;color:#000}
-  .kids{background:#fff;color:#000;border:1px solid #ccc}
-  footer{background:#fff;color:#000;border-top:1px solid #ccc}
-  .foot-dedicatoria{color:#000}
-  .steps::before{background:#999}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ BARRA SUPERIOR ============ -->
 <header class="topbar">
   <div class="wrap topbar-inner">
-    <div class="brand"><span class="brand-dot"></span> Recetas de Don Ertilio</div>
+    <div class="brand-name"><span class="brand-dot"></span> Recetas de Don Ertilio</div>
     <nav class="nav">
       <a href="#ingredientes">Ingredientes</a>
       <a href="#nutricion">Nutrición</a>
       <a href="#preparacion">Preparación</a>
       <a href="#menor">Para el menor</a>
     </nav>
-    <a class="btn-cta" href="#ingredientes">Ver la lista →</a>
+    <a class="btn-cta" href="#ingredientes">Calcular raciones →</a>
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Receta calculada al gramo</span>
+      <span class="eyebrow">Cocina de origen · Medidas exactas</span>
       <h1>Sopa Criolla de Res <em>de Don Ertilio</em></h1>
       <p class="tagline">«Compra justo, cocina una vez, come bien, sin que falte ni que sobre.»</p>
       <p class="hero-lead">
-        Un plato principal espeso y completo —res, yuca, ñame, auyama, maíz y verduras—
-        con las cantidades exactas para tu familia. Ajusta el número de personas y todo
-        se recalcula solo.
+        Lagarto de res, yuca, ñame, auyama, maíz y aliños frescos en un caldo espeso y reconfortante.
+        Indica cuántas personas comen y cada ingrediente se ajusta solo.
       </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="#ingredientes">Ajustar para mi familia →</a>
+      </div>
       <div class="badges">
         <span class="badge">🍲 Porciones ajustables</span>
         <span class="badge">⏱️ ≈02h:10min</span>
@@ -582,7 +415,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   </div>
 </div>
 
-<!-- ============ INGREDIENTES ============ -->
 <section id="ingredientes">
   <div class="wrap">
     <div class="sec-head fade">
@@ -710,8 +542,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   </div>
 </section>
 
-<!-- ============ NUTRICIÓN ============ -->
-<section id="nutricion" style="background:#EAF1F7">
+<section id="nutricion" style="background:var(--cream-alt)">
   <div class="wrap">
     <div class="sec-head fade">
       <span class="eyebrow">Paso 0.5 · El equilibrio</span>
@@ -769,7 +600,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   </div>
 </section>
 
-<!-- ============ PREPARACIÓN ============ -->
 <section id="preparacion">
   <div class="wrap">
     <div class="sec-head sec-head-split fade">
@@ -783,7 +613,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         </p>
       </div>
       <aside class="golden-rule" aria-label="Regla de oro con cada adición">
-        <span class="gr-icon" aria-hidden="true">⭐</span>
+        <span class="gr-icon" aria-hidden="true">★</span>
         <div>
           <strong>Regla de oro con cada adición</strong>
           <p>
@@ -796,90 +626,50 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
     </div>
 
     <div class="timeline-hint fade">
-      <span class="hint-icon">🕐</span>
+      <span>🕐</span>
       <span>Pon la carne a las <strong>00h:00min</strong> y sigue el reloj. Cada ingrediente dice a qué hora entra.</span>
     </div>
 
     <div class="steps-wrap">
       <ol class="steps">
-
         <li class="fade long-wait" data-time="00h:00min">
           <h3>Carne de res</h3>
-          <p>
-            Calienta el agua (500 ml por persona). Cuando rompa el hervor, agrega la carne
-            picada en cubos y empieza a contar: ese es tu <strong>00h:00min</strong>. Tapa y deja
-            cocinar a fuego medio-bajo.
-          </p>
-          <span class="why">
-            Mientras la carne cocina, pela y pica todas las verduras: yuca, maíz, zanahoria,
-            papa, ñame y auyama. Las irás agregando cuando el reloj lo indique.
-          </span>
+          <p>Calienta el agua (500 ml por persona). Cuando rompa el hervor, agrega la carne picada en cubos y empieza a contar: ese es tu <strong>00h:00min</strong>. Tapa y deja cocinar a fuego medio-bajo.</p>
+          <span class="why">Mientras la carne cocina, pela y pica todas las verduras: yuca, maíz, zanahoria, papa, ñame y auyama. Las irás agregando cuando el reloj lo indique.</span>
         </li>
-
         <li class="fade" data-time="01h:25min">
           <h3>Yuca</h3>
-          <p>
-            Lávala, pélala, retira el cordón leñoso del centro, córtala en trozos y agrégala al caldo.
-          </p>
+          <p>Lávala, pélala, retira el cordón leñoso del centro, córtala en trozos y agrégala al caldo.</p>
         </li>
-
         <li class="fade" data-time="01h:30min">
           <h3>Maíz</h3>
-          <p>
-            Pélalo, córtalo en trozos y agrégalo al caldo.
-          </p>
+          <p>Pélalo, córtalo en trozos y agrégalo al caldo.</p>
         </li>
-
         <li class="fade" data-time="01h:35min">
           <h3>Zanahoria</h3>
-          <p>
-            Pélala, pícala y agrégala al caldo.
-          </p>
+          <p>Pélala, pícala y agrégala al caldo.</p>
         </li>
-
         <li class="fade" data-time="01h:38min">
           <h3>Papa</h3>
-          <p>
-            Pélala, córtala en trozos y agrégala al caldo.
-          </p>
+          <p>Pélala, córtala en trozos y agrégala al caldo.</p>
         </li>
-
         <li class="fade" data-time="01h:40min">
           <h3>Ñame</h3>
-          <p>
-            Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que espesa la sopa.
-          </p>
+          <p>Lávalo, pélalo, pícalo en cubos pequeños y agrégalo al caldo. Es el que espesa la sopa.</p>
         </li>
-
         <li class="fade" data-time="01h:43min">
           <h3>Auyama</h3>
-          <p>
-            Pélala, córtala en trozos y agrégala al caldo.
-          </p>
+          <p>Pélala, córtala en trozos y agrégala al caldo.</p>
         </li>
-
         <li class="fade" data-time="01h:48min">
           <h3>Aliños</h3>
-          <p>
-            Pica la cebolla, machaca el ajo en pedacitos muy pequeños, pica el ají dulce, el
-            pimentón, el cebollín y el cilantro (mientras más, mejor). Agrégalo todo al caldo
-            junto con la sal y el comino, y revuelve bien.
-          </p>
-          <span class="tip">
-            <strong>Sal:</strong> empieza con la cantidad indicada en la lista de compras,
-            revuelve, deja 2–3 minutos y prueba. Si le falta, añade un poco más.
-            <strong>Separa el plato del menor antes de salar de nuevo.</strong>
-          </span>
+          <p>Pica la cebolla, machaca el ajo en pedacitos muy pequeños, pica el ají dulce, el pimentón, el cebollín y el cilantro (mientras más, mejor). Agrégalo todo al caldo junto con la sal y el comino, y revuelve bien.</p>
+          <span class="tip"><strong>Sal:</strong> empieza con la cantidad indicada en la lista de compras, revuelve, deja 2–3 minutos y prueba. Si le falta, añade un poco más. <strong>Separa el plato del menor antes de salar de nuevo.</strong></span>
         </li>
-
         <li class="fade final" data-time="02h:00min">
           <h3>Sopa lista</h3>
-          <p>
-            Prueba la sal con una cucharilla y ajusta. Pincha el ñame: si entra sin resistencia,
-            la sopa está lista. Apaga, agrega el cilantro picado y deja reposar 5 minutos tapado.
-          </p>
+          <p>Prueba la sal con una cucharilla y ajusta. Pincha el ñame: si entra sin resistencia, la sopa está lista. Apaga, agrega el cilantro picado y deja reposar 5 minutos tapado.</p>
         </li>
-
       </ol>
 
       <div class="timeline-end-wrap">
@@ -903,7 +693,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   </div>
 </section>
 
-<!-- ============ MENOR ============ -->
 <section id="menor">
   <div class="wrap">
     <div class="kids fade">
@@ -943,7 +732,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
         <span class="ico">🍽️</span>
         <div>
           <strong style="color:#F3F6F1">Olla ajustable</strong>
-          <p style="color:rgba(243,246,241,.8)">
+          <p style="color:rgba(243,246,241,.82)">
             Usa el selector de la lista de compras para ajustar cuántas personas van a comer.
             Para 2 adultos + 1 menor, elige <strong>2.5 personas</strong>. Para una familia de
             5 adultos, elige <strong>5</strong>. Todo se recalcula solo.
@@ -954,7 +743,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
     <p class="foot-dedicatoria">Inspirado con amor para Lia y Lucca - Don Ertilio</p>
@@ -969,7 +757,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 </footer>
 
 <script>
-/* ===== 1. Selector de personas y recálculo de cantidades ===== */
 (function () {
   const input = document.getElementById('numPersonas');
   const btnMenos = document.getElementById('btnMenos');
@@ -994,12 +781,7 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
 
   function formatQty(per, N, type) {
     const total = per * N;
-
-    if (type === 'g') {
-      const rounded = Math.round(total / 5) * 5;
-      return fmtKg(rounded);
-    }
-
+    if (type === 'g') return fmtKg(Math.round(total / 5) * 5);
     if (type === 'papa') {
       const grams = Math.round(total / 5) * 5;
       const u = total / 150;
@@ -1008,7 +790,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       if (u <= 3.4) return grams + ' g (~3 medianas)';
       return grams + ' g (~' + Math.round(u) + ' medianas)';
     }
-
     if (type === 'zanahoria') {
       const grams = Math.round(total / 5) * 5;
       const u = total / 80;
@@ -1017,7 +798,6 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       if (u <= 3.4) return grams + ' g (~3 medianas)';
       return grams + ' g (~' + Math.round(u) + ' medianas)';
     }
-
     if (type === 'cebolla') {
       const grams = Math.round(total / 5) * 5;
       const u = total / 100;
@@ -1027,36 +807,27 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       if (u <= 2.4) return grams + ' g (2 unidades)';
       return grams + ' g (~' + Math.round(u) + ' unidades)';
     }
-
     if (type === 'maiz') {
       const grams = Math.round(total / 10) * 10;
       const mazorcas = Math.ceil(total / 150);
       return mazorcas + ' mazorca' + (mazorcas !== 1 ? 's' : '') + ' (~' + grams + ' g)';
     }
-
     if (type === 'ajo') {
       const dientes = Math.max(1, Math.round(total / 3.5));
       return dientes + ' diente' + (dientes !== 1 ? 's' : '') + ' (~' + Math.round(total) + ' g)';
     }
-
     if (type === 'comino') {
       const cdtas = Math.round(total * 2) / 4;
-      const grams = total.toFixed(1).replace('.', ',');
-      return fmtCdta(cdtas) + ' cdta (~' + grams + ' g)';
+      return fmtCdta(cdtas) + ' cdta (~' + total.toFixed(1).replace('.', ',') + ' g)';
     }
-
     if (type === 'sal') {
       const cdtas = Math.round(total * 2) / 2;
-      const grams = Math.round(cdtas * 5);
-      return fmtCdta(cdtas) + ' cdta rasas (~' + grams + ' g)';
+      return fmtCdta(cdtas) + ' cdta rasas (~' + Math.round(cdtas * 5) + ' g)';
     }
-
     if (type === 'agua') {
       const L = total / 1000;
-      const liters = L % 1 === 0 ? String(L) : L.toFixed(1).replace('.', ',');
-      return liters + ' L + reposición';
+      return (L % 1 === 0 ? String(L) : L.toFixed(1).replace('.', ',')) + ' L + reposición';
     }
-
     return Math.round(total) + ' g';
   }
 
@@ -1077,26 +848,20 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
   }
 
   btnMenos.addEventListener('click', function () {
-    let N = parseFloat(input.value) || 1;
-    N = Math.max(1, Math.ceil(N) - 1);
-    input.value = N;
+    input.value = Math.max(1, Math.ceil(parseFloat(input.value) || 1) - 1);
     update();
   });
 
   btnMas.addEventListener('click', function () {
-    let N = parseFloat(input.value) || 1;
-    N = Math.min(20, Math.floor(N) + 1);
-    input.value = N;
+    input.value = Math.min(20, Math.floor(parseFloat(input.value) || 1) + 1);
     update();
   });
 
   input.addEventListener('input', update);
   input.addEventListener('change', update);
-
   update();
 })();
 
-/* ===== 2. Animación de aparición al hacer scroll ===== */
 (function () {
   const elementos = document.querySelectorAll('.fade');
   if (!('IntersectionObserver' in window)) {
@@ -1111,11 +876,9 @@ footer strong{color:#F4F8FB;font-family:'Fraunces',serif;font-size:1rem}
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
   elementos.forEach(function (el) { obs.observe(el); });
 })();
 
-/* ===== 3. Scroll suave con la barra fija ===== */
 document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (ev) {
     const destino = document.querySelector(a.getAttribute('href'));
